@@ -45,6 +45,12 @@
 #define ARC_MACH_ARCV2   32
 #define ARC_MACH_ARCV2HS 64
 
+#define ARC_NPS_CMDS
+
+#ifdef ARC_NPS_CMDS
+#define VALID_MSB_CCM1    0x57f00000
+#define ARC_NO_SIMD_CMDS
+#endif
 /* Additional cpu values can be inserted here and ARC_MACH_BIG moved down.  */
 #define ARC_MACH_BIG 128
 
@@ -98,6 +104,7 @@ struct arc_opcode {
 #define AC_OP1_DEST_IGNORED	(AC_SYNTAX_SIMD		<< 1)
 #define AC_OP1_MUST_BE_IMM	(AC_OP1_DEST_IGNORED    << 1)
 #define AC_OP1_IMM_IMPLIED	(AC_OP1_MUST_BE_IMM     << 1)
+#ifndef ARC_NO_SIMD_CMDS
 #define AC_SIMD_SYNTAX_DISC     (AC_OP1_IMM_IMPLIED     << 1)
 #define AC_SIMD_IREGA           (AC_SIMD_SYNTAX_DISC    << 1)
 #define AC_SIMD_IREGB           (AC_SIMD_IREGA          << 1)
@@ -126,12 +133,14 @@ struct arc_opcode {
 
 
   //#define AC_SUFFIX_NONE		(AC_SIMD_SYNTAX_VD      << 1)
+#endif  // #ifndef ARC_NO_SIMD_CMDS
 #define AC_SUFFIX_NONE          (0x1)
 /* START ARC LOCAL */
 #define AC_SUFFIX_DIRECT	(AC_SUFFIX_NONE         << 1)
 /* END ARC LOCAL */
 #define AC_SUFFIX_COND		(AC_SUFFIX_DIRECT       << 1)
 #define AC_SUFFIX_FLAG		(AC_SUFFIX_COND         << 1)
+#ifndef ARC_NO_SIMD_CMDS
 #define AC_SIMD_FLAGS_NONE      (AC_SUFFIX_FLAG         << 1)
 #define AC_SIMD_FLAG_SET        (AC_SIMD_FLAGS_NONE     << 1)
 #define AC_SIMD_FLAG1_SET       (AC_SIMD_FLAG_SET       << 1)
@@ -158,6 +167,9 @@ struct arc_opcode {
 #define AC_SIMD_ENCODE_U16      (AC_SIMD_KREG           << 1)
 #define AC_SIMD_ENCODE_ZR       (AC_SIMD_ENCODE_U16     << 1)
 #define AC_EXTENDED_MULTIPLY    AC_SIMD_EXTENDED
+#else
+#define AC_EXTENDED_MULTIPLY    (AC_SUFFIX_FLAG         << 1)
+#endif  // #ifndef ARC_NO_SIMD_CMDS
 
 #define I(x) (((unsigned) (x) & 31) << 27)
 #define A(x) (((unsigned) (x) & ARC_MASK_REG) << ARC_SHIFT_REGA)
@@ -324,6 +336,7 @@ struct arc_operand {
     the BRcc instruction.  */
 #define ARC_INCR_U6 0x100000
 
+#ifndef ARC_NO_SIMD_CMDS
 #define ARC_SIMD_SCALE1  (ARC_INCR_U6 << 0x1)
 #define ARC_SIMD_SCALE2  (ARC_SIMD_SCALE1 << 0x1)
 #define ARC_SIMD_SCALE3  (ARC_SIMD_SCALE2 << 0x1)
@@ -341,6 +354,12 @@ struct arc_operand {
 #define ARC_REGISTER_SIMD_DR 0x40
 #define ARC_REGISTER_SIMD_K  0x80
 
+#endif // #ifndef ARC_NO_SIMD_CMDS
+
+#ifdef ARC_NPS_CMDS
+#define ARC_NPS_DECR_1     0x80000000
+#define ARC_NPS_DECR_MASK  0x40000000
+#endif
 
   /* Insertion function.  This is used by the assembler.  To insert an
      operand value into an instruction, check this field.

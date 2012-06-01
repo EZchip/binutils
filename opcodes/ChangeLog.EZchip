@@ -1,0 +1,5 @@
+2013-11-28  Roy Vardi  <royv@ezchip.com>
+ 
+* arc-nps.h: EZchip NPS additions and changes
+* arc-opc-old.c: Likewise
+* arccompact-dis.c: Likewise
