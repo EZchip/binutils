@@ -4555,6 +4555,16 @@ md_apply_fix (fixS *fixP, valueT *valueP, segT seg ATTRIBUTE_UNUSED)
 		  && operand->shift == 32);
 	  fixP->fx_r_type = BFD_RELOC_ARC_32_ME;
 	}
+#ifdef ARC_NPS_CMDS
+ /* CCM offset 16 bits on limm*/
+      else if (operand->fmt == 0236)
+	{
+	  gas_assert ((operand->flags & ARC_OPERAND_LIMM) != 0
+		  && operand->bits == 16
+		  && operand->shift == 16);
+	  fixP->fx_r_type =  BFD_RELOC_ARC_16_CCM;
+	}
+#endif // #ifdef ARC_NPS_CMDS
       /* ARCtangent-A5 21-bit (shift by 2) PC-relative relocation. Used for
 	 bl<cc> instruction */
       else if (operand->fmt == 'h')
@@ -4700,6 +4710,11 @@ md_apply_fix (fixS *fixP, valueT *valueP, segT seg ATTRIBUTE_UNUSED)
           fixP->fx_offset = 0;
 	  goto apply32_me;
 
+#ifdef ARC_NPS_CMDS
+	case BFD_RELOC_ARC_16_CCM:
+		break;
+#endif // #ifdef ARC_NPS_CMDS
+	    
 	case BFD_RELOC_ARC_B26:
 	  /* If !fixP->fx_done then `value' is an implicit addend.
 	     We must shift it right by 2 in this case as well because the
@@ -6893,6 +6908,13 @@ fprintf (stdout, "Matched syntax %s\n", opcode->syntax);
 		      reloc_type = BFD_RELOC_ARC_32_ME;
 		      GAS_DEBUG_PIC (reloc_type);
 		  }
+#ifdef ARC_NPS_CMDS
+		  else if (op_type == arc_operand_map[0236])
+		  {
+		      reloc_type = BFD_RELOC_ARC_16_CCM;
+		      GAS_DEBUG_PIC (reloc_type);
+		  }
+#endif // #ifdef ARC_NPS_CMDS
 		  else
 		      abort ();
 		  reloc_type = get_arc_exp_reloc_type (reloc_type,
@@ -6977,6 +6999,7 @@ fprintf (stdout, "Matched syntax %s\n", opcode->syntax);
 			  || reloc_type == BFD_RELOC_ARC_GOTPC32))
 		    {
 		      offset = 2;
+		      if (reloc_type == BFD_RELOC_ARC_16_CCM) size = 2;
 		    }
 		  else
 		    {

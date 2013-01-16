@@ -518,6 +518,7 @@ static reloc_howto_type elf_arc_howto_table[] =
 
   ARC_RELA_HOWTO (R_ARC_GOTPC, 0, 2, 32, FALSE,0 , arcompact_elf_me_reloc,
 		  "R_ARC_GOTPC",-1),
+
   ARC_UNSUPPORTED_HOWTO (R_ARC_GOT32,"R_ARC_GOT32"),
 
   /* Implements bl<cc> printf@plt */
@@ -556,6 +557,9 @@ static reloc_howto_type elf_arc_howto_table[] =
   /* Implements b<cc> printf@plt */
   ARC_RELA_HOWTO (R_ARC_S21H_PCREL_PLT, 1, 2, 21, FALSE, 0, arcompact_elf_me_reloc,
 		  "R_ARC_S21H_PCREL_PLT",-1),
+
+  ARC_RELA_HOWTO (R_ARC_16_CCM ,0 ,2 ,16, FALSE, 0, arcompact_elf_me_reloc,
+                  "R_ARC_16_CCM",0x0000FFFF),
 };
 
 /*Indicates whether the value contained in
@@ -659,6 +663,8 @@ short arc_signed_reloc_type[] =
 
   0, //  R_ARC_S25W_PCREL_PLT   0x4c
   0, //  R_ARC_S21H_PCREL_PLT   0x4d
+  
+  0, //  R_ARC_16_CCM           0x4e
 };
 
 
@@ -738,6 +744,8 @@ static const struct arc_reloc_map arc_reloc_map[] =
   { BFD_RELOC_ARC_S25H_PCREL_PLT, R_ARC_S25H_PCREL_PLT },
   { BFD_RELOC_ARC_S25W_PCREL_PLT, R_ARC_S25W_PCREL_PLT },
   { BFD_RELOC_ARC_S21H_PCREL_PLT, R_ARC_S21H_PCREL_PLT },
+
+  { BFD_RELOC_ARC_16_CCM, R_ARC_16_CCM }
 };
 
 static reloc_howto_type *
@@ -1232,6 +1240,9 @@ arcompact_elf_me_reloc (bfd *abfd ,
   case R_ARC_TLS_LE_32:
   case R_ARC_TLS_DTPOFF:
       insn = sym_value;
+      break;
+  case R_ARC_16_CCM:
+      insn |= (sym_value & 0xFFFF) << 16;
       break;
   default:
     return bfd_reloc_notsupported;
@@ -1808,6 +1819,11 @@ arc_plugin_one_reloc (unsigned long insn, enum elf_arc_reloc_type r_type,
 
     insn |= value ;
       break;
+
+  case R_ARC_16_CCM:
+	    insn |= (value & 0xFFFF) << 16 ;
+	      break;
+
 
   case R_ARC_SDA32_ME:
     insn |= value;
@@ -2466,6 +2482,9 @@ elf_arc_check_relocs (bfd *abfd,
 	    }
 
 	  break;
+	case R_ARC_16_CCM:
+		break;
+
 
 	default:
 	  break;
@@ -3156,6 +3175,26 @@ elf_arc_relocate_section (bfd *output_bfd,
 	      relocation -= b_h->root.u.def.value;
 	    }
 	  relocation -= b_sec->output_section->vma + b_sec->output_offset;
+	  break;
+
+	case R_ARC_16_CCM:
+    	{
+	    asection *srelcmem;
+	    char *curName = (h != NULL) ? h->root.root.string : local_sections[r_symndx]->name;
+		
+	    if (strncmp (sec->name, ".cmem", 5)) {
+		(*_bfd_error_handler) ("CCM relocation to \"%s\" failed since variable is not from section '.cmem*'\n",curName);
+		return FALSE;
+	    }
+
+	    srelcmem = bfd_get_section_by_name (output_bfd, ".cmem");
+	    if ( srelcmem == NULL ) {
+		(*_bfd_error_handler) ("CCM relocation to \"%s\" failed since there is no section '.cmem'\n",curName);
+		return FALSE;
+	    }
+
+	    relocation -= srelcmem->vma;
+	}
 	  break;
 
 	default:

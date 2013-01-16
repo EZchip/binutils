@@ -2762,7 +2762,9 @@ insert_nTo48   (arc_insn insn, long *ex ATTRIBUTE_UNUSED,
 		maxValue = 0 - minValue - 1;
 		check = 1;
 	}
-	if ( ( operand->flags & ARC_OPERAND_UNSIGNED ) || (operand->bits == 1) ) {
+	if ( ( operand->flags & ARC_OPERAND_UNSIGNED ) ||
+		 ( operand->flags & ARC_OPERAND_ADDRESS ) ||
+		 (operand->bits == 1) ) {
 		maxValue = (1 << operand->bits) - 1;
 		minValue = 0;
 		check = 1;
@@ -7097,6 +7099,7 @@ ac_symbol_operand (const struct arc_operand *op)
       case 'W':
 #ifdef ARC_NPS_CMDS
       case ']':
+      case 0236 /*'\236'*/:
 #endif // #ifdef ARC_NPS_CMDS
         return 1;
     }
