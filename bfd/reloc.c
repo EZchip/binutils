@@ -3510,6 +3510,10 @@ ENUM
 ENUMDOC
   ARCompact Middle-endian 32 bit word relocation
 ENUM
+  BFD_RELOC_ARC_16_CCM
+ENUMDOC
+  ARCompact (NPS) 16 bit offset in limm
+ENUM
   BFD_RELOC_ARC_PC32 
 ENUMDOC
   ARCompact PC Relative 32 bit relocation.

@@ -3527,6 +3527,9 @@ in bits 10 through 0.  */
 /* ARCompact Middle-endian 32 bit word relocation  */
   BFD_RELOC_ARC_32_ME,
 
+/* ARCompact (NPS) 16 bit offset in limm  */
+  BFD_RELOC_ARC_16_CCM,
+
 /* ARCompact PC Relative 32 bit relocation.  */
   BFD_RELOC_ARC_PC32 ,
 

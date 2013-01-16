@@ -1,3 +1,11 @@
 2013-11-28  Roy Vardi  <royv@ezchip.com>
+
+* bfd-in2.h: EZchip NPS additions and changes
+* elf32-arc.c: Likewise
+* libbfd.h: Likewise
+* reloc.c: Likewise
+
+2013-11-28  Roy Vardi  <royv@ezchip.com>
  
 * version.h: EZchip NPS additions and changes
+
