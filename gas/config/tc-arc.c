@@ -153,6 +153,16 @@ static int arc_mach_type = bfd_mach_arc_a5;
 /* Non-zero if the cpu type has been explicitly specified.  */
 static int mach_type_specified_p = 0;
 
+#ifdef ARC_NPS_CMDS
+extern int extraData;
+extern int getExtraData16value(void);
+extern void setExtraData16value(int value);
+extern void updateLastOpcodeSyntax(char *str);
+extern int isNPS16BitCmd(char *str);
+static int case_sen_nps(char *str);
+extern int npsNonRelevant(char *s1,char *s2,int len);
+#endif // #ifdef ARC_NPS_CMDS
+
 /* This is a flag that is set when an instruction is being assembled and
    otherwise it is reset.  */
 static int assembling_instruction = 0;
@@ -1727,6 +1737,7 @@ arc_extoper (int opertype)
 	    {
 	      input_line_pointer++;  /* skip ',' */
 
+#ifndef ARC_NO_SIMD_CMDS
 	      if  (!strncasecmp (input_line_pointer, "VECTOR", 6))
 		{
 		  imode |= ARC_REGISTER_SIMD_VR;
@@ -1752,6 +1763,9 @@ arc_extoper (int opertype)
 		  iregextension = 'd';
 		}
 	      else if (!strncasecmp (input_line_pointer, "CORE", 4))
+#else
+              if (!strncasecmp (input_line_pointer, "CORE", 4))
+#endif  // #ifndef ARC_NO_SIMD_CMDS
 		  {
 		  input_line_pointer +=4;
 		  iregextension = 0;
@@ -1767,9 +1781,13 @@ arc_extoper (int opertype)
 	}
     }
 
+#ifndef ARC_NO_SIMD_CMDS
   if (((opertype == 1) && number > 60)
       && (!(imode & ARC_REGISTER_SIMD_DR))
       && (!(imode & ARC_REGISTER_SIMD_VR)))
+#else
+  if ((opertype == 1) && number > 60)
+#endif // #ifndef ARC_NO_SIMD_CMDS
     {
       as_bad ("core register value (%d) too large", number);
       ignore_rest_of_line ();
@@ -1846,6 +1864,7 @@ arc_extoper (int opertype)
 	strcpy (p, name);
       break;
     case 1:
+#ifndef ARC_NO_SIMD_CMDS
 	/* use extended format for vector registers */
 	if(imode & (ARC_REGISTER_SIMD_VR | ARC_REGISTER_SIMD_I |
 		    ARC_REGISTER_SIMD_K  | ARC_REGISTER_SIMD_DR)){
@@ -1882,6 +1901,7 @@ arc_extoper (int opertype)
 	    strcpy(p,name);
 	    break;
 	    }
+#endif // #ifndef ARC_NO_SIMD_CMDS
        /* use old format for all others */
       arc_set_ext_seg (EXT_CORE_REGISTER, number, iregextension, 0);
       if (imode & (ARC_REGISTER_WRITEONLY | ARC_REGISTER_READONLY))
@@ -1976,6 +1996,9 @@ static const struct attributes ac_suffixclass[] = {
   /* START ARC LOCAL */
   { "SUFFIX_DIRECT", 13, AC_SUFFIX_DIRECT},
   /* END ARC LOCAL */
+#ifdef ARC_NO_SIMD_CMDS
+  { "SUFFIX_NONE", 11, AC_SUFFIX_NONE}
+#else
   { "SUFFIX_NONE", 11, AC_SUFFIX_NONE},
   { "FLAGS_NONE" , 10, AC_SIMD_FLAGS_NONE},
   { "FLAG_SET"   ,  8, AC_SIMD_FLAG_SET},
@@ -2003,6 +2026,7 @@ static const struct attributes ac_suffixclass[] = {
   { "ENCODE_KREG", 11, AC_SIMD_KREG},
   { "ENCODE_U16",  10, AC_SIMD_ENCODE_U16},
   { "ENCODE_ZR",    9, AC_SIMD_ENCODE_ZR}
+#endif  // #ifndef ARC_NO_SIMD_CMDS
 };
 
 #define AC_MAXSUFFIXCLASS (sizeof (ac_suffixclass) / sizeof (struct attributes))
@@ -2014,6 +2038,9 @@ static const struct attributes ac_syntaxclass[] = {
   { "SYNTAX_3OP", 10, AC_SYNTAX_3OP},
   { "SYNTAX_2OP", 10, AC_SYNTAX_2OP},
   { "SYNTAX_1OP", 10, AC_SYNTAX_1OP},
+#ifdef ARC_NO_SIMD_CMDS
+  { "SYNTAX_NOP", 10, AC_SYNTAX_NOP}
+#else
   { "SYNTAX_NOP", 10, AC_SYNTAX_NOP},
   { "SYNTAX_VbI0"     , 11, AC_SIMD_SYNTAX_VbI0},
   { "SYNTAX_Vb00"     , 11, AC_SIMD_SYNTAX_Vb00},
@@ -2036,6 +2063,7 @@ static const struct attributes ac_syntaxclass[] = {
   { "SYNTAX_VD"       ,  9, AC_SIMD_SYNTAX_VD},
   { "SYNTAX_C"        ,  8, AC_SIMD_SYNTAX_C},
   { "SYNTAX_0"        ,  8, AC_SIMD_SYNTAX_0}
+#endif  // #ifndef ARC_NO_SIMD_CMDS
 };
 
 #define AC_MAXSYNTAXCLASS (sizeof (ac_syntaxclass) / sizeof (struct attributes))
@@ -2043,10 +2071,14 @@ static const struct attributes ac_syntaxclass[] = {
 static const struct attributes ac_syntaxclassmodifier[] = {
   { "OP1_DEST_IGNORED", 16, AC_OP1_DEST_IGNORED},
   { "OP1_IMM_IMPLIED" , 15, AC_OP1_IMM_IMPLIED},
+#ifdef ARC_NO_SIMD_CMDS
+  { "OP1_MUST_BE_IMM" , 15, AC_OP1_MUST_BE_IMM}
+#else
   { "OP1_MUST_BE_IMM" , 15, AC_OP1_MUST_BE_IMM},
   { "SYNTAX_DISC"     , 11, AC_SIMD_SYNTAX_DISC},
   { "SYNTAX_IREGA"    , 12, AC_SIMD_IREGA},
   { "SYNTAX_IREGB"    , 12, AC_SIMD_IREGB}
+#endif  // #ifndef ARC_NO_SIMD_CMDS
   };
 
 #define AC_MAXSYNTAXCLASSMODIFIER (sizeof (ac_syntaxclassmodifier) / sizeof (struct attributes))
@@ -2109,6 +2141,7 @@ arc_add_ext_inst (char *name, char *operands, unsigned long value,
 
   strcat (realsyntax,operands);
 
+#ifndef ARC_NO_SIMD_CMDS
   flags = flags & ~(ARC_SIMD_ZERVA|ARC_SIMD_ZERVB|ARC_SIMD_ZERVC|
 		     ARC_SIMD_SETLM);
   if(suffix&AC_SIMD_ZERVA)
@@ -2120,6 +2153,7 @@ arc_add_ext_inst (char *name, char *operands, unsigned long value,
       flags |= ARC_SIMD_ZERVC;
   if(suffix&AC_SIMD_SETLM)
       flags |= ARC_SIMD_SETLM;
+#endif  // #ifndef ARC_NO_SIMD_CMDS
 
   ext_op->syntax = (unsigned char *) xstrdup (realsyntax);
   ext_op->value = value;
@@ -2146,10 +2180,12 @@ arc_add_long_ext_inst (char *name, char *operands, unsigned long value,
   if(suffix & AC_SUFFIX_COND){
     strcat(realsyntax,"%.q");
       }
+#ifndef ARC_NO_SIMD_CMDS
 
   if(flags & ARC_SIMD_LANEMASK){
       strcat(realsyntax,"%.]");
       }
+#endif  // #ifndef ARC_NO_SIMD_CMDS
 
   if(suffix & AC_SUFFIX_FLAG){
     strcat(realsyntax,"%.f");
@@ -2157,6 +2193,7 @@ arc_add_long_ext_inst (char *name, char *operands, unsigned long value,
 
   strcat (realsyntax,operands);
 
+#ifndef ARC_NO_SIMD_CMDS
   flags = flags & ~(ARC_SIMD_ZERVA | ARC_SIMD_ZERVB | ARC_SIMD_ZERVC|
 		     ARC_SIMD_SETLM);
   if(suffix & AC_SIMD_ZERVA)
@@ -2168,6 +2205,7 @@ arc_add_long_ext_inst (char *name, char *operands, unsigned long value,
       flags |= ARC_SIMD_ZERVC;
   if(suffix & AC_SIMD_SETLM)
       flags |= ARC_SIMD_SETLM;
+#endif  // #ifndef ARC_NO_SIMD_CMDS
 
   ext_op->syntax = (unsigned char *) xstrdup (realsyntax);
   ext_op->value = value;
@@ -2660,6 +2698,7 @@ arc_generate_extinst32_operand_strings (char *instruction_name,
 	  }
       for(i = 0; i < 4; i++)
 	  extended_instruction_flags[i] = 0;
+#ifndef ARC_NO_SIMD_CMDS
       switch (syntax_class
 	      & (AC_SIMD_SYNTAX_VVV | AC_SIMD_SYNTAX_VV | AC_SIMD_SYNTAX_VV0
 		 | AC_SIMD_SYNTAX_VbI0 | AC_SIMD_SYNTAX_Vb00
@@ -3449,6 +3488,7 @@ arc_generate_extinst32_operand_strings (char *instruction_name,
 			xmitsuffix);
 
       break;
+#endif  // #ifndef ARC_NO_SIMD_CMDS
 
     default:
       as_bad("Invalid syntax\n");
@@ -3695,11 +3735,13 @@ arc_ac_extinst (ignore)
 
   /* Make extension instruction syntax strings.  */
   /* catch a few oddball cases */
+#ifndef ARC_NO_SIMD_CMDS
   if(syntax_class&(AC_SIMD_SYNTAX_0|AC_SIMD_SYNTAX_C0|AC_SIMD_SYNTAX_VVV|
 		   AC_SIMD_SYNTAX_VV|AC_SIMD_SYNTAX_VV0|AC_SIMD_SYNTAX_D0)){
       syntax_class |= AC_SYNTAX_SIMD;
 
       }
+#endif  // #ifndef ARC_NO_SIMD_CMDS
   nops = 0;
 /* don't use extended format unless needed*/
   use_extended_instruction_format=0;
@@ -3715,6 +3757,7 @@ arc_ac_extinst (ignore)
 				    syntax_class, syntax_class_modifiers,
 				    suffix_class);
   sub_op = sub_opcode;
+#ifndef ARC_NO_SIMD_CMDS
   if(syntax_class & AC_SYNTAX_SIMD){
       if(major_opcode==0xa){
 	  if(suffix_class & AC_SIMD_FLAG2_SET)
@@ -3727,6 +3770,7 @@ arc_ac_extinst (ignore)
 	  sub_opcode |= 0x4000000;
       } /* end if(syntax_class & AC_SYNTAX_SIMD) */
 
+#endif  // #ifndef ARC_NO_SIMD_CMDS
   /* Done making the extension syntax strings.  */
 
   /* OK, now that we know what this inst is, put a description in the
@@ -3739,6 +3783,7 @@ arc_ac_extinst (ignore)
   switch( use_extended_instruction_format){
   case 1:
       sub_op = sub_opcode & 0x3f;
+#ifndef ARC_NO_SIMD_CMDS
       if(syntax_class & AC_SYNTAX_SIMD){
 	  if(suffix_class & (AC_SIMD_EXTEND2 | AC_SIMD_EXTEND1)){
 	      sub_op = (sub_opcode >> 8) & 0x3f;
@@ -3747,6 +3792,7 @@ arc_ac_extinst (ignore)
 	      sub_op = (sub_opcode >>16) & 0x3f;
 	      }
 	  }
+#endif  // #ifndef ARC_NO_SIMD_CMDS
       p = frag_more(OPD_FORMAT_SIZE*3+RCLASS_SET_SIZE+13);
       *p = OPD_FORMAT_SIZE*3+RCLASS_SET_SIZE+13+name_length+1;
       p++;
@@ -3776,9 +3822,11 @@ arc_ac_extinst (ignore)
 	  *p = extended_instruction_flags[i];
 	  p++;
 	  }
+#ifndef ARC_NO_SIMD_CMDS
       if(suffix_class & (AC_SIMD_EXTENDED|AC_SIMD_EXTEND2|AC_SIMD_EXTEND3))
 	  *p = 1;
       else
+#endif  // #ifndef ARC_NO_SIMD_CMDS
 	  *p = 0;
       p++;
       for(i = 0; i < 3; i++){
@@ -4997,11 +5045,17 @@ md_assemble (char *str)
   unsigned int insn_name_idx = 0;
   /* Non-zero if the insn being encoded is 16-bit ARCompact instruction */
   int compact_insn_16;
+#ifdef ARC_NPS_CMDS
+  int nps_compact_insn_16;
+#endif  // #ifdef ARC_NPS_CMDS
   /* Index into arc_operand_prefixes array */
   unsigned char opindex = 0;
 
   assembling_instruction = 1;
 
+#ifdef ARC_NPS_CMDS
+    case_sen_nps(str);
+#endif // #ifdef ARC_NPS_CMDS
   /* Opcode table initialization is deferred until here because we have to
      wait for a possible .option command.  */
   if (!init_tables_p)
@@ -5030,10 +5084,29 @@ md_assemble (char *str)
   /* All ARCompact 16 bit instructions have a <operation_name>_s which
    * is what we attempt to exploit here .
    */
+#ifndef ARC_NPS_CMDS
   if ((*s && *s == '_' && *(s+1) == 's') || strcmp(str,"unimp") == 0) /* FIXME: cleanup required */
     compact_insn_16 = 1;
   else
     compact_insn_16 = 0;
+#else
+  compact_insn_16 = 0;
+  nps_compact_insn_16 = 0;
+  if ( strcmp(str,"unimp") == 0 ) {
+    compact_insn_16 = 1;
+  } 
+  else {
+	  if ( (nps_compact_insn_16 = isNPS16BitCmd(str)) != 0 ) {
+		    compact_insn_16 = 1;
+	  }
+	  else {
+		  if (*s && *s == '_' && ((*(s+1) == 's') || (*(s+1) == 'i') )) {
+			  compact_insn_16 = 1;
+		  }
+	  }
+  }   
+
+#endif // #ifndef ARC_NPS_CMDS
 
   /* The instructions are stored in lists hashed by the first letter (though
      we needn't care how they're hashed).  Get the first in the list.  */
@@ -5066,6 +5139,10 @@ fprintf (stdout, "Matching ****** %s *************\n", str);
       int regb_p;
       const struct arc_operand_value *regb;
       const struct arc_operand_value *regh;
+#ifdef ARC_NPS_CMDS
+      int regc_p;
+      const struct arc_operand_value *regc;
+#endif // #ifdef ARC_NPS_CMDS
 
       /* Is this opcode supported by the selected cpu?  */
       if (!arc_opcode_supported (opcode))
@@ -5073,10 +5150,17 @@ fprintf (stdout, "Matching ****** %s *************\n", str);
 
       /* If opcode syntax is for 32-bit insn but input is 16-bit insn,
 	 then go for the next opcode */
+#ifdef ARC_NPS_CMDS
+      for (syn = opcode->syntax; *syn && ( (ISALNUM (*syn)) || ( (*syn & 0x80) != 0 ) ); syn++);
+      if (compact_insn_16 && !(*syn && *syn == '_' && *(syn + 1) == 's'))
+	if ( (strcmp(opcode->syntax,"unimp") !=0) && ( npsNonRelevant(opcode->syntax,start,nps_compact_insn_16) != 0 ) )/* FIXME: This is too bad a check!!! cleanup required */
+	  continue;
+#else
       for (syn = opcode->syntax; *syn && ISALNUM (*syn); syn++);
       if (compact_insn_16 && !(*syn && *syn == '_' && *(syn + 1) == 's'))
 	if (strcmp((char *) (opcode->syntax), "unimp") !=0) /* FIXME: This is too bad a check!!! cleanup required */
 	  continue;
+#endif // #ifdef ARC_NPS_CMDS
 
       /* Scan the syntax string.  If it doesn't match, try the next one.  */
       arc_opcode_init_insert ();
@@ -5094,11 +5178,18 @@ fprintf (stdout, "Matching ****** %s *************\n", str);
       regb_p = 0;
       regb = NULL;
       regh = NULL;
+#ifdef ARC_NPS_CMDS
+      regc_p = 0;
+      regc = NULL;
+#endif
 #if DEBUG_INST_PATTERN
 fprintf (stdout, "Trying syntax %s\n", opcode->syntax);
 #endif
       /* We don't check for (*str != '\0') here because we want to parse
 	 any trailing fake arguments in the syntax string.  */
+#ifdef ARC_NPS_CMDS
+      updateLastOpcodeSyntax(opcode->syntax);
+#endif
       for (str = start, syn = opcode->syntax; *syn != '\0';)
 	{
 	  const struct arc_operand *operand;
@@ -5277,7 +5368,11 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
 	      *t = '\0';
 	      found = 0;
 	      suf = NULL;
+#ifdef ARC_NPS_CMDS
+              if(0){
+#else
 	      if(!found && ((insn >> 27) == 0x0a)){
+#endif /* #ifdef ARC_NPS_CMDS */
 		  char *restore;
 		  int sum=0;
 		  if(num_suf.type == 0){
@@ -5574,6 +5669,7 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
 		    insn_suffixes[num_suffixes++] = suffix;
 		}
 	    }
+#ifdef NPS_ARCv2
 	  else if ((operand->fmt == 135) || (operand->fmt == 138))
 	    {
 	      /* enter or leave mnemonic, parse the string and
@@ -5616,6 +5712,7 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
 		    }
 		}
 	    }
+#endif /* #ifdef NPS_ARCv2 */
 	  else
 	    /* This is either a register or an expression of some kind.  */
 	    {
@@ -5645,10 +5742,12 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
 		case '8': match_str = "ilink2"; break;
 		case '9': match_str = "blink"; break;
 		case '!': match_str = "pcl"; break;
+#ifdef NPS_ARCv2
 		/*ARCv2 special registers*/
 		case 129: match_str = "r1"; break;
 		case 130: match_str = "r2"; break;
 		case 131: match_str = "r3"; break;
+#endif /* #ifdef NPS_ARCv2 */
 		default: match_str = NULL; break;
 		}
 	      if (match_str)
@@ -5704,6 +5803,12 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
                         }
                       break;
                     case 'K':
+			  if ( (sizeof(offsetT) == 8) && ( value > 0) && ( value <= 0xFFFFFFFF ) &&
+					  ( ( value & 0xFFFFF800 ) == 0xFFFFF800 ) ) { /* negative number s12- positive s64*/
+				  value ^= 0xFFFFFFFF;
+				  value++;
+				  value = 0-value; /* negative number s12 - negative s64 */
+			  }
                       if ((value < -2048) || (value > 2047))
                         match_failed = 1;
                       break;
@@ -5806,6 +5911,7 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
                       if ((value % 4) || (value < -1024) || (value > 1023))
                         match_failed = 1;
                       break;
+#ifndef ARC_NO_SIMD_CMDS
                     case '\24':
                       if((value > 0x3fff) || (value <-(0x3fff)))
                         match_failed = 1;
@@ -5889,6 +5995,7 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
                         default:
                           ;
                         } /* end switch (opcode->flags&&(ARC_SIMD_SCALE1...))*/
+#endif  // #ifndef ARC_NO_SIMD_CMDS
 /* for compatibility with corner cases of MetaWare assembler allow to -128 */
                       if ((value < 0) || (value > 255)){
                         match_failed = 1;
@@ -5905,6 +6012,7 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
                           match_failed = 1;
                         }
                       break;
+#ifndef ARC_NPS_CMDS
                       /* Not very nice: check constants for ARCv2*/
                     case 'L':
                       break;
@@ -5968,6 +6076,7 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
                       break;
                     default:
                       as_warn ("Unchecked constant");
+#endif /* ifndef ARC_NPS_CMDS */
                     } /* end switch(operand->fmt) */
 
                   if (match_failed)
@@ -6008,15 +6117,26 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
 		      /* Try next instruction syntax, if the current operand
 			 being matched is not a register operand. */
 
+#ifndef ARC_NO_SIMD_CMDS
 		      if (!ac_register_operand (operand)
 			  && !ARC700_register_simd_operand (operand->fmt))
+#else
+			  if (!ac_register_operand (operand))
+#endif // #ifndef ARC_NO_SIMD_CMDS
 			break;
 
 		      /* For 16-bit insns, select proper register value */
+#ifdef ARC_NPS_CMDS
+		      if ( (  compact_insn_16  &&
+		    		  ( (operand->fmt == 'a') || (operand->fmt == 'b') || (operand->fmt == 'c'))) ||
+		    	   ( operand->fmt == 0271 /* /271 */ ) ||
+		    	   ( operand->fmt == 0272 /* /272 */) )
+#else
 		      if (compact_insn_16
 			  && ((operand->fmt == 'a')
 			      || (operand->fmt == 'b')
 			      || (operand->fmt == 'c')))
+#endif // #ifdef ARC_NPS_CMDS
 			{
 			  int i, l;
 			  for (i = 0; i < arc_reg_names_count; i++)
@@ -6037,6 +6157,7 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
 			    break;
 			} /* end if(compact_insn_16...) */
 
+#ifndef ARC_NO_SIMD_CMDS
 		      /* Ashwin: For SIMD instructions checking if its any
 			 of the SIMD register.*/
 		      if (ARC700_register_simd_operand (operand->fmt)
@@ -6110,6 +6231,7 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
 			}
 
 
+#endif  // #ifndef ARC_NO_SIMD_CMDS
 		      /* For conditional code instruction (ex: addeq) and
 			 some 16-bit insns, the destination register should
 			 be same as that of first source register. Ensure
@@ -6117,7 +6239,11 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
 			 occurance of the operand's format 'B'(or 'b') in the
 			 instruction's syntax being matched */
 		      /* Added # as destination version of B */
+#ifdef ARC_NPS_CMDS
+		      if ((*syn == 'B') || (*syn == 'b') || (*syn == '#') || (*syn == ';') || (*syn == 0311) )
+#else
 		      if ((*syn == 'B') || (*syn == 'b') || (*syn == '#') || (*syn == ';'))
+#endif
 			{
 			  if (regb_p && regb != reg)
 			    {
@@ -6129,6 +6255,7 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
 			      regb = reg;
 			    }
 			}
+#ifdef NPS_ARCv2
 		      /*ARCv2 Specific: h reg must be the same if appears multiple times*/
 		      if (*syn == 128)
 			{
@@ -6141,6 +6268,18 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
 			      regh = reg;
 			    }
 			}
+#endif /* #ifdef NPS_ARCv2 */
+#ifdef ARC_NPS_CMDS
+		      if ( (*syn == 'c')|| (*syn == 0312) )	{
+		    	  if (regc_p && regc != reg) {
+ 			          break;
+			      }
+			      else {
+			          regc_p = 1;
+			          regc = reg;
+			      }
+			  }
+#endif // #ifdef ARC_NPS_CMDS
 
 		      /* Try next insn syntax, if input operand is a auxiliary
 			 regiser but the current operand being matched is
@@ -6442,6 +6581,7 @@ printf(" syn=%s str=||%s||insn=%x\n",syn,str,insn);//ejm
 #if DEBUG_INST_PATTERN
 fprintf (stdout, "Matched syntax %s\n", opcode->syntax);
 #endif
+#ifndef ARC_NO_SIMD_CMDS
 	  if(!lm_present && !(opcode->flags & AC_SIMD_SETLM))
 	      insn2 |= (0xff << 15);
 	  if(opcode->flags & ARC_SIMD_ZERVA)
@@ -6506,6 +6646,7 @@ fprintf (stdout, "Matched syntax %s\n", opcode->syntax);
 	  if(opcode->flags&ARC_SIMD_SETLM){
 	      insn2 |= (0x3f)<<23;
 	      }
+#endif  // #ifndef ARC_NO_SIMD_CMDS
 	  /* For the moment we assume a valid `str' can only contain blanks
 	     now.  IE: We needn't try again with a longer version of the
 	     insn and it is assumed that longer versions of insns appear
@@ -6519,10 +6660,12 @@ fprintf (stdout, "Matched syntax %s\n", opcode->syntax);
 
 	  /* Is there a limm value?  */
 	  limm_p = arc_opcode_limm_p (&limm);
+#ifndef ARC_NPS_CMDS
 	  if(insn>>27==0x0a){
 	      limm_p = 1;
 	      limm = insn2;
 	      }
+#endif /* #ifndef ARC_NPS_CMDS */
 
 	  /* Perform various error and warning tests.  */
 
@@ -6548,7 +6691,7 @@ fprintf (stdout, "Matched syntax %s\n", opcode->syntax);
 		    break;
 		  case 'q':
 		    conditional = insn_suffixes[i]->value;
-		    if ((arc_mach_type != bfd_mach_arc_arc700 ||
+		    if ((arc_mach_type != bfd_mach_arc_arc700 &&
 			 arc_mach_type != bfd_mach_arc_arcv2)
 		       && conditional > 15
 		       && !ext_suffix_p)
@@ -6630,10 +6773,35 @@ fprintf (stdout, "Matched syntax %s\n", opcode->syntax);
 	    {
 	      if (compact_insn_16)
 		{
+#ifndef ARC_NPS_CMDS
 		  f = frag_more (6);
 		  md_number_to_chars (f, insn, 2);
 		  md_number_to_chars (f + 2, limm, -4);
 		  dwarf2_emit_insn (6);
+#else
+               switch (extraData) {
+                     case 0:
+                     case 32:
+		       f = frag_more (6);
+		       md_number_to_chars (f, insn, 2);
+		       md_number_to_chars (f + 2, limm, -4);
+		       dwarf2_emit_insn (6);
+                       break;
+                     case 16:
+		       f = frag_more (4);
+		       md_number_to_chars (f, insn, 2);
+		       md_number_to_chars (f + 2, getExtraData16value(), 2);
+		       dwarf2_emit_insn (4);
+                       break;
+                     case 48:
+		       f = frag_more (8);
+		       md_number_to_chars (f, insn, 2);
+		       md_number_to_chars (f + 2, getExtraData16value(), 2);
+		       md_number_to_chars (f + 4, limm, -4);
+		       dwarf2_emit_insn (8);
+                       break;
+                  }
+#endif // #ifdef ARC_NPS_CMDS
 		}
 	      else
 		{
@@ -6650,9 +6818,38 @@ fprintf (stdout, "Matched syntax %s\n", opcode->syntax);
 	    {
 	      if (compact_insn_16)
 		{
+#ifndef ARC_NPS_CMDS
 		  f = frag_more (2);
 		  md_number_to_chars (f, insn, 2);
 		  dwarf2_emit_insn (2);
+#else
+                  switch (extraData) {
+                     case 0:
+		       f = frag_more (2);
+		       md_number_to_chars (f, insn, 2);
+		       dwarf2_emit_insn (2);
+                       break;
+                     case 16:
+		       f = frag_more (4);
+		       md_number_to_chars (f, insn, 2);
+		       md_number_to_chars (f + 2, getExtraData16value(), 2);
+		       dwarf2_emit_insn (4);
+                       break;
+                     case 32:
+		       f = frag_more (6);
+		       md_number_to_chars (f, insn, 2);
+		       md_number_to_chars (f + 2, limm, 4);
+		       dwarf2_emit_insn (6);
+                       break;
+                     case 48:
+		       f = frag_more (8);
+		       md_number_to_chars (f, insn, 2);
+		       md_number_to_chars (f + 2, getExtraData16value(), 2);
+		       md_number_to_chars (f + 4, limm, 4);
+		       dwarf2_emit_insn (8);
+                       break;
+	       }
+#endif // #ifndef ARC_NPS_CMDS
 		}
 	      else
 		{
@@ -6959,3 +7156,23 @@ arc_optimize_expr (expressionS *l, operatorT op, expressionS *r)
     }
   return 0;
 }
+
+#ifdef ARC_NPS_CMDS
+static int case_sen_nps(char *str)
+{
+	char *colon;
+	char *c;
+	colon = strchr(str,':');
+	while ( colon != NULL ) {
+		c = strchr(colon-6,'[');
+		if ( c != NULL ) {
+			while (c < colon) {
+				if ( ISUPPER(*c)) *c = TOLOWER(*c);
+				c++;
+			}
+		}
+		colon = strchr(colon+1,':');
+	}
+	return 0;
+}
+#endif //#ifdef ARC_NPS_CMDS
