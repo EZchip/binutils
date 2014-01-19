@@ -1906,6 +1906,14 @@
   {(unsigned char *)"xexb.di%>+\005+\010+\012+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xexw.di%>+\005+\011+\013+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xex.di%>+\005+\012+\013+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* xex{ bw}.di [cm:GPA1], b,[sd:c]*/
+  {(unsigned char *)"xexb.di%>+\005+\006+\010+\012+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xexw.di%>+\005+\006+\011+\013+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xex.di%>+\005+\006+\012+\013+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* xex{ bw}.di [cm:GPA1], b,[xd:c]*/
+  {(unsigned char *)"xexb.di%>+\007+\010+\012+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xexw.di%>+\007+\011+\013+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xex.di%>+\007+\012+\013+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* xex{ bw}.di [cm:GPA2], b,[c]*/
   {(unsigned char *)"xexb.di%>+\010+\012+\015+\016+\017 [cm:GPA2],%b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xexw.di%>+\011+\013+\015+\016+\017 [cm:GPA2],%b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -1916,6 +1924,16 @@
   {(unsigned char *)"aaddw.di%>+\001+\005+\011+\013+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aaddl.di%>+\001+\005+\014+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aadd.di%>+\001+\005+\012+\013+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* aadd{ bwl}.di [cm:GPA1], b,[sd:c]*/
+  {(unsigned char *)"aaddb.di%>+\001+\005+\006+\010+\012+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddw.di%>+\001+\005+\006+\011+\013+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddl.di%>+\001+\005+\006+\014+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aadd.di%>+\001+\005+\006+\012+\013+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* aadd{ bwl}.di [cm:GPA1], b,[xd:c]*/
+  {(unsigned char *)"aaddb.di%>+\001+\007+\010+\012+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddw.di%>+\001+\007+\011+\013+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddl.di%>+\001+\007+\014+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aadd.di%>+\001+\007+\012+\013+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*aaddw.di [cm: GPA2], b, [mbd: c]*/
   {(unsigned char *)"aaddw.di%>+\001+\005+\006+\007+\011+\013+\015+\016+\017 [cm:GPA2],%b,[mbd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* aadd{ bwl}.di [cm:GPA2], b,[c]*/
@@ -1926,8 +1944,18 @@
 /* aaddl.di<.f> b, [cm:GPA1], b,[xa:c]*/
   {(unsigned char *)"aaddl.di%.f%>+\001+\005+\014+\015+\016 %b,[cm:GPA1],%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aaddl.f.di%>+\001+\005+\014+\015+\016 %b,[cm:GPA1],%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* aaddl.di<.f> b, [cm:GPA1], b,[sd:c]*/
+  {(unsigned char *)"aaddl.di%.f%>+\001+\005+\006+\014+\015+\016 %b,[cm:GPA1],%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddl.f.di%>+\001+\005+\006+\014+\015+\016 %b,[cm:GPA1],%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* aaddl.di<.f> b, [cm:GPA1], b,[xd:c]*/
+  {(unsigned char *)"aaddl.di%.f%>+\001+\007+\014+\015+\016 %b,[cm:GPA1],%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddl.f.di%>+\001+\007+\014+\015+\016 %b,[cm:GPA1],%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* aaddl.di b, [xa:c]*/
   {(unsigned char *)"aaddl.di%>+\001+\005+\014+\016+\017 %b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* aaddl.di b, [sd:c]*/
+  {(unsigned char *)"aaddl.di%>+\001+\005+\006+\014+\016+\017 %b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* aaddl.di b, [xd:c]*/
+  {(unsigned char *)"aaddl.di%>+\001+\007+\014+\016+\017 %b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* aaddl.di<.f> b, [cm:GPA1], b,[xa:c]*/
   {(unsigned char *)"aaddl.di%.f%>+\001+\014+\015+\016 %b,[cm:GPA1],%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aaddl.f.di%>+\001+\014+\015+\016 %b,[cm:GPA1],%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -1935,6 +1963,14 @@
   {(unsigned char *)"aaddb.di%>+\001+\005+\010+\012+\016+\017 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aadd.di%>+\001+\005+\012+\013+\016+\017 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aaddw.di%>+\001+\005+\011+\013+\016+\017 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* aadd{ bw}.di b,[sd:c]*/
+  {(unsigned char *)"aaddb.di%>+\001+\005+\006+\010+\012+\016+\017 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aadd.di%>+\001+\005+\006+\012+\013+\016+\017 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddw.di%>+\001+\005+\006+\011+\013+\016+\017 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* aadd{ bw}.di b,[xd:c]*/
+  {(unsigned char *)"aaddb.di%>+\001+\007+\010+\012+\016+\017 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aadd.di%>+\001+\007+\012+\013+\016+\017 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddw.di%>+\001+\007+\011+\013+\016+\017 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* aadd{ bwl}.di b,[c]*/
   {(unsigned char *)"aaddl.di%>+\001+\014+\016+\017 %b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aaddb.di%>+\001+\010+\012+\016+\017 %b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -1960,6 +1996,20 @@
   {(unsigned char *)"aaddb.f.di%>+\001+\005+\010+\012+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aaddw.di%.f%>+\001+\005+\011+\013+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aaddw.f.di%>+\001+\005+\011+\013+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* aadd{ bw}.di<.f> b,b,[sd:c]*/
+  {(unsigned char *)"aadd.di%.f%>+\001+\005+\006+\012+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aadd.f.di%>+\001+\005+\006+\012+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddb.di%.f%>+\001+\005+\006+\010+\012+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddb.f.di%>+\001+\005+\006+\010+\012+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddw.di%.f%>+\001+\005+\006+\011+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddw.f.di%>+\001+\005+\006+\011+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* aadd{ bw}.di<.f> b,b,[xd:c]*/
+  {(unsigned char *)"aadd.di%.f%>+\001+\007+\012+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aadd.f.di%>+\001+\007+\012+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddb.di%.f%>+\001+\007+\010+\012+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddb.f.di%>+\001+\007+\010+\012+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddw.di%.f%>+\001+\007+\011+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aaddw.f.di%>+\001+\007+\011+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* aaddw.di<.f> b,b,[mbd:c]*/
   {(unsigned char *)"aaddw.di%.f%>+\001+\005+\006+\007+\011+\013+\016 %b,%b,[mbd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aaddw.f.di%>+\001+\005+\006+\007+\011+\013+\016 %b,%b,[mbd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -1980,6 +2030,12 @@
 /*adadd{ l}.di [cm:GPA1],b,[xa:c]*/
   {(unsigned char *)"adadd.di%>+\000+\001+\005+\014+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"adaddl.di%>+\000+\001+\005+\012+\014+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*adadd{ l}.di [cm:GPA1],b,[sd:c]*/
+  {(unsigned char *)"adadd.di%>+\000+\001+\005+\006+\014+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adaddl.di%>+\000+\001+\005+\006+\012+\014+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*adadd{ l}.di [cm:GPA1],b,[xd:c]*/
+  {(unsigned char *)"adadd.di%>+\000+\001+\007+\014+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adaddl.di%>+\000+\001+\007+\012+\014+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*adadd{ l}.di [cm:GPA2],b,[c]*/
   {(unsigned char *)"adadd.di%>+\000+\001+\014+\015+\016+\017 [cm:GPA2],%b,[%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"adaddl.di%>+\000+\001+\012+\014+\015+\016+\017 [cm:GPA2],%b,[%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -1988,6 +2044,16 @@
   {(unsigned char *)"adadd.f.di%>+\000+\001+\005+\014+\015+\016 %b,[cm:GPA1],%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"adaddl.di%.f%>+\000+\001+\005+\012+\014+\015+\016 %b,[cm:GPA1],%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"adaddl.f.di%>+\000+\001+\005+\012+\014+\015+\016 %b,[cm:GPA1],%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*adadd{ l}.di<.f> b,[cm:GPA1],b,[sd:c]*/
+  {(unsigned char *)"adadd.di%.f%>+\000+\001+\005+\006+\014+\015+\016 %b,[cm:GPA1],%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adadd.f.di%>+\000+\001+\005+\006+\014+\015+\016 %b,[cm:GPA1],%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adaddl.di%.f%>+\000+\001+\005+\006+\012+\014+\015+\016 %b,[cm:GPA1],%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adaddl.f.di%>+\000+\001+\005+\006+\012+\014+\015+\016 %b,[cm:GPA1],%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*adadd{ l}.di<.f> b,[cm:GPA1],b,[xd:c]*/
+  {(unsigned char *)"adadd.di%.f%>+\000+\001+\007+\014+\015+\016 %b,[cm:GPA1],%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adadd.f.di%>+\000+\001+\007+\014+\015+\016 %b,[cm:GPA1],%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adaddl.di%.f%>+\000+\001+\007+\012+\014+\015+\016 %b,[cm:GPA1],%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adaddl.f.di%>+\000+\001+\007+\012+\014+\015+\016 %b,[cm:GPA1],%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*adadd{ l}.di<.f> b,[cm:GPA1],b,[xa:c]*/
   {(unsigned char *)"adadd.di%.f%>+\000+\001\014+\015+\016 %b, %b,[cm:GPA1],%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"adadd.f.di%>+\000+\001\014+\015+\016 %b, %b,[cm:GPA1],%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -1998,6 +2064,14 @@
   {(unsigned char *)"aandb.di%>+\002+\005+\010+\012+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aandw.di%>+\002+\005+\011+\013+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aand.di%>+\002+\005+\012+\013+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aand.di{ bw} [cm:GPA1],b,[sd:c]*/
+  {(unsigned char *)"aandb.di%>+\002+\005+\006+\010+\012+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aandw.di%>+\002+\005+\006+\011+\013+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aand.di%>+\002+\005+\006+\012+\013+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aand.di{ bw} [cm:GPA1],b,[xd:c]*/
+  {(unsigned char *)"aandb.di%>+\002+\007+\010+\012+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aandw.di%>+\002+\007+\011+\013+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aand.di%>+\002+\007+\012+\013+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*aand{ bw}.di [cm:GPA2],b,[c]*/
   {(unsigned char *)"aandb.di%>+\002+\010+\012+\015+\016+\017 [cm:GPA2],%b,[%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aandw.di%>+\002+\011+\013+\015+\016+\017 [cm:GPA2],%b,[%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2011,12 +2085,30 @@
   {(unsigned char *)"aorb.di%>+\000+\002+\005+\010+\012+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aorw.di%>+\000+\002+\005+\011+\013+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aor.di%>+\000+\002+\005+\012+\013+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aor{ bw}.di [cm:GPA1],b,[sd:c]*/
+  {(unsigned char *)"aorb.di%>+\000+\002+\005+\006+\010+\012+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aorw.di%>+\000+\002+\005+\006+\011+\013+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aor.di%>+\000+\002+\005+\006+\012+\013+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aor{ bw}.di [cm:GPA1],b,[xd:c]*/
+  {(unsigned char *)"aorb.di%>+\000+\002+\007+\010+\012+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aorw.di%>+\000+\002+\007+\011+\013+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aor.di%>+\000+\002+\007+\012+\013+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
 /*axor{ bwl}.di [cm:GPA1],b,[xa:c]*/
   {(unsigned char *)"axorb.di%>+\001+\002+\005+\010+\012+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"axorw.di%>+\001+\002+\005+\011+\013+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"axor.di%>+\001+\002+\005+\012+\013+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"axorl.di%>+\001+\002+\005+\014+\015+\016+\017 [cm:GPA1],%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*axor{ bwl}.di [cm:GPA1],b,[sd:c]*/
+  {(unsigned char *)"axorb.di%>+\001+\002+\005+\006+\010+\012+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorw.di%>+\001+\002+\005+\006+\011+\013+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axor.di%>+\001+\002+\005+\006+\012+\013+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorl.di%>+\001+\002+\005+\006+\014+\015+\016+\017 [cm:GPA1],%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*axor{ bwl}.di [cm:GPA1],b,[xd:c]*/
+  {(unsigned char *)"axorb.di%>+\001+\002+\007+\010+\012+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorw.di%>+\001+\002+\007+\011+\013+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axor.di%>+\001+\002+\007+\012+\013+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorl.di%>+\001+\002+\007+\014+\015+\016+\017 [cm:GPA1],%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*axor{ bwl}.di [cm:GPA2],b,[c]*/
   {(unsigned char *)"axorb.di%>+\001+\002+\010+\012+\015+\016+\017 [cm:GPA2],%b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"axorw.di%>+\001+\002+\011+\013+\015+\016+\017 [cm:GPA2],%b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2041,6 +2133,14 @@
   {(unsigned char *)"atstb.di%>+\004+\005+\010+\012+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"atstw.di%>+\004+\005+\011+\013+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"atst.di%>+\004+\005+\012+\013+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*atst{ bw}.di [cm:GPA1],[sd:c]*/
+  {(unsigned char *)"atstb.di%>+\004+\005+\006+\010+\012+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"atstw.di%>+\004+\005+\006+\011+\013+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"atst.di%>+\004+\005+\006+\012+\013+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*atst{ bw}.di [cm:GPA1],[xd:c]*/
+  {(unsigned char *)"atstb.di%>+\004+\007+\010+\012+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"atstw.di%>+\004+\007+\011+\013+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"atst.di%>+\004+\007+\012+\013+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
 /*ari{ bwl}.di [cm:GPA2],[c]*/
   {(unsigned char *)"arib.di%>+\000+\004+\010+\012+\015+\016+\017 [cm:GPA2],[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2052,11 +2152,27 @@
   {(unsigned char *)"ariw.di%>+\000+\004+\005+\011+\013+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"ari.di%>+\000+\004+\005+\012+\013+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aril.di%>+\000+\004+\005+\014+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*ari{ bwl}.di [cm:GPA1],[sd:c]*/
+  {(unsigned char *)"arib.di%>+\000+\004+\005+\006+\010+\012+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ariw.di%>+\000+\004+\005+\006+\011+\013+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ari.di%>+\000+\004+\005+\006+\012+\013+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aril.di%>+\000+\004+\005+\006+\014+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*ari{ bwl}.di [cm:GPA1],[xd:c]*/
+  {(unsigned char *)"arib.di%>+\000+\004+\007+\010+\012+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ariw.di%>+\000+\004+\007+\011+\013+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ari.di%>+\000+\004+\007+\012+\013+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aril.di%>+\000+\004+\007+\014+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*aril.di [xa:c]*/
   {(unsigned char *)"aril.di%>+\000+\004+\005+\014+\016+\017 [xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*aril.di<.f> b,[cm:GPA1],[xa:c]*/
   {(unsigned char *)"aril.di%.f%>+\000+\004+\005+\014+\015+\016 %b,[cm:GPA1],[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aril.f.di%>+\000+\004+\005+\014+\015+\016 %b,[cm:GPA1],[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aril.di<.f> b,[cm:GPA1],[sd:c]*/
+  {(unsigned char *)"aril.di%.f%>+\000+\004+\005+\006+\014+\015+\016 %b,[cm:GPA1],[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aril.f.di%>+\000+\004+\005+\006+\014+\015+\016 %b,[cm:GPA1],[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aril.di<.f> b,[cm:GPA1],[xd:c]*/
+  {(unsigned char *)"aril.di%.f%>+\000+\004+\007+\014+\015+\016 %b,[cm:GPA1],[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aril.f.di%>+\000+\004+\007+\014+\015+\016 %b,[cm:GPA1],[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*aril.di [c]*/
   {(unsigned char *)"aril.di%>+\000+\004+\014+\016+\017 [%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*ariw.di [cm:GPA2],[mbd:c]*/
@@ -2070,6 +2186,16 @@
   {(unsigned char *)"ardcw.di%>+\001+\004+\005+\011+\013+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"ardc.di%>+\001+\004+\005+\012+\013+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"ardcl.di%>+\001+\004+\005+\014+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*ardc{ bwl}.di [cm:GPA1],[sd:c]*/
+  {(unsigned char *)"ardcb.di%>+\001+\004+\005+\006+\010+\012+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardcw.di%>+\001+\004+\005+\006+\011+\013+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardc.di%>+\001+\004+\005+\006+\012+\013+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardcl.di%>+\001+\004+\005+\006+\014+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*ardc{ bwl}.di [cm:GPA1],[xd:c]*/
+  {(unsigned char *)"ardcb.di%>+\001+\004+\007+\010+\012+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardcw.di%>+\001+\004+\007+\011+\013+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardc.di%>+\001+\004+\007+\012+\013+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardcl.di%>+\001+\004+\007+\014+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*ardc{ bwl}.di [cm:GPA2],[c]*/
   {(unsigned char *)"ardcb.di%>+\001+\004+\010+\012+\015+\016+\017 [cm:GPA2],[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"ardcw.di%>+\001+\004+\011+\013+\015+\016+\017 [cm:GPA2],[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2085,30 +2211,58 @@
 /*ardcl.di<.f> b,[cm:GPA1],[xa:c]*/
   {(unsigned char *)"ardcl.di%.f%>+\001+\004+\005+\014+\015+\016 %b,[cm:GPA1],[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"ardcl.f.di%>+\001+\004+\005+\014+\015+\016 %b,[cm:GPA1],[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*ardcl.di<.f> b,[cm:GPA1],[sd:c]*/
+  {(unsigned char *)"ardcl.di%.f%>+\001+\004+\005+\006+\014+\015+\016 %b,[cm:GPA1],[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardcl.f.di%>+\001+\004+\005+\006+\014+\015+\016 %b,[cm:GPA1],[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*ardcl.di<.f> b,[cm:GPA1],[xd:c]*/
+  {(unsigned char *)"ardcl.di%.f%>+\001+\004+\007+\014+\015+\016 %b,[cm:GPA1],[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardcl.f.di%>+\001+\004+\007+\014+\015+\016 %b,[cm:GPA1],[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*ardcl.di [c]*/
   {(unsigned char *)"ardcl.di%>+\001+\004+\014+\016+\017 [%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
-/*aric.di [xa:%c]*/
-  {(unsigned char *)"aric.di%>+\000+\001+\004+\005+\012+\013+\016+\017 [xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*aric.di [cm:GPA1],[xa:%c]*/
   {(unsigned char *)"aric.di%>+\000+\001+\004+\005+\012+\013+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aric.di [cm:GPA1],[sd:%c]*/
+  {(unsigned char *)"aric.di%>+\000+\001+\004+\005+\006+\012+\013+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aric.di [cm:GPA1],[xd:%c]*/
+  {(unsigned char *)"aric.di%>+\000+\001+\004+\007+\012+\013+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*aric.di<.f> %b,[xa:%c]*/
   {(unsigned char *)"aric.di%.f%>+\000+\001+\004+\005+\012+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aric.di<.f> %b,[sd:%c]*/
+  {(unsigned char *)"aric.di%.f%>+\000+\001+\004+\005+\006+\012+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aric.di<.f> %b,[xd:%c]*/
+  {(unsigned char *)"aric.di%.f%>+\000+\001+\004+\007+\012+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*aricl.di [cm:GPA2],[%c]*/
   {(unsigned char *)"aricl.di%>+\000+\001+\004+\014+\015+\016+\017 [cm:GPA2],[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*aric.di<.f> %b,[cm:GPA1],[xa:%c]*/
   {(unsigned char *)"aric.di%.f%>+\000+\001+\004+\005+\012+\013+\015+\016 %b,[cm:GPA1],[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/*aric.r.di [xa:%c]*/
-  {(unsigned char *)"aric.r.di%>+\002+\004+\005+\012+\013+\016+\017 [xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aric.di<.f> %b,[cm:GPA1],[sd:%c]*/
+  {(unsigned char *)"aric.di%.f%>+\000+\001+\004+\005+\006+\012+\013+\015+\016 %b,[cm:GPA1],[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aric.di<.f> %b,[cm:GPA1],[xd:%c]*/
+  {(unsigned char *)"aric.di%.f%>+\000+\001+\004+\007+\012+\013+\015+\016 %b,[cm:GPA1],[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*aric.r.di [cm:GPA1],[xa:%c]*/
   {(unsigned char *)"aric.r.di%>+\002+\004+\005+\012+\013+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aric.r.di [cm:GPA1],[sd:%c]*/
+  {(unsigned char *)"aric.r.di%>+\002+\004+\005+\006+\012+\013+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aric.r.di [cm:GPA1],[xd:%c]*/
+  {(unsigned char *)"aric.r.di%>+\002+\004+\007+\012+\013+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*aric.di<.f> %b,[xa:%c]*/
   {(unsigned char *)"aric.di%.f%>+\002+\004+\005+\012+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*aric.r.di<.f> %b,[cm:GPA1],[xa:%c]*/
   {(unsigned char *)"aric.r.di%.f%>+\002+\004+\005+\012+\013+\015+\016 %b,[cm:GPA1],[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aric.r.di<.f> %b,[cm:GPA1],[sd:%c]*/
+  {(unsigned char *)"aric.r.di%.f%>+\002+\004+\005+\006+\012+\013+\015+\016 %b,[cm:GPA1],[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*aric.r.di<.f> %b,[cm:GPA1],[xd:%c]*/
+  {(unsigned char *)"aric.r.di%.f%>+\002+\004+\007+\012+\013+\015+\016 %b,[cm:GPA1],[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* aric{ bw}.r.di<.f> b,[xa:c]*/
   {(unsigned char *)"aric.r.di%.f%>+\002+\004+\005+\012+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aric.r.f.di%>+\002+\004+\005+\012+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* aric{ bw}.r.di<.f> b,[sd:c]*/
+  {(unsigned char *)"aric.r.di%.f%>+\002+\004+\005+\006+\012+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aric.r.f.di%>+\002+\004+\005+\006+\012+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* aric{ bw}.r.di<.f> b,[xd:c]*/
+  {(unsigned char *)"aric.r.di%.f%>+\002+\004+\007+\012+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aric.r.f.di%>+\002+\004+\007+\012+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*aricl.di [%c]*/
   {(unsigned char *)"aricl.di%>+\000+\001+\004+\014+\016+\017 [%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*aricl.di<.f> %b,[cm:GPA2],[%c]*/
@@ -2118,6 +2272,14 @@
   {(unsigned char *)"xex%>+\005+\012+\013 %b,%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xexb%>+\005+\010+\012 %b,%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xexw%>+\005+\011+\013 %b,%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* xex{ bw} b,b,[sd:c]*/
+  {(unsigned char *)"xex%>+\005+\006+\012+\013 %b,%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xexb%>+\005+\006+\010+\012 %b,%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xexw%>+\005+\006+\011+\013 %b,%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* xex{ bw} b,b,[xd:c]*/
+  {(unsigned char *)"xex%>+\007+\012+\013 %b,%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xexb%>+\007+\010+\012 %b,%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xexw%>+\007+\011+\013 %b,%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* xex{ bw} b,b,[c]*/
   {(unsigned char *)"xex%>+\012+\013 %b,%b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xexb%>+\010+\012 %b,%b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2127,6 +2289,14 @@
   {(unsigned char *)"xex.di%>+\005+\012+\013+\016 %b,%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xexb.di%>+\005+\010+\012+\016 %b,%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xexw.di%>+\005+\011+\013+\016 %b,%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* xex{ bw}.di b,b,[sd:c]*/
+  {(unsigned char *)"xex.di%>+\005+\006+\012+\013+\016 %b,%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xexb.di%>+\005+\006+\010+\012+\016 %b,%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xexw.di%>+\005+\006+\011+\013+\016 %b,%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* xex{ bw}.di b,b,[xd:c]*/
+  {(unsigned char *)"xex.di%>+\007+\012+\013+\016 %b,%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xexb.di%>+\007+\010+\012+\016 %b,%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xexw.di%>+\007+\011+\013+\016 %b,%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* xex{ bw}.di b,b,[c]*/
   {(unsigned char *)"xex.di%>+\012+\013+\016 %b,%b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xexb.di%>+\010+\012+\016 %b,%b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2136,6 +2306,14 @@
   {(unsigned char *)"exc%>+\000+\005+\012+\013 %b,%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"excb%>+\000+\005+\010+\012 %b,%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"excw%>+\000+\005+\011+\013 %b,%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* exc{ bw} b,b,[sd:c]*/
+  {(unsigned char *)"exc%>+\000+\005+\006+\012+\013 %b,%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"excb%>+\000+\005+\006+\010+\012 %b,%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"excw%>+\000+\005+\006+\011+\013 %b,%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* exc{ bw} b,b,[xd:c]*/
+  {(unsigned char *)"exc%>+\000+\007+\012+\013 %b,%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"excb%>+\000+\007+\010+\012 %b,%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"excw%>+\000+\007+\011+\013 %b,%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* exc{ bw} b,b,[c]*/
   {(unsigned char *)"exc%>+\000+\012+\013 %b,%b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"excb%>+\000+\010+\012 %b,%b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2145,20 +2323,45 @@
   {(unsigned char *)"exc.di%>+\000+\005+\012+\013+\016 %b,%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"excb.di%>+\000+\005+\010+\012+\016 %b,%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"excw.di%>+\000+\005+\011+\013+\016 %b,%b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* exc{ bw}.di b,b,[c]*/
-  {(unsigned char *)"exc.di%>+\000+\012+\013+\016 %b,%b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"excb.di%>+\000+\010+\012+\016 %b,%b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"excw.di%>+\000+\011+\013+\016 %b,%b,[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* exc{ bw}.di b,b,[sd:c]*/
+  {(unsigned char *)"exc.di%>+\000+\005+\006+\012+\013+\016 %b,%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"excb.di%>+\000+\005+\006+\010+\012+\016 %b,%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"excw.di%>+\000+\005+\006+\011+\013+\016 %b,%b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* exc{ bw}.di b,b,[xd:c]*/
+  {(unsigned char *)"exc.di%>+\000+\007+\012+\013+\016 %b,%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"excb.di%>+\000+\007+\010+\012+\016 %b,%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"excw.di%>+\000+\007+\011+\013+\016 %b,%b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
 /* adadd{ l}.di b,[xa:c]*/
   {(unsigned char *)"adadd.di%>+\000+\001+\005+\011+\014+\016+\017 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"adaddl.di%>+\000+\001+\005+\011+\012+\014+\016+\017 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* adadd{ l}.di b,[sd:c]*/
+  {(unsigned char *)"adadd.di%>+\000+\001+\005+\006+\011+\014+\016+\017 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adaddl.di%>+\000+\001+\005+\006+\011+\012+\014+\016+\017 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* adadd{ l}.di b,[xd:c]*/
+  {(unsigned char *)"adadd.di%>+\000+\001+\007+\011+\014+\016+\017 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adaddl.di%>+\000+\001+\007+\011+\012+\014+\016+\017 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
 /* adadd{ l}.di<.f> b,b,[xa:c]*/
   {(unsigned char *)"adadd.di%.f%>+\000+\001+\005+\011+\014+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"adadd.f.di%>+\000+\001+\005+\011+\014+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"adaddl.di%.f%>+\000+\001+\005+\011+\012+\014+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"adaddl.f.di%>+\000+\001+\005+\011+\012+\014+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* adadd{ l}.di<.f> b,b,[sd:c]*/
+  {(unsigned char *)"adadd.di%.f%>+\000+\001+\005+\006+\011+\014+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adadd.f.di%>+\000+\001+\005+\006+\011+\014+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adaddl.di%.f%>+\000+\001+\005+\006+\011+\012+\014+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adaddl.f.di%>+\000+\001+\005+\006+\011+\012+\014+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* adadd{ l}.di<.f> b,b,[xd:c]*/
+  {(unsigned char *)"adadd.di%.f%>+\000+\001+\007+\011+\014+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adadd.f.di%>+\000+\001+\007+\011+\014+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adaddl.di%.f%>+\000+\001+\007+\011+\012+\014+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"adaddl.f.di%>+\000+\001+\007+\011+\012+\014+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
 
 /* adadd{ l}.di b,[c]*/
   {(unsigned char *)"adadd.di%>+\000+\001+\011+\014+\016+\017 %b,[%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2175,6 +2378,16 @@
   {(unsigned char *)"aandb.di%>+\002+\005+\010+\012+\016+\017 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aandw.di%>+\002+\005+\011+\013+\016+\017 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
+/* aand{ bw}.di b,[sd:c]*/
+  {(unsigned char *)"aand.di%>+\002+\005+\006+\012+\013+\016+\017 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aandb.di%>+\002+\005+\006+\010+\012+\016+\017 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aandw.di%>+\002+\005+\006+\011+\013+\016+\017 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* aand{ bw}.di b,[xd:c]*/
+  {(unsigned char *)"aand.di%>+\002+\007+\012+\013+\016+\017 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aandb.di%>+\002+\007+\010+\012+\016+\017 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aandw.di%>+\002+\007+\011+\013+\016+\017 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
 /* aand{ bw}.di<.f> b,b,[xa:c]*/
   {(unsigned char *)"aand.di%.f%>+\002+\005+\012+\013+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aand.f.di%>+\002+\005+\012+\013+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2182,6 +2395,22 @@
   {(unsigned char *)"aandb.f.di%>+\002+\005+\010+\012+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aandw.di%.f%>+\002+\005+\011+\013+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aandw.f.di%>+\002+\005+\011+\013+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* aand{ bw}.di<.f> b,b,[sd:c]*/
+  {(unsigned char *)"aand.di%.f%>+\002+\005+\006+\012+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aand.f.di%>+\002+\005+\006+\012+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aandb.di%.f%>+\002+\005+\006+\010+\012+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aandb.f.di%>+\002+\005+\006+\010+\012+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aandw.di%.f%>+\002+\005+\006+\011+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aandw.f.di%>+\002+\005+\006+\011+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* aand{ bw}.di<.f> b,b,[xd:c]*/
+  {(unsigned char *)"aand.di%.f%>+\002+\007+\012+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aand.f.di%>+\002+\007+\012+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aandb.di%.f%>+\002+\007+\010+\012+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aandb.f.di%>+\002+\007+\010+\012+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aandw.di%.f%>+\002+\007+\011+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aandw.f.di%>+\002+\007+\011+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
 /* aand{ bw}.di b,[c]*/
   {(unsigned char *)"aand.di%>+\002+\012+\013+\016+\017 %b,[%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2201,6 +2430,16 @@
   {(unsigned char *)"aorb.di%>+\000+\002+\005+\010+\012+\016+\017 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aorw.di%>+\000+\002+\005+\011+\013+\016+\017 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
+/* aor{ bw}.di b,[sd:c]*/
+  {(unsigned char *)"aor.di%>+\000+\002+\005+\006+\012+\013+\016+\017 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aorb.di%>+\000+\002+\005+\006+\010+\012+\016+\017 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aorw.di%>+\000+\002+\005+\006+\011+\013+\016+\017 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* aor{ bw}.di b,[xd:c]*/
+  {(unsigned char *)"aor.di%>+\000+\002+\007+\012+\013+\016+\017 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aorb.di%>+\000+\002+\007+\010+\012+\016+\017 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aorw.di%>+\000+\002+\007+\011+\013+\016+\017 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
 /* aor{ bw}.di<.f> b,b,[xa:c]*/
   {(unsigned char *)"aor.di%.f%>+\000+\002+\005+\012+\013+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aor.f.di%>+\000+\002+\005+\012+\013+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2208,6 +2447,22 @@
   {(unsigned char *)"aorb.f.di%>+\000+\002+\005+\010+\012+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aorw.di%.f%>+\000+\002+\005+\011+\013+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"aorw.f.di%>+\000+\002+\005+\011+\013+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* aor{ bw}.di<.f> b,b,[sd:c]*/
+  {(unsigned char *)"aor.di%.f%>+\000+\002+\005+\006+\012+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aor.f.di%>+\000+\002+\005+\006+\012+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aorb.di%.f%>+\000+\002+\005+\006+\010+\012+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aorb.f.di%>+\000+\002+\005+\006+\010+\012+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aorw.di%.f%>+\000+\002+\005+\006+\011+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aorw.f.di%>+\000+\002+\005+\006+\011+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* aor{ bw}.di<.f> b,b,[xd:c]*/
+  {(unsigned char *)"aor.di%.f%>+\000+\002+\007+\012+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aor.f.di%>+\000+\002+\007+\012+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aorb.di%.f%>+\000+\002+\007+\010+\012+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aorb.f.di%>+\000+\002+\007+\010+\012+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aorw.di%.f%>+\000+\002+\007+\011+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"aorw.f.di%>+\000+\002+\007+\011+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
 /* aor{ bw}.di b,[c]*/
   {(unsigned char *)"aor.di%>+\000+\002+\012+\013+\016+\017 %b,[%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2227,6 +2482,16 @@
   {(unsigned char *)"axorb.di%>+\001+\002+\005+\010+\012+\016+\017 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"axorw.di%>+\001+\002+\005+\011+\013+\016+\017 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
+/* axor{ bw}.di b,[sd:c]*/
+  {(unsigned char *)"axor.di%>+\001+\002+\005+\006+\012+\013+\016+\017 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorb.di%>+\001+\002+\005+\006+\010+\012+\016+\017 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorw.di%>+\001+\002+\005+\006+\011+\013+\016+\017 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* axor{ bw}.di b,[xd:c]*/
+  {(unsigned char *)"axor.di%>+\001+\002+\007+\012+\013+\016+\017 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorb.di%>+\001+\002+\007+\010+\012+\016+\017 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorw.di%>+\001+\002+\007+\011+\013+\016+\017 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
 /* axor{ bw}.di<.f> b,b,[xa:c]*/
   {(unsigned char *)"axor.di%.f%>+\001+\002+\005+\012+\013+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"axor.f.di%>+\001+\002+\005+\012+\013+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2234,6 +2499,22 @@
   {(unsigned char *)"axorb.f.di%>+\001+\002+\005+\010+\012+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"axorw.di%.f%>+\001+\002+\005+\011+\013+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"axorw.f.di%>+\001+\002+\005+\011+\013+\016 %b,%b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* axor{ bw}.di<.f> b,b,[sd:c]*/
+  {(unsigned char *)"axor.di%.f%>+\001+\002+\005+\006+\012+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axor.f.di%>+\001+\002+\005+\006+\012+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorb.di%.f%>+\001+\002+\005+\006+\010+\012+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorb.f.di%>+\001+\002+\005+\006+\010+\012+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorw.di%.f%>+\001+\002+\005+\006+\011+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorw.f.di%>+\001+\002+\005+\006+\011+\013+\016 %b,%b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* axor{ bw}.di<.f> b,b,[xd:c]*/
+  {(unsigned char *)"axor.di%.f%>+\001+\002+\007+\012+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axor.f.di%>+\001+\002+\007+\012+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorb.di%.f%>+\001+\002+\007+\010+\012+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorb.f.di%>+\001+\002+\007+\010+\012+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorw.di%.f%>+\001+\002+\007+\011+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"axorw.f.di%>+\001+\002+\007+\011+\013+\016 %b,%b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
 /* axor{ bw}.di b,[c]*/
   {(unsigned char *)"axor.di%>+\001+\002+\012+\013+\016+\017 %b,[%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2248,11 +2529,6 @@
   {(unsigned char *)"axorw.di%.f%>+\001+\002+\011+\013+\016 %b,%b,[%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"axorw.f.di%>+\001+\002+\011+\013+\016 %b,%b,[%c]", 0xf81f, 0x4816, ARCOMPACT, 0, 0 ,0,0},
 
-/* atst{ bw}.di [xa:c]*/
-  {(unsigned char *)"atst.di%>+\004+\005+\012+\013+\016+\017 [xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"atstb.di%>+\004+\005+\010+\012+\016+\017 [xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"atstw.di%>+\004+\005+\011+\013+\016+\017 [xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-
 /* atst{ bw}.di<.f> b,[xa:c]*/
   {(unsigned char *)"atst.di%.f%>+\004+\005+\012+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"atst.f.di%>+\004+\005+\012+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2260,6 +2536,22 @@
   {(unsigned char *)"atstb.f.di%>+\004+\005+\010+\012+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"atstw.di%.f%>+\004+\005+\011+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"atstw.f.di%>+\004+\005+\011+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* atst{ bw}.di<.f> b,[sd:c]*/
+  {(unsigned char *)"atst.di%.f%>+\004+\005+\006+\012+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"atst.f.di%>+\004+\005+\006+\012+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"atstb.di%.f%>+\004+\005+\006+\010+\012+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"atstb.f.di%>+\004+\005+\006+\010+\012+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"atstw.di%.f%>+\004+\005+\006+\011+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"atstw.f.di%>+\004+\005+\006+\011+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* atst{ bw}.di<.f> b,[xd:c]*/
+  {(unsigned char *)"atst.di%.f%>+\004+\007+\012+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"atst.f.di%>+\004+\007+\012+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"atstb.di%.f%>+\004+\007+\010+\012+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"atstb.f.di%>+\004+\007+\010+\012+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"atstw.di%.f%>+\004+\007+\011+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"atstw.f.di%>+\004+\007+\011+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
 /* atst{ bw}.di [c]*/
   {(unsigned char *)"atst.di%>+\004+\012+\013+\016+\017 [%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2274,10 +2566,6 @@
   {(unsigned char *)"atstw.di%.f%>+\004+\011+\013+\016 %b,[%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"atstw.f.di%>+\004+\011+\013+\016 %b,[%c]", 0xf81f, 0x4816, ARCOMPACT, 0, 0 ,0,0},
 
-/* ari{ bw}.di [xa:c]*/
-  {(unsigned char *)"ari.di%>+\000+\004+\005+\012+\013+\016+\017 [xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"arib.di%>+\000+\004+\005+\010+\012+\016+\017 [xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"ariw.di%>+\000+\004+\005+\011+\013+\016+\017 [xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* ariw.di [mbd:c]*/
   {(unsigned char *)"ariw.di%>+\000+\004+\005+\006+\007+\011+\013+\016+\017 [mbd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
@@ -2288,6 +2576,20 @@
   {(unsigned char *)"arib.f.di%>+\000+\004+\005+\010+\012+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"ariw.di%.f%>+\000+\004+\005+\011+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"ariw.f.di%>+\000+\004+\005+\011+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* ari{ bw}.di<.f> b,[sd:c]*/
+  {(unsigned char *)"ari.di%.f%>+\000+\004+\005+\006+\012+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ari.f.di%>+\000+\004+\005+\006+\012+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arib.di%.f%>+\000+\004+\005+\006+\010+\012+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arib.f.di%>+\000+\004+\005+\006+\010+\012+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ariw.di%.f%>+\000+\004+\005+\006+\011+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ariw.f.di%>+\000+\004+\005+\006+\011+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* ari{ bw}.di<.f> b,[xd:c]*/
+  {(unsigned char *)"ari.di%.f%>+\000+\004+\007+\012+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ari.f.di%>+\000+\004+\007+\012+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arib.di%.f%>+\000+\004+\007+\010+\012+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arib.f.di%>+\000+\004+\007+\010+\012+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ariw.di%.f%>+\000+\004+\007+\011+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ariw.f.di%>+\000+\004+\007+\011+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* ariw.di<.f> b,[mbd:c]*/
   {(unsigned char *)"ariw.di%.f%>+\000+\004+\005+\006+\007+\011+\013+\016 %b,[mbd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"ariw.f.di%>+\000+\004+\005+\006+\007+\011+\013+\016 %b,[mbd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2305,10 +2607,6 @@
   {(unsigned char *)"ariw.di%.f%>+\000+\004+\011+\013+\016 %b,[%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"ariw.f.di%>+\000+\004+\011+\013+\016 %b,[%c]", 0xf81f, 0x4816, ARCOMPACT, 0, 0 ,0,0},
 
-/* ardc{ bw}.di [xa:c]*/
-  {(unsigned char *)"ardc.di%>+\001+\004+\005+\012+\013+\016+\017 [xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"ardcb.di%>+\001+\004+\005+\010+\012+\016+\017 [xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"ardcw.di%>+\001+\004+\005+\011+\013+\016+\017 [xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* ardcw.di [mbd:c]*/
   {(unsigned char *)"ardcw.di%>+\001+\004+\005+\006+\007+\011+\013+\016+\017 [mbd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
@@ -2319,6 +2617,20 @@
   {(unsigned char *)"ardcb.f.di%>+\001+\004+\005+\010+\012+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"ardcw.di%.f%>+\001+\004+\005+\011+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"ardcw.f.di%>+\001+\004+\005+\011+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* ardc{ bw}.di<.f> b,[sd:c]*/
+  {(unsigned char *)"ardc.di%.f%>+\001+\004+\005+\006+\012+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardc.f.di%>+\001+\004+\005+\006+\012+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardcb.di%.f%>+\001+\004+\005+\006+\010+\012+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardcb.f.di%>+\001+\004+\005+\006+\010+\012+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardcw.di%.f%>+\001+\004+\005+\006+\011+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardcw.f.di%>+\001+\004+\005+\006+\011+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* ardc{ bw}.di<.f> b,[xd:c]*/
+  {(unsigned char *)"ardc.di%.f%>+\001+\004+\007+\012+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardc.f.di%>+\001+\004+\007+\012+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardcb.di%.f%>+\001+\004+\007+\010+\012+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardcb.f.di%>+\001+\004+\007+\010+\012+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardcw.di%.f%>+\001+\004+\007+\011+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"ardcw.f.di%>+\001+\004+\007+\011+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* ardcw.di<.f> b,[mbd:c]*/
   {(unsigned char *)"ardcw.di%.f%>+\001+\004+\005+\006+\007+\011+\013+\016 %b,[mbd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"ardcw.f.di%>+\001+\004+\005+\006+\007+\011+\013+\016 %b,[mbd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2344,11 +2656,17 @@
   {(unsigned char *)"arclw.di%>+\000+\002+\004+\005+\011+\013+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"arcll.di%>+\000+\002+\004+\005+\014+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
-/* arcl{ lbw}.di [xa:c]*/
-  {(unsigned char *)"arcl.di%>+\000+\002+\004+\005+\012+\013+\016+\017 [xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"arclb.di%>+\000+\002+\004+\005+\010+\012+\016+\017 [xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"arclw.di%>+\000+\002+\004+\005+\011+\013+\016+\017 [xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"arcll.di%>+\000+\002+\004+\005+\014+\016+\017 [xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*arcl{ lbw}.di [cm:GPA1],[sd:c]*/
+  {(unsigned char *)"arcl.di%>+\000+\002+\004+\005+\006+\012+\013+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arclb.di%>+\000+\002+\004+\005+\006+\010+\012+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arclw.di%>+\000+\002+\004+\005+\006+\011+\013+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arcll.di%>+\000+\002+\004+\005+\006+\014+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/*arcl{ lbw}.di [cm:GPA1],[xd:c]*/
+  {(unsigned char *)"arcl.di%>+\000+\002+\004+\007+\012+\013+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arclb.di%>+\000+\002+\004+\007+\010+\012+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arclw.di%>+\000+\002+\004+\007+\011+\013+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arcll.di%>+\000+\002+\004+\007+\014+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
 /*arcl{ lbw}.di [cm:GPA2],[c]*/
   {(unsigned char *)"arcll.di%>+\000+\002+\004+\014+\015+\016+\017 [cm:GPA2],[%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2359,6 +2677,12 @@
 /*arcll.di<.f> b,[cm:GPA1],[xa:c]*/
   {(unsigned char *)"arcll.di%.f%>+\000+\002+\004+\005+\014+\015+\016 %b,[cm:GPA1],[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
+/*arcll.di<.f> b,[cm:GPA1],[sd:c]*/
+  {(unsigned char *)"arcll.di%.f%>+\000+\002+\004+\005+\006+\014+\015+\016 %b,[cm:GPA1],[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/*arcll.di<.f> b,[cm:GPA1],[xd:c]*/
+  {(unsigned char *)"arcll.di%.f%>+\000+\002+\004+\007+\014+\015+\016 %b,[cm:GPA1],[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
 /*arcl{ bw}.di<.f> b,[xa:c]*/
   {(unsigned char *)"arcl.di%.f%>+\000+\002+\004+\005+\012+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"arcl.f.di%>+\000+\002+\004+\005+\012+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2366,6 +2690,22 @@
   {(unsigned char *)"arclb.f.di%>+\000+\002+\004+\005+\010+\012+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"arclw.di%.f%>+\000+\002+\004+\005+\011+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"arclw.f.di%>+\000+\002+\004+\005+\011+\013+\016 %b,[xa:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/*arcl{ bw}.di<.f> b,[sd:c]*/
+  {(unsigned char *)"arcl.di%.f%>+\000+\002+\004+\005+\006+\012+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arcl.f.di%>+\000+\002+\004+\005+\006+\012+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arclb.di%.f%>+\000+\002+\004+\005+\006+\010+\012+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arclb.f.di%>+\000+\002+\004+\005+\006+\010+\012+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arclw.di%.f%>+\000+\002+\004+\005+\006+\011+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arclw.f.di%>+\000+\002+\004+\005+\006+\011+\013+\016 %b,[sd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/*arcl{ bw}.di<.f> b,[xd:c]*/
+  {(unsigned char *)"arcl.di%.f%>+\000+\002+\004+\007+\012+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arcl.f.di%>+\000+\002+\004+\007+\012+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arclb.di%.f%>+\000+\002+\004+\007+\010+\012+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arclb.f.di%>+\000+\002+\004+\007+\010+\012+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arclw.di%.f%>+\000+\002+\004+\007+\011+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"arclw.f.di%>+\000+\002+\004+\007+\011+\013+\016 %b,[xd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
 /*arcl{ bwl}.di [c]*/
   {(unsigned char *)"arcl.di%>+\000+\002+\004+\012+\013+\016+\017 [%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2390,6 +2730,16 @@
   {(unsigned char *)"xldl.di%>+\001+\002+\004+\005+\014+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xld.di%>+\001+\002+\004+\005+\012+\013+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xldb.di%>+\001+\002+\004+\005+\010+\012+\015+\016+\017 [cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*xld{ bwl}.di [cm:GPA1],[sd:%c]*/
+  {(unsigned char *)"xldw.di%>+\001+\002+\004+\005+\006+\011+\013+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xldl.di%>+\001+\002+\004+\005+\006+\014+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xld.di%>+\001+\002+\004+\005+\006+\012+\013+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xldb.di%>+\001+\002+\004+\005+\006+\010+\012+\015+\016+\017 [cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*xld{ bwl}.di [cm:GPA1],[xd:%c]*/
+  {(unsigned char *)"xldw.di%>+\001+\002+\004+\007+\011+\013+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xldl.di%>+\001+\002+\004+\007+\014+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xld.di%>+\001+\002+\004+\007+\012+\013+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xldb.di%>+\001+\002+\004+\007+\010+\012+\015+\016+\017 [cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* xldw.di [cm:GPA2],[mbd:c]*/
   {(unsigned char *)"xldw.di%>+\001+\002+\004+\005+\006+\007+\011+\013+\015+\016+\017 [cm:GPA2],[mbd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /* xldw.di b,[mbd:c]*/
@@ -2398,14 +2748,38 @@
   {(unsigned char *)"xld.di%>+\001+\002+\004+\005+\012+\013+\016 %b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xldb.di%>+\001+\002+\004+\005+\010+\012+\016 %b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xldw.di%>+\001+\002+\004+\005+\011+\013+\016 %b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* xld{ bw}.di b,[sd:c]*/
+  {(unsigned char *)"xld.di%>+\001+\002+\004+\005+\006+\012+\013+\016 %b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xldb.di%>+\001+\002+\004+\005+\006+\010+\012+\016 %b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xldw.di%>+\001+\002+\004+\005+\006+\011+\013+\016 %b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/* xld{ bw}.di b,[xd:c]*/
+  {(unsigned char *)"xld.di%>+\001+\002+\004+\007+\012+\013+\016 %b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xldb.di%>+\001+\002+\004+\007+\010+\012+\016 %b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xldw.di%>+\001+\002+\004+\007+\011+\013+\016 %b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 /*xldl.di %b,[cm:GPA1],[xa:%c]*/
   {(unsigned char *)"xldl.di%>+\001+\002+\004+\005+\014+\015+\016 %b,[cm:GPA1],[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*xldl.di %b,[cm:GPA1],[sd:%c]*/
+  {(unsigned char *)"xldl.di%>+\001+\002+\004+\005+\006+\014+\015+\016 %b,[cm:GPA1],[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+/*xldl.di %b,[cm:GPA1],[xd:%c]*/
+  {(unsigned char *)"xldl.di%>+\001+\002+\004+\007+\014+\015+\016 %b,[cm:GPA1],[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
 /* xst{ bwl}.di b,[xa:c]*/
   {(unsigned char *)"xst.di%>+\000+\001+\002+\005+\012+\013+\016+\017 %b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xstb.di%>+\000+\001+\002+\005+\010+\012+\016+\017 %b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xstw.di%>+\000+\001+\002+\005+\011+\013+\016+\017 %b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"xstl.di%>+\000+\001+\002+\005+\010+\011+\014+\016+\017 %b,[xa:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* xst{ bwl}.di b,[sd:c]*/
+  {(unsigned char *)"xst.di%>+\000+\001+\002+\005+\006+\012+\013+\016+\017 %b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xstb.di%>+\000+\001+\002+\005+\006+\010+\012+\016+\017 %b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xstw.di%>+\000+\001+\002+\005+\006+\011+\013+\016+\017 %b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xstl.di%>+\000+\001+\002+\005+\006+\010+\011+\014+\016+\017 %b,[sd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+
+/* xst{ bwl}.di b,[xd:c]*/
+  {(unsigned char *)"xst.di%>+\000+\001+\002+\007+\012+\013+\016+\017 %b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xstb.di%>+\000+\001+\002+\007+\010+\012+\016+\017 %b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xstw.di%>+\000+\001+\002+\007+\011+\013+\016+\017 %b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"xstl.di%>+\000+\001+\002+\007+\010+\011+\014+\016+\017 %b,[xd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
 /* xstw.di b,[mbd:c]*/
   {(unsigned char *)"xstw.di%>+\000+\001+\002+\005+\006+\007+\011+\013+\016+\017 %b,[mbd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
@@ -2640,37 +3014,6 @@
 /*cwchk.di<.f> %b,%b,[cm:GPA2],[cd:c]*/
   {(unsigned char *)"cwchk.di%.f%>+\000+\001+\002+\003+\004+\006+\007+\012+\014+\015+\016 %b,%b,[cm:GPA2],[cd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"cwchk.f.di%>+\000+\001+\002+\003+\004+\006+\007+\012+\014+\015+\016 %b,%b,[cm:GPA2],[cd:%c]%(", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-
-/* pcinit.di SRC1,[cd:SRC2] */
-  {(unsigned char *)"pcinit.di%>+\000+\001+\005+\007+\010+\011+\012+\014+\016+\017 %b,[cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* pcincr.di SRC1,[cd:SRC2] */
-  {(unsigned char *)"pcincr.di%>+\005+\007+\012+\014+\016+\017 %b,[cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* pcincr.of.di SRC1,[cd:SRC2] */
-  {(unsigned char *)"pcincr.of.di%>+\001+\002+\003+\005+\007+\012+\014+\016+\017 %b,[cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* pcdecr.di SRC1,[cd:SRC2] */
-  {(unsigned char *)"pcdecr.di%>+\000+\005+\007+\012+\014+\016+\017 %b,[cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* pccl.di [cd:SRC2] */
-  {(unsigned char *)"pccl.di%>+\000+\001+\002+\005+\007+\012+\014+\016+\017 [cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* pcrprt.di [cd:SRC2] */
-  {(unsigned char *)"pcrprt.di%>+\001+\003+\005+\007+\012+\014+\016+\017 [cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* pcrprt.cl.di [cd:SRC2] */
-  {(unsigned char *)"pcrprt.cl.di%>+\000+\003+\005+\007+\012+\014+\016+\017 [cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* pcrcycl.di [cd:SRC2] */
-  {(unsigned char *)"pcrcycl.di%>+\002+\003+\005+\007+\012+\014+\016+\017 [cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* pcrcycl.cl.di [cd:SRC2] */
-  {(unsigned char *)"pcrcycl.cl.di%>+\003+\005+\007+\012+\014+\016+\017 [cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* pcdincr.di SRC1,[cd:SRC2] */
-  {(unsigned char *)"pcdincr.di%>+\001+\005+\007+\012+\014+\016+\017 %b,[cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* pcdcl.di [cd:SRC2] */
-  {(unsigned char *)"pcdcl.di%>+\002+\005+\007+\012+\014+\016+\017 [cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* pcdrprt.di [cd:SRC2] */
-  {(unsigned char *)"pcdrprt.di%>+\000+\001+\003+\005+\007+\012+\014+\016+\017 [cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* pcdrprt.cl.di [cd:SRC2] */
-  {(unsigned char *)"pcdrprt.cl.di%>+\001+\002+\005+\007+\012+\014+\016+\017 [cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* pcdrcycl.di [cd:SRC2] */
-  {(unsigned char *)"pcdrcycl.di%>+\000+\002+\003+\005+\007+\012+\014+\016+\017 [cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
-/* pcdrcycl.cl.di [cd:SRC2] */
-  {(unsigned char *)"pcdrcycl.cl.di%>+\000+\002+\005+\007+\012+\014+\016+\017 [cd:%c]", 0xf81f, 0x4806, ARCOMPACT, 0, 0 ,0,0},
 
 /* bdlen<.f> b,b,c,Len */
   {(unsigned char *)"bdlen%.f%>+\000+\001+\004+\017 %b,%b,%c,%\375%(", 0xf81f, 0x4800, ARCOMPACT, 0, 0 ,0,0},
