@@ -1,3 +1,8 @@
+2014-1-19  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Support sd and xd address types for atomic operations
+* arccompact-dis.c (dsmOneArcInst): Updated decoding_class 75 to support sd and xd address types for atomic operations
+
 2013-11-28  Roy Vardi  <royv@ezchip.com>
  
 * arc-opc-old.c: EZchip NPS additions and changes
@@ -6,4 +11,4 @@
  
 * arc-nps.h: EZchip NPS additions and changes
 * arc-opc-old.c: Likewise
-* arccompact-dis.c: Likewise
+* arcompact-dis.c: Likewise
