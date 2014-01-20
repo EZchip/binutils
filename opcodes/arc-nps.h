@@ -16,6 +16,7 @@
   {(unsigned char *)"movbi%>%.f %*,%*,%\303,%\221,%\304%(%\14", 0xf81f, 0x4fcf, ARCOMPACT, 0, 0 ,0,0},
 /* movbi<.f>.cl b,imm,dst,size */
   {(unsigned char *)"movbi%>%.f%.\15 %*,%\303,%\221,%\304%(%\14", 0xf81f, 0x4fcf, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"movbi%>%.\15%.f %*,%\303,%\221,%\304%(%\14", 0xf81f, 0x4fcf, ARCOMPACT, 0, 0 ,0,0},
 /* mrgb.cl b,b,c,dst1,src1,size1,dst2,src2,size2 */
   {(unsigned char *)"mrgb.cl%Q %b,%b,%c,%\202,%\200,%\204,%\203,%\201,%\205%\26", 0xf81f, 0x5803, ARCOMPACT, 0, 0 ,0,0},
 /* mrgb b,b,c,dst1,src1,size1,dst2,src2,size2 */
