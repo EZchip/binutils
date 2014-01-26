@@ -1,3 +1,8 @@
+2014-1-26  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Changed subopcode for lkpitcm,lkpetcm,wkup,idxalc,sidxfre,idxfre,jobalc
+* arcompact-dis.c: Likewise
+
 2014-1-20  Roy Vardi  <royv@ezchip.com>
 
 * arc-nps.h: Support dual flags options movbi.cl.f and movbi.f.cl
