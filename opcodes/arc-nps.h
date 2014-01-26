@@ -434,11 +434,11 @@
 /* jobdn 0,b,NumOfBuff*/
   {(unsigned char *)"jobdn 0,%B,%\353", 0xf8ff003f, 0x3852003e, ARCOMPACT, 0, 0 ,0,0},
 /* jobalc a.[cm:b],b,c */
-  {(unsigned char *)"jobalc %A,[cm:%B],%B,%C", 0xf8ff8000, 0x382b0000, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"jobalc 0,[cm:%B],%B,%C", 0xf8ff803f, 0x382b003e, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"jobalc %A,[cm:%B],%B,%C", 0xf8ff8000, 0x381f0000, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"jobalc 0,[cm:%B],%B,%C", 0xf8ff803f, 0x381f003e, ARCOMPACT, 0, 0 ,0,0},
 /* jobalc a.[cm:b],b,NOJ */
-  {(unsigned char *)"jobalc %A,[cm:%B],%B,%\226", 0xf8ff8000, 0x386b0800, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"jobalc 0,[cm:%B],%B,%\226", 0xf8ff803f, 0x386b083e, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"jobalc %A,[cm:%B],%B,%\226", 0xf8ff8000, 0x385f0800, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"jobalc 0,[cm:%B],%B,%\226", 0xf8ff803f, 0x385f083e, ARCOMPACT, 0, 0 ,0,0},
 /* sjobalc a,b*/
   {(unsigned char *)"sjobalc %A,%B", 0xf8ff8000, 0x386b0040, ARCOMPACT, 0, 0 ,0,0},
   {(unsigned char *)"sjobalc 0,%B", 0xf8ff803f, 0x386b007e, ARCOMPACT, 0, 0 ,0,0},
@@ -784,17 +784,17 @@
 /******************************************************/
 
 /* lkpitcm a,[cm:b],[cm:b],c */
-  {(unsigned char *)"lkpitcm %A,[cm:%B],[cm:%B],%C" , 0xf8ff0000, 0x38310000, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"lkpitcm 0,[cm:%B],[cm:%B],%C" , 0xf8ff003f, 0x3831003e, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"lkpitcm %A,[cm:%B],[cm:%B],%C" , 0xf8ff0000, 0x380e0000, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"lkpitcm 0,[cm:%B],[cm:%B],%C" , 0xf8ff003f, 0x380e003e, ARCOMPACT, 0, 0 ,0,0},
 /* lkpitcm a,[cm:b],[cm:b],sid,pmask,keysize */
-  {(unsigned char *)"lkpitcm%Q %A,[cm:%B],[cm:%B],%\240,%\224,%\344" , 0xf8ff0fc0, 0x38310f80, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"lkpitcm%Q 0,[cm:%B],[cm:%B],%\240,%\224,%\344" , 0xf8ff0fff, 0x38310fbe, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"lkpitcm%Q %A,[cm:%B],[cm:%B],%\240,%\224,%\344" , 0xf8ff0fc0, 0x380e0f80, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"lkpitcm%Q 0,[cm:%B],[cm:%B],%\240,%\224,%\344" , 0xf8ff0fff, 0x380e0fbe, ARCOMPACT, 0, 0 ,0,0},
 /* lkpetcm a,[cm:b],[cm:b],c */
-  {(unsigned char *)"lkpetcm %A,[cm:%B],[cm:%B],%C" , 0xf8ff0000, 0x38320000, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"lkpetcm 0,[cm:%B],[cm:%B],%C" , 0xf8ff003f, 0x3832003e, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"lkpetcm %A,[cm:%B],[cm:%B],%C" , 0xf8ff0000, 0x380f0000, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"lkpetcm 0,[cm:%B],[cm:%B],%C" , 0xf8ff003f, 0x380f003e, ARCOMPACT, 0, 0 ,0,0},
 /* lkpetcm a,[cm:b],[cm:b],sid,ops,keysize,reslen */
-  {(unsigned char *)"lkpetcm%Q %A,[cm:%B],[cm:%B],%\240,%\243,%\344,%\217" , 0xf8ff0fc0, 0x38320f80, ARCOMPACT, 0, 0 ,0,0},
-  {(unsigned char *)"lkpetcm%Q 0,[cm:%B],[cm:%B],%\240,%\243,%\344,%\217" , 0xf8ff0fff, 0x38320fbe, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"lkpetcm%Q %A,[cm:%B],[cm:%B],%\240,%\243,%\344,%\217" , 0xf8ff0fc0, 0x380f0f80, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"lkpetcm%Q 0,[cm:%B],[cm:%B],%\240,%\243,%\344,%\217" , 0xf8ff0fff, 0x380f0fbe, ARCOMPACT, 0, 0 ,0,0},
 
 /******************************************************/
 /* lkp_0 a,b,c */
@@ -918,9 +918,9 @@
   {(unsigned char *)"rspi.gic 0,%B", 0xf8ff8fff, 0x3856017e, ARCOMPACT, 0, 0 ,0,0},
 
 /* wkup.cl*/
-  {(unsigned char *)"wkup.cl", 0xf8ff8fff, 0x3870013e, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"wkup.cl", 0xf8ff8fff, 0x385b013e, ARCOMPACT, 0, 0 ,0,0},
 /* wkup 0, c*/
-  {(unsigned char *)"wkup 0,%B", 0xf8ff8fff, 0x3870003e, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"wkup 0,%B", 0xf8ff8fff, 0x385b003e, ARCOMPACT, 0, 0 ,0,0},
 
 /* hwschd.off   b */
   {(unsigned char *)"hwschd.off %B",0xf8ff8fff,0x386f00bf, ARCOMPACT, 0, 0 ,0,0},
@@ -1044,32 +1044,32 @@
   {(unsigned char *)"hofs%.f%Q 0,%L,%K%F", 0xffff7000, 0x3eb67000, ARCOMPACT, 0, 0 ,0,0},
 /****************************/
 /* idxalc a,[cm:b],b,c*/
-  {(unsigned char *)"idxalc %A,[cm:%B],%B,%C" , 0xf8ff0000, 0x38260000, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"idxalc %A,[cm:%B],%B,%C" , 0xf8ff0000, 0x381c0000, ARCOMPACT, 0, 0 ,0,0},
 /* idxalc a,[cm:b],b,NumOfBuff*/
-  {(unsigned char *)"idxalc %A,[cm:%B],%B,%\306", 0xf8ff0800, 0x38660800, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"idxalc %A,[cm:%B],%B,%\306", 0xf8ff0800, 0x385c0800, ARCOMPACT, 0, 0 ,0,0},
 /* sidxalc a,b*/
-  {(unsigned char *)"sidxalc %A,%B", 0xf8ff0fc0, 0x38660040, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"sidxalc %A,%B", 0xf8ff0fc0, 0x385c0040, ARCOMPACT, 0, 0 ,0,0},
 
 /* idxalc 0,[cm:b],b,c*/
-  {(unsigned char *)"idxalc 0,[cm:%B],%B,%C" , 0xf8ff003f, 0x3826003e, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"idxalc 0,[cm:%B],%B,%C" , 0xf8ff003f, 0x381c003e, ARCOMPACT, 0, 0 ,0,0},
 /* idxalc 0,[cm:b],b,NumOfBuff*/
-  {(unsigned char *)"idxalc 0,[cm:%B],%B,%\306", 0xf8ff083f, 0x3866083e, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"idxalc 0,[cm:%B],%B,%\306", 0xf8ff083f, 0x385c083e, ARCOMPACT, 0, 0 ,0,0},
 /* idxalc 0,b*/
-  {(unsigned char *)"sidxalc 0,%B", 0xf8ff0fff, 0x3866007e, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"sidxalc 0,%B", 0xf8ff0fff, 0x385c007e, ARCOMPACT, 0, 0 ,0,0},
 
 /* idxfre a,[cm:b],b,c */
-  {(unsigned char *)"idxfre %A,[cm:%B],%B,%C" , 0xf8ff0000, 0x38280000, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"idxfre %A,[cm:%B],%B,%C" , 0xf8ff0000, 0x381e0000, ARCOMPACT, 0, 0 ,0,0},
 /* idxfre a,[cm:b],b,NumOfBuff */
-  {(unsigned char *)"idxfre %A,[cm:%B],%B,%\306" , 0xf8ff0000, 0x38680000, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"idxfre %A,[cm:%B],%B,%\306" , 0xf8ff0000, 0x385e0000, ARCOMPACT, 0, 0 ,0,0},
 /* idxfre 0,[cm:b],b,c */
-  {(unsigned char *)"idxfre 0,[cm:%B],%B,%C" , 0xf8ff003f, 0x3828003e, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"idxfre 0,[cm:%B],%B,%C" , 0xf8ff003f, 0x381e003e, ARCOMPACT, 0, 0 ,0,0},
 /* idxfre 0,[cm:b],b,NumOfBuff */
-  {(unsigned char *)"idxfre 0,[cm:%B],%B,%\306" , 0xf8ff003f, 0x3868003e, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"idxfre 0,[cm:%B],%B,%\306" , 0xf8ff003f, 0x385e003e, ARCOMPACT, 0, 0 ,0,0},
 
 /* sidxfre a,b,c */
-  {(unsigned char *)"sidxfre %A,%B,%C" , 0xf8ff0000, 0x38270000, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"sidxfre %A,%B,%C" , 0xf8ff0000, 0x381d0000, ARCOMPACT, 0, 0 ,0,0},
 /* sidxfre 0,b,c */
-  {(unsigned char *)"sidxfre 0,%B,%C" , 0xf8ff003f, 0x3827003e, ARCOMPACT, 0, 0 ,0,0},
+  {(unsigned char *)"sidxfre 0,%B,%C" , 0xf8ff003f, 0x381d003e, ARCOMPACT, 0, 0 ,0,0},
 
 /* encr c,[cm:b],[cm:b],size */
   {(unsigned char *)"encr%>+\017 %c,[cm:%b],[cm:%b],%\374", 0xf81f, 0x4805, ARCOMPACT, 0, 0 ,0,0},
