@@ -1318,12 +1318,12 @@ static const struct arc_operand arc_operands_ac[] =
 /* 3-bit unsigned immediate, hash to limm bits 20-22, bits==9 to avoid check error */
 #define BITS_20_22_AC32 (BITS_5_7_AC32 + 1)
   { 0242, 9, NPS_SPECIAL_FIELD | 0x0E, ARC_OPERAND_UNSIGNED, insert_nTo48, 0 },
-/* 10-bit unsigned immediate, stored in bits 10-19,  */
+/* 8-bit unsigned immediate, stored in bits 8-15,  */
 #define BITS_10_19_AC32 (BITS_20_22_AC32 + 1)
-  { 0244, 10, NPS_32_FIELD | 10, ARC_OPERAND_UNSIGNED, insert_nTo48, 0 },
-/* 10-bit unsigned immediate, stored in bits 0-9,  */
+  { 0244, 8, NPS_32_FIELD | 8, ARC_OPERAND_UNSIGNED, insert_nTo48, 0 },
+/* 8-bit unsigned immediate, stored in bits 0-7,  */
 #define BITS_0_9_AC32 (BITS_10_19_AC32 + 1)
-  { 0245, 10, NPS_32_FIELD, ARC_OPERAND_UNSIGNED | 0, insert_nTo48, 0 },
+  { 0245, 8, NPS_32_FIELD, ARC_OPERAND_UNSIGNED | 0, insert_nTo48, 0 },
   /* 8-bit unsigned immediate, stored in bits 0-7, values 00-255 */
 #define BITS_0_7_AC32 (BITS_0_9_AC32 + 1)
   { 0206, 8, NPS_32_FIELD | 0, ARC_OPERAND_UNSIGNED, insert_nTo48, 0 },
@@ -2453,7 +2453,6 @@ static void procSpecialField(int mode, long value,const char **errmsg ATTRIBUTE_
         		    break;
             	}
             	extraData16Value |= ((pwr-4) << 2);
-            	extraData16Value |= 0x4000;
             	break;
             }
         case 0x0A:
