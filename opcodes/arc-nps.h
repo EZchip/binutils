@@ -1054,7 +1054,7 @@
   {(unsigned char *)"idxalc 0,[cm:%B],%B,%C" , 0xf8ff003f, 0x381c003e, ARCOMPACT, 0, 0 ,0,0},
 /* idxalc 0,[cm:b],b,NumOfBuff*/
   {(unsigned char *)"idxalc 0,[cm:%B],%B,%\306", 0xf8ff083f, 0x385c083e, ARCOMPACT, 0, 0 ,0,0},
-/* idxalc 0,b*/
+/* sidxalc 0,b*/
   {(unsigned char *)"sidxalc 0,%B", 0xf8ff0fff, 0x385c007e, ARCOMPACT, 0, 0 ,0,0},
 
 /* idxfre a,[cm:b],b,c */
