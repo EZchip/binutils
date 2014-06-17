@@ -5010,9 +5010,7 @@ static struct arc_opcode arc_opcodes[] = {
   { (unsigned char *) "rcmp%Q %B,%L", 0xf8ff8000, 0x200d8f80, ARCOMPACT, 0, 0 ,0,0},
   { (unsigned char *) "rcmp%Q %L,%C", 0xfffff03f, 0x260df000, ARCOMPACT, 0, 0 ,0,0},
   { (unsigned char *) "rcmp%Q %L,%u", 0xfffff03f, 0x264df000, ARCOMPACT, 0, 0 ,0,0},
-#ifndef ARC_NPS_CMDS
   { (unsigned char *) "rcmp%Q %L,%K", 0xfffff000, 0x268df000, ARCOMPACT, 0, 0 ,0,0},
-#endif // #ifndef ARC_NPS_CMDS
   { (unsigned char *) "rcmp%.q %B,%C", 0xf8ff8020, 0x20cd8000, ARCOMPACT, 0, 0 ,0,0},
   { (unsigned char *) "rcmp%.q %B,%u", 0xf8ff8020, 0x20cd8020, ARCOMPACT, 0, 0 ,0,0},
   { (unsigned char *) "rcmp%.q%.f %B,%C", 0xf8ff8020, 0x20cd8000, ARCOMPACT, 0, 0 ,0,0},
