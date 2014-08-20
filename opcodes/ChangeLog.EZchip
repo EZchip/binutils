@@ -1,3 +1,28 @@
+2014-7-30  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Change cwcfg,cmst size field from 4->8
+
+2014-7-20  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Fix mmnt flavour encoding
+
+2014-7-17  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Add missing virtual formats for aric, adadd
+
+2014-6-16  Roy Vardi  <royv@ezchip.com>
+
+* arcompact-dis.c: Fix offset in cp csd type
+
+2014-6-16  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Fix cp src1 duplicate bits flag
+
+2014-6-11  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Fix cp command flavour
+* arcompact-dis.c: Likewise
+
 2014-6-4  Roy Vardi  <royv@ezchip.com>
 
 * arc-nps.h: Change location of aric command flavour to avoid compilation errors
