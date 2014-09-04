@@ -1097,14 +1097,26 @@ static const struct arc_operand arc_operands_ac[] =
   /* 4-bit unsigned immediate, stored in bits 28-31,  */
 #define BITS_28_31_AC32 (BITS_19_28_AC32 + 1)
   { 0253, 4, NPS_32_FIELD | 28, ARC_OPERAND_UNSIGNED, insert_nTo48, 0 },
+  /* 4-bit unsigned immediate, stored in bits 24-27,  */
+#define BITS_24_27_AC32 (BITS_28_31_AC32 + 1)
+  { 0261, 4, NPS_SPECIAL_FIELD | 0x13, ARC_OPERAND_UNSIGNED, insert_nTo48, 0 },
   /* 6-bit unsigned immediate, stored in bits 8-13, values 8,16,32,64,128,256 */
-#define BITS_8_13_AC32 (BITS_28_31_AC32 + 1)
+#define BITS_8_13_AC32 (BITS_24_27_AC32 + 1)
   { 0254, 10, NPS_SPECIAL_FIELD | 0x0F, ARC_OPERAND_UNSIGNED, insert_nTo48, 0 },
+  /* 9-bit unsigned immediate, stored in bits 8-16, values 16,32,64,128,256 */
+#define BITS_8_17_AC32 (BITS_8_13_AC32 + 1)
+  { 0263, 9, NPS_SPECIAL_FIELD | 0x14, ARC_OPERAND_UNSIGNED, insert_nTo48, 0 },
   /* 10-bit unsigned immediate, stored in bits 16-25,  */
-#define BITS_16_25_AC32 (BITS_8_13_AC32 + 1)
+#define BITS_16_25_AC32 (BITS_8_17_AC32 + 1)
   { 0255, 10, NPS_32_FIELD | 16, ARC_OPERAND_UNSIGNED, insert_nTo48, 0 },
+  /* 3-bit unsigned immediate, stored in bits 10-12,  */
+#define BITS_10_12_AC16 (BITS_16_25_AC32 + 1)
+  { 0256, 10, NPS_SPECIAL_FIELD | 0x10, ARC_OPERAND_UNSIGNED, insert_nTo48, 0 },
+/* 3-bit unsigned immediate, stored in bits 10-12,  */
+#define BITS_0_2_AC16 (BITS_10_12_AC16 + 1)
+  { 0260, 10, NPS_SPECIAL_FIELD | 0x11, ARC_OPERAND_UNSIGNED, insert_nTo48, 0 },
   /* 4-bit unsigned immediate, stored in u6 bits 0-3,  */
-#define BITS_0_3_AC32 (BITS_16_25_AC32 + 1)
+#define BITS_0_3_AC32 (BITS_0_2_AC16 + 1)
   { 0225, 4, 6, ARC_OPERAND_UNSIGNED, insert_cmd_operand, 0 },
   /* 1-bit unsigned immediate, stored in u6 bit 5,  */
 #define BITS_5_5_AC32 (BITS_0_3_AC32 + 1)
@@ -1260,8 +1272,11 @@ static const struct arc_operand arc_operands_ac[] =
   /* 7-bit unsigned immediate, stored in bits 0-6, values 1-128 */
 #define BITS_0_6D_AC16 (SKIP_ACMD + 1)
   { 0344, 7, 0, ARC_OPERAND_UNSIGNED | ARC_NPS_DECR_MASK, insert_nTo48, 0 },
+  /* 7-bit unsigned immediate, stored in bits 0-6, valid values 8,10,16,20,24,30,32,40,80 */
+#define BITS_0_6D_AC16_KEY_SIZE (BITS_0_6D_AC16 + 1)
+  { 0361, 7, NPS_SPECIAL_FIELD | 0x12, ARC_OPERAND_UNSIGNED, insert_nTo48, 0 },
   /* 5-bit unsigned immediate, stored in bits 8-12, values 0-31 */
-#define BITS_8_12_AC16 (BITS_0_6D_AC16 + 1)
+#define BITS_8_12_AC16 (BITS_0_6D_AC16_KEY_SIZE + 1)
   { 0345, 5, 8, ARC_OPERAND_UNSIGNED , insert_nTo48, 0 },
 /* 6-bit unsigned immediate value, stored in bits 0-5 values 0-63*/
 #define UIMM6_0_5_AC (BITS_8_12_AC16 + 1)
@@ -1275,8 +1290,11 @@ static const struct arc_operand arc_operands_ac[] =
   /* duplicate 5-bit src1 => src2 major 0xA */
 #define DUP_5_11_BITS (BITS_6_9_ACMD0 + 1)
   { 0354, 5, 11, ARC_OPERAND_FAKE , dup_bits, 0  },
+  /* duplicate 5-bit src2 => src1 major 0xA */
+#define DUP_11_15_BITS (DUP_5_11_BITS + 1)
+  { 0360, 5, 11, ARC_OPERAND_FAKE , dup_bits, 0  },
   /* 3-bit unsigned immediate, stored in bits 9-11, values 1-8 */
-#define BITS_9_11_D_ACMD (DUP_5_11_BITS + 1)
+#define BITS_9_11_D_ACMD (DUP_11_15_BITS + 1)
   { 0355, 3, 9, ARC_OPERAND_UNSIGNED | ARC_NPS_DECR_1, insert_nTo48, 0 },
   /* 1-bit unsigned immediate, stored in bit 14, values 0-1 */
 #define BIT_14_14_ACMD (BITS_9_11_D_ACMD + 1)
@@ -2633,7 +2651,7 @@ static void procSpecialField(int mode, long value,const char **errmsg ATTRIBUTE_
         case 0x0A:
         	*errmsg = NULL;
         	if ( ( value > 128 ) || ( value <= 0 ) ) {
-    		    sprintf(errStr,"Illegal imm. size %d",(int)value);
+    		    sprintf(errStr,"Illegal imm. size %d (valid values are between 0 and 128)",(int)value);
     		    *errmsg = errStr;
     		    break;
         	}
@@ -2643,7 +2661,7 @@ static void procSpecialField(int mode, long value,const char **errmsg ATTRIBUTE_
         case 0x0B:
         	*errmsg = NULL;
         	if ( (value & 0xFFFFFF83) != 0 ) {
-    		    sprintf(errStr,"Illegal imm. offse %d",(int)value);
+    		    sprintf(errStr,"Illegal imm. offset %d",(int)value);
     		    *errmsg = errStr;
     		    break;
         	}
@@ -2651,7 +2669,7 @@ static void procSpecialField(int mode, long value,const char **errmsg ATTRIBUTE_
         	break;
         case 0x0C:
                if ( ( value > 1 ) || ( value < 0 ) ) {
-                   sprintf(errStr,"Illegal imm. pad %d",(int)value);
+                   sprintf(errStr,"Illegal imm. pad %d (value must be between 0 and 1)",(int)value);
                    *errmsg = errStr;
                    break;
                }
@@ -2659,7 +2677,7 @@ static void procSpecialField(int mode, long value,const char **errmsg ATTRIBUTE_
                break;
         case 0x0D:
                if ( ( value > 1 ) || ( value < 0 ) ) {
-                   sprintf(errStr,"Illegal imm. init %d",(int)value);
+                   sprintf(errStr,"Illegal imm. init %d (value must be between 0 and 1)",(int)value);
                    *errmsg = errStr;
                    break;
                }
@@ -2667,7 +2685,7 @@ static void procSpecialField(int mode, long value,const char **errmsg ATTRIBUTE_
                break;
         case 0x0E:
                if ((value != 16) && (value != 32) && (value != 64) && (value != 128) && (value != 256)) {
-                       *errmsg = _("Illegal entry size value");
+                       *errmsg = _("Illegal entry size value (valid values: 16,32,64,128,256)");
                        break;
                }
                while (((value/16) >> 1) != 0) {
@@ -2678,7 +2696,7 @@ static void procSpecialField(int mode, long value,const char **errmsg ATTRIBUTE_
                break;
         case 0x0F:
             if ((value != 8) && (value != 16) && (value != 32) && (value != 64) && (value != 128) && (value != 256)) {
-                    *errmsg = _("Illegal entry size value");
+                    *errmsg = _("Illegal entry size value (valid values: 8,16,32,64,128,256)");
                     break;
             }
             tmp = 1;
@@ -2687,6 +2705,44 @@ static void procSpecialField(int mode, long value,const char **errmsg ATTRIBUTE_
                     tmp = (tmp << 1);
             }
             limm |= (tmp << 8);
+        	break;
+        case 0x10:
+        	if (value == 1)
+        		tmp = 1;
+        	else if (value == 2)
+        		tmp = 2;
+        	if (value == 4)
+        		tmp = 3;
+        	else if (value == 8)
+        		tmp = 4;
+        	else if (value == 16)
+        		tmp = 5;
+        	else
+        		*errmsg = _("Illegal entry size value (valid values: 1,2,4,8,16)");
+        	extraData16Value |= ((tmp << 10) & 0x1C00);
+        	if (value < 4)
+        		extraData16Value |= ((tmp << 8) & 0x300);
+        	break;
+        case 0x11:
+        	extraData16Value |= (value & 0x1F);
+        	break;
+        case 0x12:
+        	if ((value != 8) && (value != 10) && (value != 16) && (value != 20) && (value != 24) && (value != 30) && (value != 32) && (value != 40) && (value != 80))
+        		*errmsg = _("Illegal key size value. Valid values are: 8,10,16,20,24,30,32,40,80");
+        	else
+        		limm |= value;
+        	break;
+        case 0x13:
+        	if (((value % 16) == 0) && (value <= 240) && (value >= 0))
+        		tmp = value/16;
+        	else
+        		*errmsg = _("Illegal offset. Valid values are 0->240, in jumps of 16");
+        	limm |= (tmp << 24);
+        	break;
+        case 0x14:
+        	if ((value != 1) && (value != 2) && (value != 4) && (value != 8) && (value != 16) && (value != 32) && (value != 64) && (value != 128) && (value != 256))
+        		*errmsg = _("Illegal Entry size value. Valid values are 0->256, power of 2");
+        	limm |= (value << 8);
         	break;
 	default:
 		*errmsg = _("Unknown special mode");
@@ -2951,6 +3007,13 @@ insert_nTo48   (arc_insn insn, long *ex ATTRIBUTE_UNUSED,
 			}
 		}
 	}
+    if (operand->fmt == 0245) {
+        if ((value % 16)) {
+                *errmsg = _("illegal size value");
+        }
+        maxValue = 256;
+        value = (value == 256) ? 0 : value;
+    }
 	if ( check != 0 ) {
 		if ( operand->flags & ARC_NPS_DECR_1 ) {
 			value--;
@@ -2961,6 +3024,8 @@ insert_nTo48   (arc_insn insn, long *ex ATTRIBUTE_UNUSED,
 				value = 0;
 			}
 		}
+		if (operand->fmt == 0261)
+			maxValue = 240;
 	    if ( value > maxValue) {
 		    *errmsg = _("value too high");
 	    }
@@ -2970,11 +3035,6 @@ insert_nTo48   (arc_insn insn, long *ex ATTRIBUTE_UNUSED,
             if (operand->fmt == 0244) {
                 if ((value % 16) || (value > 240)) {
                         *errmsg = _("illegal offset value");
-                }
-            }
-            if (operand->fmt == 0245) {
-                if ((value % 16)) {
-                        *errmsg = _("illegal size value");
                 }
             }
 	}
@@ -3234,7 +3294,10 @@ dup_bits    (arc_insn insn, long *ex ATTRIBUTE_UNUSED,
     unsigned int mask = (1 << operand->bits)-1;
     int srcShift = operand->bits + operand->shift;
     mask <<= srcShift;
-    value = (insn & mask) >> operand->bits;
+    if (operand->fmt == 0xF0) //0360
+    	value = (insn & (mask >> operand->bits)) << operand->bits;
+    else
+    	value = (insn & mask) >> operand->bits;
     insn |= value;
     return insn;
 }
@@ -7237,8 +7300,12 @@ ac_constant_operand (const struct arc_operand *op)
     case 0253 /*'\253'*/:
     case 0254 /*'\254'*/:
     case 0255 /*'\255'*/:
+    case 0256 /*'\256'*/:
     case 0257 /*'\257'*/:
+    case 0260 /*'\260'*/:
+    case 0261 /*'\261'*/:
     case 0262 /*'\262'*/:
+    case 0263 /*'\263'*/:
     case 0273 /*'\273'*/:
     case 0274 /*'\274'*/:
     case 0275 /*'\275'*/:
@@ -7264,6 +7331,7 @@ ac_constant_operand (const struct arc_operand *op)
     case 0355 /*'\355'*/:
     case 0356 /*'\356'*/:
     case 0357 /*'\357'*/:
+    case 0361 /*'\361'*/:
     case 0363 /*'\363'*/:
     case 0371 /*'\371'*/:
     case 0372 /*'\372'*/:
@@ -7695,6 +7763,7 @@ int isNPS16BitCmd(char *str)
                         if ( ( strncmp(str,"cmst",4) == 0) && ( types_f(&str[4]) != 0 ) ) return 4;
                         if ( ( strncmp(str,"cwcfg",5) == 0) && ( types_f(&str[5]) != 0 ) ) return 5;
 			if ( ( strncmp(str,"cwchk",5) == 0) && ( types_f(&str[5]) != 0 ) ) return 5;
+			if ( ( strncmp(str,"cgi",3) == 0) && ( types_f(&str[3]) != 0 ) ) return 3;
 			break;
 		case 'd':
 			if ( ( strncmp(str,"div",3) == 0) && ( types_f(&str[3]) != 0 ) ) return 3;

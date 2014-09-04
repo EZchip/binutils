@@ -1,3 +1,176 @@
+2015-05-18  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Remove xexb,xexw support. Leave only xex
+* arcompact-dis.c: Likewise
+
+2014-12-8  Roy Vardi  <royv@ezchip.com>
+
+* arc-opc-old.c: Allow entry size 256 and code it as 0
+* arcompact-dis.c: Likewise
+
+2014-11-25  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Add new aric virtual format: ARIC.di <.f> DST, [ SRC2]
+
+2014-11-17  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Add new xstl format (xstl.di SRC1,[mbd:SRC2])
+
+2014-11-17  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Fix cgi command flavour - check flag
+* arc-opc-old.c: Change max value for entry size to 256
+* arcompact-dis.c: Likewise
+
+2014-11-06  Roy Vardi  <royv@ezchip.com>
+
+* arcompact-dis.c: Fix broken disassembly
+2014-10-27  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: mmnt - copy src1 into src2 when src2 is not given
+
+2014-10-22  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Remove idxbgt instruction
+
+2014-10-19 Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: new formats for schd command: ie1,ie2,ie12 (interrupt enable)
+* arcompact-dis.c: Likewise
+
+2014-10-07  Roy Vardi  <royv@ezchip.com>
+
+* arc-opc-old.c: Add verbosity to error messages
+
+2014-10-01  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Turn off bit 12 in aric command (entry size)
+
+2014-10-01  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Update mmnt limm fields according to ACC 3.4
+* arc-opc-old: Likewise
+* arcompact-dis.c: Likewise
+
+2014-10-01  Roy Vardi  <royv@ezchip.com>
+
+* arcompact-dis.c: Fix dma cp instruction disassembly
+
+2014-10-01  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Turn off .na flag for another cp instruction
+
+2014-10-01  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Update mmnt limm fields according to ACC 3.4
+* arc-opc-old: Likewise
+* arcompact-dis.c: Likewise
+
+2014-10-01  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Limit lkpetcm keysize valid values
+* arc-opc-old: Likewise
+
+2014-10-01  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Don't turn on bit 27 (.na flag) in dma cp instruction
+
+2014-10-01  Roy Vardi  <royv@ezchip.com>
+
+* arcompact-dis.c: Fix dma instruction decoding
+
+2014-9-30  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Remove dst register from bdfre,sbdfre,idxfre,sidxfre
+
+2014-9-30  Roy Vardi  <royv@ezchip.com>
+
+* arcompact-dis.c: Fix dma cp instruction disassembly
+
+2014-9-30  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Copy src1->src2 and vise versa when one of them is not given for
+dma commands
+
+2014-9-29  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Turn off .na bit (27) in cp instruction
+
+2014-9-29  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Copy src1 into src2 for dma command formats without src2
+
+2014-9-29  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Copy src1 into src2 for dma command format without src2
+
+2014-9-29  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Fix dma instruction which is coded wrong and remove redundant
+src1->src2 copy
+* arcompact-dis.c: Likewise
+
+2014-9-29  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Copy src1 into src2 for dma command
+
+2014-9-29  Roy Vardi  <royv@ezchip.com>
+
+* arcompact-dis.c: Fix dma cp instruction decoding for specific format
+
+2014-9-29  Roy Vardi  <royv@ezchip.com>
+
+* arcompact-dis.c: Fix dma cp instruction decoding
+
+2014-9-28  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Copy src2 into src1 in opcode 0xA commands when src1 is not in
+use
+* arc-opc-old.c: Add flag for copying src2 into src1
+
+2014-9-17  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Remove redundant duplication of bits which caused an error when
+using additional register for cp.e command flavours
+
+2014-9-11  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Set size==4 (0x0) for all syntaxes of adadd
+
+2014-9-10  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Turn on C flag in aril command format
+
+2014-8-31  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Add new cgi instruction, counter generic encapsulated instruction
+operations
+* arcompact-dis.c: Likewise
+* arc-opc-old.c: Likewise
+
+2014-8-28  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: adadd{ l} virtual addresses target size changes
+* arcompact-dis.c: Likewise
+
+2014-8-28  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Fix cst size from 4 to 8 bytes
+
+2014-8-27  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Fix adadd{ l} format size from 2 --> 4  
+
+2014-8-20  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Remove old aric.r virtual format, add new one
+* arcompact-dis.c: Likewise
+
+2014-8-7  Roy Vardi  <royv@ezchip.com>
+
+* arc-nps.h: Add format to bdfre, add m flag
+* arcompact-dis.c: Likewise
+
 2014-7-30  Roy Vardi  <royv@ezchip.com>
 
 * arc-nps.h: Change cwcfg,cmst size field from 4->8
