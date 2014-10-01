@@ -1,3 +1,7 @@
+2014-10-01  Roy Vardi  <royv@ezchip.com>
+ 
+* tc-arc.c: Remove wrong ext_insn variant (synopsys solution)
+
 2013-11-28  Roy Vardi  <royv@ezchip.com>
  
 * tc-arc.c: EZchip NPS additions and changes
