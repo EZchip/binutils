@@ -1,3 +1,14 @@
+2014-10-21 Claudiu Zissulescu <claziss@synopsys.com>
+
+	* elf32-arc.c (arc_elf_object_p): Throw a warning/error only
+          for A4/A5 architectures.
+
+2014-09-23 Andrew Burgess <andrew.burgess@embecosm.com>
+
+	* elf32-arc.c (elf_arc_relocate_section): Handle symbols that have
+	been forced local immediately, update the comment associated.
+	(elf_backend_can_gc_sections): Allow gc-sections.
+
 2014-04-17 Claudiu Zissulescu <claziss@synopsys.com>
 
 	* elf32-arc.c (arc_elf_object_p): Increase compatibility with
