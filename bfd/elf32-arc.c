@@ -1049,6 +1049,12 @@ arc_elf_final_write_processing (bfd *abfd,
 
   /* Record whatever is the current syscall ABI version */
   elf_elfheader (abfd)->e_flags |= E_ARC_OSABI_CURRENT;
+
+/* Sets the default cpu flags for the provided cpu at build time */
+/* hardcore temp workaround for arc700 */
+#define DEFAULT_CPU_FLAGS 3
+  if(elf_flags_init(abfd) == FALSE)
+    elf_elfheader (abfd)->e_flags |= DEFAULT_CPU_FLAGS;
 }
 
 /* Handle an ARCompact 'middle-endian' relocation.  */
