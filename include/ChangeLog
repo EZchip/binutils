@@ -1,3 +1,8 @@
+2016-12-08  Rinat Zelig  <rinat@mellanox.com>
+
+	* opcode/arc.h (insn_class_t): Add SECURITY.	
+	(arc_nps_security_copy_data_type): New enum typedef.
+
 2016-11-22  Rinat Zelig  <rinat@mellanox.com>
 
 	* opcode/arc.h (arc_nps_address_type): Add ARC_NPS400_ADDRTYPE_GPA1.

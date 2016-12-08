@@ -1,3 +1,8 @@
+2016-12-08  Rinat Zelig  <rinat@mellanox.com>
+
+	* arc-nps400-tbl.h: Add Security instructions.
+	* arc-opc.c: Add defines of F_NPS_IPAD,F_NPS_OPAD, F_NPS_FIN
+
 2016-11-22  Rinat Zelig  <rinat@mellanox.com>
 
 	* arc-nps400-tbl.h: Add Atomic operation instructions GPA1 format.

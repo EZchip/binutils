@@ -1580,6 +1580,15 @@ const struct arc_flag_operand arc_flag_operands[] =
 
 #define F_NPS_RST     (F_NPS_RSPI_GIC + 1)
   { "rst", 0, 0, 0, 1 },
+
+#define F_NPS_IPAD     (F_NPS_RST + 1)
+  { "ipad", 0, 0, 0, 1 },
+
+#define F_NPS_OPAD     (F_NPS_IPAD + 1)
+  { "opad", 0, 0, 0, 1 },
+
+#define F_NPS_FIN     (F_NPS_OPAD + 1)
+  { "fin", 0, 0, 0, 1 },
 };
 
 const unsigned arc_num_flag_operands = ARRAY_SIZE (arc_flag_operands);
@@ -1730,7 +1739,16 @@ const struct arc_flag_class arc_flag_classes[] =
 #define C_NPS_RST    (C_NPS_ATOMIC_R + 1)
   { F_CLASS_REQUIRED, { F_NPS_RST, F_NULL }},
 
-#define C_NPS_LDBIT_CL1    (C_NPS_ATOMIC_R + 1)
+#define C_NPS_IPAD    (C_NPS_RST + 1)
+  { F_CLASS_REQUIRED, { F_NPS_IPAD, F_NULL }},
+
+#define C_NPS_OPAD    (C_NPS_IPAD + 1)
+  { F_CLASS_REQUIRED, { F_NPS_OPAD, F_NULL }},
+
+#define C_NPS_FIN    (C_NPS_OPAD + 1)
+  { F_CLASS_REQUIRED, { F_NPS_FIN, F_NULL }},
+
+#define C_NPS_LDBIT_CL1    (C_NPS_FIN + 1)
   { F_CLASS_OPTIONAL, { F_NPS_LDBIT_CL1, F_NULL }},
 
 #define C_NPS_LDBIT_CL2    (C_NPS_LDBIT_CL1 + 1)
@@ -2384,7 +2402,7 @@ const struct arc_operand arc_operands[] =
 #define NPS_MISC_ATOMIC_ENTRY_SIZE  (NPS_MISC_IMM_OFFSET + 1)
   { 3, 10, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK , insert_nps_atomic_entry_size, extract_nps_atomic_entry_size },
 
-  #define NPS_MISC_ATOMIC_OPCODE  (NPS_MISC_ATOMIC_ENTRY_SIZE + 1)
+#define NPS_MISC_ATOMIC_OPCODE  (NPS_MISC_ATOMIC_ENTRY_SIZE + 1)
   { 5, 0, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
 
 #define NPS_R_DST_3B_48	(NPS_MISC_ATOMIC_OPCODE + 1)
@@ -2423,7 +2441,16 @@ const struct arc_operand arc_operands[] =
 #define NPS_UIMM16_0_64         (NPS_RC_64 + 1)
   { 16, 0, 0, ARC_OPERAND_UNSIGNED, NULL, NULL },
 
-#define NPS_PROTO_SIZE         (NPS_UIMM16_0_64 + 1)
+#define NPS_SECURITY_SIZE  (NPS_UIMM16_0_64 + 1)
+  { 8, 5, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_SECURITY_INIT  (NPS_SECURITY_SIZE + 1)
+  { 1, 13, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_SECURITY_PAD  (NPS_SECURITY_INIT + 1)
+  { 1, 4, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_PROTO_SIZE         (NPS_SECURITY_PAD + 1)
   { 6, 16, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_proto_size, extract_nps_proto_size }
 };
 const unsigned arc_num_operands = ARRAY_SIZE (arc_operands);

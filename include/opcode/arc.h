@@ -67,7 +67,8 @@ typedef enum
   DMA,
   ULTRAIP,
   MISC,
-  ATOMIC
+  ATOMIC,
+  SECURITY
 } insn_class_t;
 
 /* Instruction Subclass.  */
@@ -721,6 +722,24 @@ typedef enum
 } arc_nps_address_type;
 
 #define ARC_NUM_ADDRTYPES 19
+
+/* Security data type used in the NPS-400. See chapter 4.15 of the NPS-400 CTOP
+   Instruction Set Reference Manual v2.4 for a description of data type.
+   The ordering is critical */
+
+typedef enum
+{
+  ARC_NPS400_SECURITY_COPY_DATA_STATE,
+
+  ARC_NPS400_SECURITY_COPY_DATA_KEY,
+
+  ARC_NPS400_SECURITY_COPY_DATA_INIT_VEC,
+
+  ARC_NPS400_SECURITY_COPY_DATA_CONTAXT,
+
+  ARC_NPS400_SECURITY_COPY_DATA_MAC
+
+} arc_nps_security_copy_data_type;
 
 #ifdef __cplusplus
 }
