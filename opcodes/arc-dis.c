@@ -69,7 +69,7 @@ static const char * const regnames[64] =
 static const char * const addrtypenames[ARC_NUM_ADDRTYPES] =
 {
   "bd", "jid", "lbd", "mbd", "sd", "sm", "xa", "xd",
-  "cd", "cbd", "cjid", "clbd", "cm", "csd", "cxa", "cxd"
+  "cd", "cbd", "cjid", "clbd", "cm", "csd", "cxa", "cxd", "GPA1"
 };
 
 static int addrtypenames_max = ARC_NUM_ADDRTYPES - 1;
@@ -1110,7 +1110,7 @@ print_insn_arc (bfd_vma memaddr,
           const char *addrtype = get_addrtype (value);
           (*info->fprintf_func) (info->stream, "%s", addrtype);
           /* A colon follow an address type.  */
-          need_comma = FALSE;
+          need_comma = (value == ARC_NPS400_ADDRTYPE_GPA1);
         }
       else
 	{

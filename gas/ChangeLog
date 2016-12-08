@@ -1,3 +1,9 @@
+2016-11-22  Rinat Zelig  <rinat@mellanox.com>
+
+	* testsuite/gas/arc/nps400-12.s: Add atomic operation GPA1 format.
+	* testsuite/gas/arc/nps400-12.d: Add atomic operation GPA1 format.
+	* config/tc-arc.c (md_begin): Declare address type GAP1.
+
 2016-11-17  Rinat Zelig  <rinat@mellanox.com>
 
 	* testsuite/gas/arc/nps400-12.s: New file.

@@ -2628,6 +2628,7 @@ md_begin (void)
   declare_addrtype ("csd", ARC_NPS400_ADDRTYPE_CSD);
   declare_addrtype ("cxa", ARC_NPS400_ADDRTYPE_CXA);
   declare_addrtype ("cxd", ARC_NPS400_ADDRTYPE_CXD);
+  declare_addrtype ("GPA1", ARC_NPS400_ADDRTYPE_GPA1);
 }
 
 /* Write a value out to the object file, using the appropriate

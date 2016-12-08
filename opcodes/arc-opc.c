@@ -1217,6 +1217,7 @@ MAKE_INSERT_NPS_ADDRTYPE (cm, CM)
 MAKE_INSERT_NPS_ADDRTYPE (csd, CSD)
 MAKE_INSERT_NPS_ADDRTYPE (cxa, CXA)
 MAKE_INSERT_NPS_ADDRTYPE (cxd, CXD)
+MAKE_INSERT_NPS_ADDRTYPE (GPA1, GPA1)
 
 static unsigned long long
 insert_nps_rbdouble_64 (unsigned long long insn ATTRIBUTE_UNUSED,
@@ -2294,7 +2295,10 @@ const struct arc_operand arc_operands[] =
 #define NPS_CXD      (NPS_CXA + 1)
   { 0, 0, 0, ARC_OPERAND_ADDRTYPE | ARC_OPERAND_NCHK, insert_nps_cxd, extract_nps_cxd },
 
-#define NPS_BD_TYPE     (NPS_CXD + 1)
+#define NPS_GPA1      (NPS_CXD + 1)
+  { 0, 0, 0, ARC_OPERAND_ADDRTYPE | ARC_OPERAND_NCHK, insert_nps_GPA1, extract_nps_GPA1 },
+
+#define NPS_BD_TYPE     (NPS_GPA1 + 1)
   { 1, 10, 0, ARC_OPERAND_UNSIGNED, NULL, NULL },
 
 #define NPS_BMU_NUM     (NPS_BD_TYPE + 1)

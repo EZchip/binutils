@@ -307,3 +307,145 @@ label:
 
         ; bat
         bat label
+
+        ; GPA1 format
+        xex.di     [cm:GPA1],r0,[sd:r1]
+        xex.di     [cm:GPA1],r0,[xd:r1]
+        xex.di     [cm:GPA1],r0,[r1]
+
+        aaddl.di   [cm:GPA1],r0,[sd:r1]
+        aaddl.di   [cm:GPA1],r0,[xd:r1]
+        aaddl.di   [cm:GPA1],r0,[r1]
+
+        aaddl.di   r0,[cm:GPA1],r0,[sd:r1]
+        aaddl.di   r0,[cm:GPA1],r0,[xd:r1]
+        aaddl.di   r0,[cm:GPA1],r0,[r1]
+
+        aaddl.di.f   r0,[cm:GPA1],r0,[sd:r1]
+        aaddl.di.f   r0,[cm:GPA1],r0,[xd:r1]
+        aaddl.di.f   r0,[cm:GPA1],r0,[r1]
+
+        aadd.di     [cm:GPA1],r0,[sd:r1]
+        aadd.di     [cm:GPA1],r0,[xd:r1]
+        aadd.di     [cm:GPA1],r0,[r1]
+
+        adadd.di    r0,[cm:GPA1],r0,[sd:r1]
+        adadd.di    r0,[cm:GPA1],r0,[xd:r1]
+        adadd.di    r0,[cm:GPA1],r0,[r1]
+
+        adadd.di.f  r0,[cm:GPA1],r0,[sd:r1]
+        adadd.di.f  r0,[cm:GPA1],r0,[xd:r1]
+        adadd.di.f  r0,[cm:GPA1],r0,[r1]
+
+        adadd.di    [cm:GPA1],r0,[sd:r1]
+        adadd.di    [cm:GPA1],r0,[xd:r1]
+        adadd.di    [cm:GPA1],r0,[r1]
+
+        adaddl.di   r0,[cm:GPA1],r0,[sd:r1]
+        adaddl.di   r0,[cm:GPA1],r0,[xd:r1]
+        adaddl.di   r0,[cm:GPA1],r0,[r1]
+
+        adaddl.di.f   r0,[cm:GPA1],r0,[sd:r1]
+        adaddl.di.f   r0,[cm:GPA1],r0,[xd:r1]
+        adaddl.di.f   r0,[cm:GPA1],r0,[r1]
+
+        adaddl.di   [cm:GPA1],r0,[sd:r1]
+        adaddl.di   [cm:GPA1],r0,[xd:r1]
+        adaddl.di   [cm:GPA1],r0,[r1]
+
+        aand.di   [cm:GPA1],r0,[sd:r1]
+        aand.di   [cm:GPA1],r0,[xd:r1]
+        aand.di   [cm:GPA1],r0,[r1]
+
+        aor.di   [cm:GPA1],r0,[sd:r1]
+        aor.di   [cm:GPA1],r0,[xd:r1]
+        aor.di   [cm:GPA1],r0,[r1]
+
+        axor.di   [cm:GPA1],r0,[sd:r1]
+        axor.di   [cm:GPA1],r0,[xd:r1]
+        axor.di   [cm:GPA1],r0,[r1]
+
+        atst.di   [cm:GPA1],[sd:r1]
+        atst.di   [cm:GPA1],[xd:r1]
+        atst.di   [cm:GPA1],[r1]
+
+        aril.di   r0,[cm:GPA1],[sd:r1]
+        aril.di   r0,[cm:GPA1],[xd:r1]
+        aril.di   r0,[cm:GPA1],[r1]
+
+        aril.di.f   r0,[cm:GPA1],[sd:r1]
+        aril.di.f   r0,[cm:GPA1],[xd:r1]
+        aril.di.f   r0,[cm:GPA1],[r1]
+
+        aril.di   [cm:GPA1],[sd:r1]
+        aril.di   [cm:GPA1],[xd:r1]
+        aril.di   [cm:GPA1],[r1]
+
+        ari.di   [cm:GPA1],[sd:r1]
+        ari.di   [cm:GPA1],[xd:r1]
+        ari.di   [cm:GPA1],[r1]
+
+        ardcl.di   r0,[cm:GPA1],[sd:r1]
+        ardcl.di   r0,[cm:GPA1],[xd:r1]
+        ardcl.di   r0,[cm:GPA1],[r1]
+
+        ardcl.di.f   r0,[cm:GPA1],[sd:r1]
+        ardcl.di.f   r0,[cm:GPA1],[xd:r1]
+        ardcl.di.f   r0,[cm:GPA1],[r1]
+
+        ardcl.di   [cm:GPA1],[sd:r1]
+        ardcl.di   [cm:GPA1],[xd:r1]
+        ardcl.di   [cm:GPA1],[r1]
+
+        ardc.di   [cm:GPA1],[sd:r1]
+        ardc.di   [cm:GPA1],[xd:r1]
+        ardc.di   [cm:GPA1],[r1]
+
+        aric.di   r0,[cm:GPA1],[sd:r1]
+        aric.di   r0,[cm:GPA1],[xd:r1]
+        aric.di   r0,[cm:GPA1],[r1]
+
+        aric.di.f   r0,[cm:GPA1],[sd:r1]
+        aric.di.f   r0,[cm:GPA1],[xd:r1]
+        aric.di.f   r0,[cm:GPA1],[r1]
+
+        aric.di   [cm:GPA1],[sd:r1]
+        aric.di   [cm:GPA1],[xd:r1]
+        aric.di   [cm:GPA1],[r1]
+
+        aric.r.di   r0,[cm:GPA1],[sd:r1]
+        aric.r.di   r0,[cm:GPA1],[xd:r1]
+        aric.r.di   r0,[cm:GPA1],[r1]
+
+        aric.r.di.f   r0,[cm:GPA1],[sd:r1]
+        aric.r.di.f   r0,[cm:GPA1],[xd:r1]
+        aric.r.di.f   r0,[cm:GPA1],[r1]
+
+        aric.r.di   [cm:GPA1],[sd:r1]
+        aric.r.di   [cm:GPA1],[xd:r1]
+        aric.r.di   [cm:GPA1],[r1]
+
+        arcll.di   r0,[cm:GPA1],[sd:r1]
+        arcll.di   r0,[cm:GPA1],[xd:r1]
+        arcll.di   r0,[cm:GPA1],[r1]
+
+        arcll.di.f   r0,[cm:GPA1],[sd:r1]
+        arcll.di.f   r0,[cm:GPA1],[xd:r1]
+        arcll.di.f   r0,[cm:GPA1],[r1]
+
+        arcll.di [cm:GPA1],[sd:r1]
+        arcll.di [cm:GPA1],[xd:r1]
+        arcll.di [cm:GPA1],[r1]
+
+        arcl.di  [cm:GPA1],[sd:r1]
+        arcl.di  [cm:GPA1],[xd:r1]
+        arcl.di  [cm:GPA1],[r1]
+
+        xldl.di  r0,[cm:GPA1],[sd:r1]
+        xldl.di  r0,[cm:GPA1],[xd:r1]
+
+        xld.di   [cm:GPA1],[sd:r1]
+        xld.di   [cm:GPA1],[xd:r1]
+
+        xldl.di   [cm:GPA1],[sd:r1]
+        xldl.di   [cm:GPA1],[xd:r1]

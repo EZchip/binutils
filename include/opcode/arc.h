@@ -707,11 +707,14 @@ typedef enum
   ARC_NPS400_ADDRTYPE_CXA,
 
   /* CMEM Extended Summarized Address.  */
-  ARC_NPS400_ADDRTYPE_CXD
+  ARC_NPS400_ADDRTYPE_CXD,
+
+  /* GPA1 aux register additional 16 msb of extended address.  */
+  ARC_NPS400_ADDRTYPE_GPA1
 
 } arc_nps_address_type;
 
-#define ARC_NUM_ADDRTYPES 16
+#define ARC_NUM_ADDRTYPES 17
 
 #ifdef __cplusplus
 }

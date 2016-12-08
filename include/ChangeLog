@@ -1,3 +1,7 @@
+2016-11-22  Rinat Zelig  <rinat@mellanox.com>
+
+	* opcode/arc.h (arc_nps_address_type): Add ARC_NPS400_ADDRTYPE_GPA1.
+
 2016-10-17  Rinat Zelig  <rinat@mellanox.com>
 
 	* opcode/arc.h (insn_class_t): Add ULTRAIP and ATOMIC class.
