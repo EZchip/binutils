@@ -709,12 +709,18 @@ typedef enum
   /* CMEM Extended Summarized Address.  */
   ARC_NPS400_ADDRTYPE_CXD,
 
+  /* Shadow Demand Counter) */
+  ARC_NPS400_ADDRTYPE_SCD,
+
   /* GPA1 aux register additional 16 msb of extended address.  */
-  ARC_NPS400_ADDRTYPE_GPA1
+  ARC_NPS400_ADDRTYPE_GPA1,
+
+  /* GPA2 aux register additional 16 msb of extended address.  */
+  ARC_NPS400_ADDRTYPE_GPA2
 
 } arc_nps_address_type;
 
-#define ARC_NUM_ADDRTYPES 17
+#define ARC_NUM_ADDRTYPES 19
 
 #ifdef __cplusplus
 }

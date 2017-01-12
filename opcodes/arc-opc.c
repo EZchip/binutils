@@ -919,6 +919,48 @@ extract_nps_misc_imm_offset (unsigned insn ATTRIBUTE_UNUSED,
 }
 
 static unsigned
+insert_nps_atomic_entry_size (unsigned insn ATTRIBUTE_UNUSED,
+                        int value ATTRIBUTE_UNUSED,
+                        const char **errmsg ATTRIBUTE_UNUSED)
+{
+  int size = 0;
+  switch (value)
+  {
+  case 16:
+	  value = 5;
+	  break;
+  case 8:
+	  value = 4;
+	  break;
+  case 4:
+	  value = 3;
+	  break;
+  case 2:
+	  value = 2;
+	  size = 2;
+	  break;
+  case 1:
+	  value = 1;
+	  size = 1;
+	  break;
+  default:
+	  *errmsg = _("Invalid entry size, should be 1, 2, 4, 8 or 16.");
+	  value = 0;
+  }
+  insn |= (value << 10);
+  insn |= (size << 8);
+  return insn;
+}
+
+static int
+extract_nps_atomic_entry_size (unsigned insn ATTRIBUTE_UNUSED,
+                         bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  int entry_size = (insn >> 10) & 0x7;
+  return (1 << (entry_size-1));
+}
+
+static unsigned
 insert_nps_size_16bit (unsigned insn ATTRIBUTE_UNUSED,
                         int value ATTRIBUTE_UNUSED,
                         const char **errmsg ATTRIBUTE_UNUSED)
@@ -1217,7 +1259,9 @@ MAKE_INSERT_NPS_ADDRTYPE (cm, CM)
 MAKE_INSERT_NPS_ADDRTYPE (csd, CSD)
 MAKE_INSERT_NPS_ADDRTYPE (cxa, CXA)
 MAKE_INSERT_NPS_ADDRTYPE (cxd, CXD)
+MAKE_INSERT_NPS_ADDRTYPE (scd, SCD)
 MAKE_INSERT_NPS_ADDRTYPE (GPA1, GPA1)
+MAKE_INSERT_NPS_ADDRTYPE (GPA2, GPA2)
 
 static unsigned long long
 insert_nps_rbdouble_64 (unsigned long long insn ATTRIBUTE_UNUSED,
@@ -1533,6 +1577,9 @@ const struct arc_flag_operand arc_flag_operands[] =
 
 #define F_NPS_RSPI_GIC     (F_NPS_GIC + 1)
   { "gic", 5, 3, 6, 1 },
+
+#define F_NPS_RST     (F_NPS_RSPI_GIC + 1)
+  { "rst", 0, 0, 0, 1 },
 };
 
 const unsigned arc_num_flag_operands = ARRAY_SIZE (arc_flag_operands);
@@ -1679,6 +1726,9 @@ const struct arc_flag_class arc_flag_classes[] =
 
 #define C_NPS_ATOMIC_R    (C_NPS_ATOMIC_DI + 1)
   { F_CLASS_REQUIRED, { F_NPS_ATOMIC_R, F_NULL }},
+
+#define C_NPS_RST    (C_NPS_ATOMIC_R + 1)
+  { F_CLASS_REQUIRED, { F_NPS_RST, F_NULL }},
 
 #define C_NPS_LDBIT_CL1    (C_NPS_ATOMIC_R + 1)
   { F_CLASS_OPTIONAL, { F_NPS_LDBIT_CL1, F_NULL }},
@@ -2274,7 +2324,10 @@ const struct arc_operand arc_operands[] =
 #define NPS_CD      (NPS_XD + 1)
   { 0, 0, 0, ARC_OPERAND_ADDRTYPE | ARC_OPERAND_NCHK, insert_nps_cd, extract_nps_cd },
 
-#define NPS_CBD      (NPS_CD + 1)
+#define NPS_SCD      (NPS_CD + 1)
+  { 0, 0, 0, ARC_OPERAND_ADDRTYPE | ARC_OPERAND_NCHK, insert_nps_scd, extract_nps_scd },
+
+#define NPS_CBD      (NPS_SCD + 1)
   { 0, 0, 0, ARC_OPERAND_ADDRTYPE | ARC_OPERAND_NCHK, insert_nps_cbd, extract_nps_cbd },
 
 #define NPS_CJID      (NPS_CBD + 1)
@@ -2298,7 +2351,10 @@ const struct arc_operand arc_operands[] =
 #define NPS_GPA1      (NPS_CXD + 1)
   { 0, 0, 0, ARC_OPERAND_ADDRTYPE | ARC_OPERAND_NCHK, insert_nps_GPA1, extract_nps_GPA1 },
 
-#define NPS_BD_TYPE     (NPS_GPA1 + 1)
+#define NPS_GPA2      (NPS_GPA1 + 1)
+  { 0, 0, 0, ARC_OPERAND_ADDRTYPE | ARC_OPERAND_NCHK, insert_nps_GPA2, extract_nps_GPA2 },
+
+#define NPS_BD_TYPE     (NPS_GPA2 + 1)
   { 1, 10, 0, ARC_OPERAND_UNSIGNED, NULL, NULL },
 
 #define NPS_BMU_NUM     (NPS_BD_TYPE + 1)
@@ -2325,7 +2381,13 @@ const struct arc_operand arc_operands[] =
 #define NPS_MISC_IMM_OFFSET  (NPS_MISC_IMM_SIZE + 1)
   { 5, 8, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_misc_imm_offset, extract_nps_misc_imm_offset },
 
-#define NPS_R_DST_3B_48	(NPS_DMA_IMM_OFFSET + 1)
+#define NPS_MISC_ATOMIC_ENTRY_SIZE  (NPS_MISC_IMM_OFFSET + 1)
+  { 3, 10, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK , insert_nps_atomic_entry_size, extract_nps_atomic_entry_size },
+
+  #define NPS_MISC_ATOMIC_OPCODE  (NPS_MISC_ATOMIC_ENTRY_SIZE + 1)
+  { 5, 0, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_R_DST_3B_48	(NPS_MISC_ATOMIC_OPCODE + 1)
   { 3, 40, 0, ARC_OPERAND_IR | ARC_OPERAND_NCHK, insert_nps_3bit_reg_at_40_dst, extract_nps_3bit_reg_at_40_dst },
 
 #define NPS_R_SRC1_3B_48	(NPS_R_DST_3B_48 + 1)

@@ -6,6 +6,14 @@
 	(addrtypenames): Add GPA1.
 	(print_insn_arc): If address type is GPA1 comma is needed.
 
+2016-11-22  Rinat Zelig  <rinat@mellanox.com>
+
+	* arc-nps400-tbl.h: Add Atomic operation instructions GPA1 format.
+	* arc-opc.c: Add defines NPS_GPA1 and declare address type GPA1.
+	* arc-dis.c:
+	(addrtypenames): Add GPA1.
+	(print_insn_arc): If address type is GPA1 comma is needed.
+
 2016-11-17  Rinat Zelig  <rinat@mellanox.com>
 
 	* arc-nps400-tbl.h: Add Atomic operation instructions.

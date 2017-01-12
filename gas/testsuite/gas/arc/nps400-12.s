@@ -449,3 +449,198 @@ label:
 
         xldl.di   [cm:GPA1],[sd:r1]
         xldl.di   [cm:GPA1],[xd:r1]
+
+        ;On Demand And Shadow On Demand Statistic Counter Operations
+        cinit.di.f r2,[cm:GPA2],r2,[cd:r1]
+        cinit.di.f r2,[cm:GPA2],r2,[scd:r1]
+        cinit.di r2,[cm:GPA2],r2,[cd:r1]
+        cinit.di r2,[cm:GPA2],r2,[scd:r1]
+        cinit.di [cm:GPA2],r2,[cd:r1]
+        cinit.di [cm:GPA2],r2,[scd:r1]
+
+        cminit.di.f r2,[cm:GPA2],r2,[cd:r1]
+        cminit.di.f r2,[cm:GPA2],r2,[scd:r1]
+        cminit.di r2,[cm:GPA2],r2,[cd:r1]
+        cminit.di r2,[cm:GPA2],r2,[scd:r1]
+        cminit.di [cm:GPA2],r2,[cd:r1]
+        cminit.di [cm:GPA2],r2,[scd:r1]
+        cminit.di r2,[cd:r1]
+        cminit.di r2,[scd:r1]
+
+        cminit.rst.di.f r2,[cm:GPA2],r2,[cd:r1]
+        cminit.rst.di.f r2,[cm:GPA2],r2,[scd:r1]
+        cminit.rst.di r2,[cm:GPA2],r2,[cd:r1]
+        cminit.rst.di r2,[cm:GPA2],r2,[scd:r1]
+        cminit.rst.di r2,[cd:r1]
+        cminit.rst.di r2,[scd:r1]
+
+        crd.di.f r2,[cm:GPA2],[cd:r1]
+        crd.di.f r2,[cm:GPA2],[scd:r1]
+        crd.di r2,[cm:GPA2],[cd:r1]
+        crd.di r2,[cm:GPA2],[scd:r1]
+        crd.di [cm:GPA2],[cd:r1]
+        crd.di [cm:GPA2],[scd:r1]
+
+        cwrdb.di.f r2,[cm:GPA2],[cd:r1]
+        cwrdb.di.f r2,[cm:GPA2],[scd:r1]
+        cwrdb.di r2,[cm:GPA2],[cd:r1]
+        cwrdb.di r2,[cm:GPA2],[scd:r1]
+        cwrdb.di [cm:GPA2],[cd:r1]
+        cwrdb.di [cm:GPA2],[scd:r1]
+
+        cwrde.di.f r2,[cm:GPA2],[cd:r1]
+        cwrde.di.f r2,[cm:GPA2],[scd:r1]
+        cwrde.di r2,[cm:GPA2],[cd:r1]
+        cwrde.di r2,[cm:GPA2],[scd:r1]
+        cwrde.di [cm:GPA2],[cd:r1]
+        cwrde.di [cm:GPA2],[scd:r1]
+
+        crst.di.f r2,[cm:GPA2],[cd:r1]
+        crst.di.f r2,[cm:GPA2],[scd:r1]
+        crst.di r2,[cm:GPA2],[cd:r1]
+        crst.di r2,[cm:GPA2],[scd:r1]
+        crst.di [cd:r1]
+        crst.di [scd:r1]
+
+        cincr.di.f r1,r1,[cd:r2],r1
+        cincr.di r1,r1,[cd:r2],r1
+        cincr.di.f r1,[cm:GPA2],r1,[cd:r2]
+        cincr.di r1,[cm:GPA2],r1,[cd:r2]
+        cincr.di [cm:GPA2],r1,[cd:r2]
+        cincr.di r1,[cd:r2]
+
+        cdecr.di.f r1,r1,[cd:r2],r1
+        cdecr.di r1,r1,[cd:r2],r1
+        cdecr.di.f r1,[cm:GPA2],r1,[cd:r2]
+        cdecr.di r1,[cm:GPA2],r1,[cd:r2]
+        cdecr.di [cm:GPA2],r1,[cd:r2]
+        cdecr.di r1,[cd:r2]
+
+        cincr1.di.f r1,r1,[cd:r2]
+        cincr1.di r1,r1,[cd:r2]
+        cincr1.di.f r1,[cm:GPA2],r1,[cd:r2]
+        cincr1.di r1,[cm:GPA2],r1,[cd:r2]
+        cincr1.di [cm:GPA2],r1,[cd:r2]
+        cincr1.di r1,[cd:r2]
+
+        cdecr1.di.f r1,r1,[cd:r2]
+        cdecr1.di r1,r1,[cd:r2]
+        cdecr1.di.f r1,[cm:GPA2],r1,[cd:r2]
+        cdecr1.di r1,[cm:GPA2],r1,[cd:r2]
+        cdecr1.di [cm:GPA2],r1,[cd:r2]
+        cdecr1.di r1,[cd:r2]
+
+        cdecrc.di.f r1,[cm:GPA2],r1,[cd:r2]
+        cdecrc.di r1,[cm:GPA2],r1,[cd:r2]
+        cdecrc.di [cm:GPA2],r1,[cd:r2]
+        cdecrc.di r1,[cd:r2]
+
+        cdincr.di.f r1,[cm:GPA2],r1,[cd:r2]
+        cdincr.di r1,[cm:GPA2],r1,[cd:r2]
+        cdincr.di [cm:GPA2],r1,[cd:r2]
+        cdincr.di r1,[cd:r2]
+
+        cbset.di.f r1,r1,[cd:r2]
+        cbset.di r1,r1,[cd:r2]
+        cbset.di.f r1,[cm:GPA2],r1,[cd:r2]
+        cbset.di r1,[cm:GPA2],r1,[cd:r2]
+        cbset.di [cm:GPA2],r1,[cd:r2]
+        cbset.di r1,[cd:r2]
+
+        cbclr.di.f r1,r1,[cd:r2]
+        cbclr.di r1,r1,[cd:r2]
+        cbclr.di.f r1,[cm:GPA2],r1,[cd:r2]
+        cbclr.di r1,[cm:GPA2],r1,[cd:r2]
+        cbclr.di [cm:GPA2],r1,[cd:r2]
+        cbclr.di r1,[cd:r2]
+
+        cbwr.di.f r1,r1,[cd:r2]
+        cbwr.di r1,r1,[cd:r2]
+        cbwr.di.f r1,[cm:GPA2],r1,[cd:r2]
+        cbwr.di r1,[cm:GPA2],r1,[cd:r2]
+        cbwr.di [cm:GPA2],r1,[cd:r2]
+        cbwr.di r1,[cd:r2]
+
+        cbrd.di.f r1,r1,[cd:r2]
+        cbrd.di r1,r1,[cd:r2]
+        cbrd.di.f r1,[cm:GPA2],r1,[cd:r2]
+        cbrd.di r1,[cm:GPA2],r1,[cd:r2]
+        cbrd.di [cm:GPA2],r1,[cd:r2]
+
+        cbcswp.di.f r1,r1,[cd:r2]
+        cbcswp.di r1,r1,[cd:r2]
+        cbcswp.di.f r1,[cm:GPA2],r1,[cd:r2]
+        cbcswp.di r1,[cm:GPA2],r1,[cd:r2]
+        cbcswp.di [cm:GPA2],r1,[cd:r2]
+
+        cftch.di [cd:r2]
+
+        cgetc.di r1,r2,[cd:r2]
+        cgetc.di.f r1,r2,[cd:r2]
+        cgetc.di r2,[cd:r2]
+        cgetc.di.f r2,[cd:r2]
+        cgetc.di [cm:GPA2],r1,[cd:r2]
+
+        cchkc.di r2,r2,[cd:r2]
+        cchkc.di r1,[cd:r2]
+        cchkc.di [cm:GPA2],r1,[cd:r2]
+
+        cld.di r1,[cm:GPA2],[cd:r2]
+        cld.di r1,[cm:GPA2],[scd:r2]
+        cld.di [cm:GPA2],[cd:r2]
+        cld.di [cm:GPA2],[scd:r2]
+
+        cmld.di r1,[cm:GPA2],[cd:r2]
+        cmld.di r1,[cm:GPA2],[scd:r2]
+        cmld.di [cm:GPA2],[cd:r2]
+        cmld.di [cm:GPA2],[scd:r2]
+
+        cst.di r1,[cm:GPA2],r1,[cd:r2]
+        cst.di r1,[cm:GPA2],r1,[scd:r2]
+        cst.di [cm:GPA2],r1,[cd:r2]
+        cst.di [cm:GPA2],r1,[scd:r2]
+        cst.di r2,[cd:r2]
+        cst.di r2,[scd:r2]
+
+        cmst.di r1,[cm:GPA2],r1,[cd:r2]
+        cmst.di r1,[cm:GPA2],r1,[scd:r2]
+        cmst.di [cm:GPA2],r1,[cd:r2]
+        cmst.di [cm:GPA2],r1,[scd:r2]
+        cmst.di r2,[cd:r2]
+        cmst.di r2,[scd:r2]
+
+        cwcfg.di r1,[cm:GPA2],r1,[cd:r2]
+        cwcfg.di r1,[cm:GPA2],r1,[scd:r2]
+        cwcfg.di.f r1,[cm:GPA2],r1,[cd:r2]
+        cwcfg.di.f r1,[cm:GPA2],r1,[scd:r2]
+        cwcfg.di [cm:GPA2],r1,[cd:r2]
+        cwcfg.di [cm:GPA2],r1,[scd:r2]
+        cwcfg.di r2,[cd:r2]
+        cwcfg.di r2,[scd:r2]
+
+        cwchk.di r1,r1,[cm:GPA2],[cd:r2]
+        cwchk.di.f r1,r1,[cm:GPA2],[cd:r2]
+        cwchk.di r1,[cm:GPA2],[cd:r2]
+        cwchk.di r2,[cd:r2]
+
+        cgi.di r1,r1,[cm: GPA2],[cd:r2],0x10,0x18
+        cgi.di.f r1,r1,[cm: GPA2],[cd:r2],0x10,0x18
+        cgi.di.f r1,r1,[cm: GPA2],[cd:r2],0x8,0x1e
+        cgi.di.f r1,r1,[cm: GPA2],[cd:r2],0x4,0x1
+        cgi.di.f r1,r1,[cm: GPA2],[cd:r2],0x2,0x8
+        cgi.di.f r1,r1,[cm: GPA2],[cd:r2],0x1,0xf
+        cgi.di r1,[cm: GPA2],[cd:r2],0x10,0x18
+        cgi.di r1,[cm: GPA2],[cd:r2],0x8,0x16
+        cgi.di r1,[cm: GPA2],[cd:r2],0x4,0x1
+        cgi.di r1,[cm: GPA2],[cd:r2],0x2,0x18
+        cgi.di r1,[cm: GPA2],[cd:r2],0x1,0x6
+        cgi.di r1,[cd:r2],0x10,0x18
+        cgi.di r1,[cd:r2],0x8,0x18
+        cgi.di r1,[cd:r2],0x4,0x18
+        cgi.di r1,[cd:r2],0x2,0x1
+        cgi.di r1,[cd:r2],0x1,0x18
+        cgi.di r1,r1,[cd:r2],0x10,0x1
+        cgi.di r1,r1,[cd:r2],0x8,0x18
+        cgi.di r1,r1,[cd:r2],0x4,0x18
+        cgi.di r1,r1,[cd:r2],0x2,0x18
+        cgi.di r1,r1,[cd:r2],0x1,0x18
