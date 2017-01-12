@@ -1,3 +1,7 @@
+2017-01-11  Rinat Zelig  <rinat@mellanox.com>
+
+	* arc-nps400-tbl.h: add bdalc,idxalc,jobalc,jobbgt witn no dst.
+
 2016-12-21  Rinat Zelig  <rinat@mellanox.com>
 
 	* arc-nps400-tbl.h: Add cp instructions.

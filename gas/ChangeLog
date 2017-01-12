@@ -1,3 +1,8 @@
+2016-01-11  Rinat Zelig  <rinat@mellanox.com>
+
+	* testsuite/gas/arc/nps400-14.8: add bdalc,idxalc,jobalc jobbgt,witn no dst.
+	* testsuite/gas/arc/nps400-14.8: add bdalc,idxalc,jobalc jobbgt,witn no dst.
+
 2016-12-21  Rinat Zelig  <rinat@mellanox.com>
 
 	* testsuite/gas/arc/nps400-14.s: New file.

@@ -6,6 +6,8 @@
         bdalc r0,[cm:r0],r0,0,1
         bdalc r2,[cm:r3],r3,1,1
         bdalc r3,[cm:r4],r4,1,8
+        bdalc 0, [cm:r0], r0, r1
+        bdalc 0, [cm:r0], r0, 0, 4
         sbdalc r0, r0, 0
         sbdalc r3, r4, 1
 
@@ -29,6 +31,8 @@
         idxalc r0,[cm:r0],r0,r0
         idxalc r1,[cm:r2],r2,r3
         idxalc r4,[cm:r5],r5,2
+        idxalc 0, [cm:r0], r0, r1
+        idxalc 0, [cm:r0], r0, 4
         sidxalc r0,r0
         sidxalc r4,r2
 
@@ -75,14 +79,16 @@
         jobalc r1,[cm:r2],r2,r3
         jobalc r0,[cm:r0],r0,1
         jobalc r1,[cm:r2],r2,4
+        jobalc 0, [cm:r3], r3, 1
+        jobalc 0, [cm:r3], r3, r4
         sjobalc r0,r0
         sjobalc r6,r5
-
+        sjobalc 0, r9
         ;; jobbgt
 
         jobbgt r0,r0,r0
         jobbgt r2,r5,r6
-
+        jobbgt 0, r0, r1
         ;; cnljob
 
         cnljob 0
@@ -90,3 +96,4 @@
         ;; qseq
         qseq r0,[r0]
         qseq r2,[r4]
+

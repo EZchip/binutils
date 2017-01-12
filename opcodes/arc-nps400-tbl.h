@@ -588,8 +588,14 @@ XLDST_LIKE("xst", 0xe)
 /* bdalc dst, [cm:src1], src1, src2 */
 { "bdalc", 0x38100000, 0xf8ff0000, ARC_OPCODE_ARC700, BMU, NPS400, { RA, BRAKET, NPS_CM, COLON, RB, BRAKETdup, RBdup,  RC }, { 0 }},
 
+/* bdalc 0, [cm:src1], src1, src2 */
+{ "bdalc", 0x3810003e, 0xf8ff003f, ARC_OPCODE_ARC700, BMU, NPS400, { ZA, BRAKET, NPS_CM, COLON, RB, BRAKETdup, RBdup,  RC }, { 0 }},
+
 /* bdalc dst, [cm:src1], src1, type, num_buff */
 { "bdalc", 0x38500800, 0xf8ff0800, ARC_OPCODE_ARC700, BMU, NPS400, { RA, BRAKET, NPS_CM, COLON, RB, BRAKETdup, RBdup, NPS_BD_TYPE, NPS_BMU_NUM }, { 0 }},
+
+/* bdalc 0, [cm:src1], src1, type, num_buff */
+{ "bdalc", 0x3850083e, 0xf8ff083f, ARC_OPCODE_ARC700, BMU, NPS400, { ZA, BRAKET, NPS_CM, COLON, RB, BRAKETdup, RBdup, NPS_BD_TYPE, NPS_BMU_NUM }, { 0 }},
 
 /* sbdfre 0, src1, src2 */
 { "sbdfre", 0x3817003e, 0xf8ff003f, ARC_OPCODE_ARC700, BMU, NPS400, { ZA, RB, RC }, { 0 }},
@@ -612,8 +618,14 @@ XLDST_LIKE("xst", 0xe)
 /* idxalc dst, [cm:src1], src1, src2 */
 { "idxalc", 0x381c0000, 0xf8ff0000, ARC_OPCODE_ARC700, BMU, NPS400, { RA, BRAKET, NPS_CM, COLON, RB, BRAKETdup, RBdup, RC }, { 0 }},
 
+/* idxalc 0, [cm:src1], src1, src2 */
+{ "idxalc", 0x381c003e, 0xf8ff003f, ARC_OPCODE_ARC700, BMU, NPS400, { ZA, BRAKET, NPS_CM, COLON, RB, BRAKETdup, RBdup, RC }, { 0 }},
+
 /* idxalc dst, [cm:src1], src1, num_idx */
 { "idxalc", 0x385c0800, 0xf8ff0800, ARC_OPCODE_ARC700, BMU, NPS400, { RA, BRAKET, NPS_CM, COLON, RB, BRAKETdup, RBdup, NPS_BMU_NUM }, { 0 }},
+
+/* idxalc 0, [cm:src1], src1, num_idx */
+{ "idxalc", 0x385c083e, 0xf8ff083f, ARC_OPCODE_ARC700, BMU, NPS400, { ZA, BRAKET, NPS_CM, COLON, RB, BRAKETdup, RBdup, NPS_BMU_NUM }, { 0 }},
 
 /* sidxfre 0, src1, src2 */
 { "sidxfre", 0x381d003e, 0xf8ff003f, ARC_OPCODE_ARC700, BMU, NPS400, { ZA, RB, RC }, { 0 }},
@@ -661,13 +673,25 @@ XLDST_LIKE("xst", 0xe)
 /* sjobalc dst, src1 */
 { "sjobalc", 0x385f0040, 0xf8ff8fc0, ARC_OPCODE_ARC700, PMU, NPS400, { RA, RB }, { 0 }},
 
+/* sjobalc 0, src1 */
+{ "sjobalc", 0x385f007e, 0xf8ff8fff, ARC_OPCODE_ARC700, PMU, NPS400, { ZA, RB }, { 0 }},
+
 /* jobalc dst, [cm:src1], src1, num_job */
 { "jobalc", 0x385f0800, 0xf8ff8800, ARC_OPCODE_ARC700, PMU, NPS400, { RA, BRAKET, NPS_CM, COLON, RB, BRAKETdup, RBdup, NPS_PMU_NUM_JOB }, { 0 }},
+
+/* jobalc 0, [cm:src1], src1, num_job */
+{ "jobalc", 0x385f083e, 0xf8ff883f, ARC_OPCODE_ARC700, PMU, NPS400, { ZA, BRAKET, NPS_CM, COLON, RB, BRAKETdup, RBdup, NPS_PMU_NUM_JOB }, { 0 }},
 
 /* jobalc dst, [cm:src1], src1, src2 */
 { "jobalc", 0x381f0000, 0xf8ff8000, ARC_OPCODE_ARC700, PMU, NPS400, { RA, BRAKET, NPS_CM, COLON, RB, BRAKETdup, RBdup, RC }, { 0 }},
 
+/* jobalc 0, [cm:src1], src1, src2 */
+{ "jobalc", 0x381f003e, 0xf8ff803f, ARC_OPCODE_ARC700, PMU, NPS400, { ZA, BRAKET, NPS_CM, COLON, RB, BRAKETdup, RBdup, RC }, { 0 }},
+
 /* jobbgt dst, src1, src2 */
+{ "jobbgt", 0x381a003e, 0xf8ff003f, ARC_OPCODE_ARC700, PMU, NPS400, { ZA, RB, RC }, { 0 }},
+
+/* jobbgt 0, src1, src2 */
 { "jobbgt", 0x381a0000, 0xf8ff0000, ARC_OPCODE_ARC700, PMU, NPS400, { RA, RB, RC }, { 0 }},
 
 /* cnljob 0 */
