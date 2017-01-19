@@ -1,5 +1,9 @@
 2016-10-10  Rinat Zelig  <rinat@mellanox.com>
 
+	* opcode/arc.h (insn_class_t): Add ULTRAIP and MISC class.
+
+2016-10-10  Rinat Zelig  <rinat@ezchip.com>
+
 	* opcode/arc.h (insn_class_t): Add DMA class.
 
 2017-01-02  Alan Modra  <amodra@gmail.com>

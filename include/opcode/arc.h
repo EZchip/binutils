@@ -64,7 +64,9 @@ typedef enum
   PMU,
   STORE,
   XY,
-  DMA
+  DMA,
+  ULTRAIP,
+  MISC
 } insn_class_t;
 
 /* Instruction Subclass.  */

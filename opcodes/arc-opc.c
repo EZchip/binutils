@@ -896,6 +896,51 @@ extract_nps_imm_entry (unsigned insn ATTRIBUTE_UNUSED,
   return (1 << (imm_entry+4));
 }
 
+static unsigned
+insert_nps_misc_imm_offset (unsigned insn ATTRIBUTE_UNUSED,
+                        int value ATTRIBUTE_UNUSED,
+                        const char **errmsg ATTRIBUTE_UNUSED)
+{
+
+  if (value & 0x3)
+  {
+    *errmsg = _("Invalid position, should be 0,4, 8,...124.");
+    value = 0;
+  }
+  insn |= (value << 6);
+  return insn;
+}
+
+static int
+extract_nps_misc_imm_offset (unsigned insn ATTRIBUTE_UNUSED,
+                         bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  return ((insn >> 8) & 0x1f) * 4;
+}
+
+static unsigned
+insert_nps_size_16bit (unsigned insn ATTRIBUTE_UNUSED,
+                        int value ATTRIBUTE_UNUSED,
+                        const char **errmsg ATTRIBUTE_UNUSED)
+{
+
+  if ( (value < 1 ) || (value > 64))
+  {
+    *errmsg = _("Invalid size value must be on range 1-64.");
+    value = 0;
+  }
+  value = value & 0x3f;
+  insn |= (value << 6);
+  return insn;
+}
+
+static int
+extract_nps_size_16bit (unsigned insn ATTRIBUTE_UNUSED,
+                         bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  return ((insn & 0xfc0) >> 6) ? ((insn & 0xfc0) >> 6) : 64;
+}
+
 #define MAKE_SRC_POS_INSERT_EXTRACT_FUNCS(NAME,SHIFT)         \
 static unsigned long long                                               \
 insert_nps_##NAME##_pos (unsigned long long insn ATTRIBUTE_UNUSED,      \
@@ -1264,9 +1309,15 @@ const struct arc_flag_operand arc_flag_operands[] =
   { "ls", 14, 5, 0, 1 },
 #define F_PNZ	   (F_LS + 1)
   { "pnz", 15, 5, 0, 1 },
+#define F_NJ	   (F_PNZ + 1)
+  { "nj", 21, 5, 0, 1 },
+#define F_NM	   (F_NJ + 1)
+  { "nm", 23, 5, 0, 1 },
+#define F_NO_T	   (F_NM + 1)
+  { "nt", 24, 5, 0, 1 },
 
   /* FLAG.  */
-#define F_FLAG     (F_PNZ + 1)
+#define F_FLAG     (F_NO_T + 1)
   { "f",  1, 1, 15, 1 },
 #define F_FFAKE     (F_FLAG + 1)
   { "f",  0, 0, 0, 1 },
@@ -1366,7 +1417,13 @@ const struct arc_flag_operand arc_flag_operands[] =
 #define F_NPS_NA (F_NPS_CL + 1)
   { "na", 1, 1, 9, 1 },
 
-#define F_NPS_FLAG (F_NPS_NA + 1)
+#define F_NPS_SR (F_NPS_NA + 1)
+  { "s", 1, 1, 13, 1 },
+
+#define F_NPS_M (F_NPS_SR + 1)
+  { "m", 1, 1, 7, 1 },
+
+#define F_NPS_FLAG (F_NPS_M + 1)
   { "f", 1, 1, 20, 1 },
 
 #define F_NPS_R     (F_NPS_FLAG + 1)
@@ -1452,6 +1509,21 @@ const struct arc_flag_operand arc_flag_operands[] =
 
 #define F_NPS_LDBIT_X4_2      (F_NPS_LDBIT_X4_1 + 1)
   { "x4", 2, 2, 22, 1 },
+
+#define F_NPS_CORE     (F_NPS_LDBIT_X4_2 + 1)
+  { "core", 1, 3, 6, 1 },
+
+#define F_NPS_CLSR     (F_NPS_CORE + 1)
+  { "clsr", 2, 3, 6, 1 },
+
+#define F_NPS_ALL     (F_NPS_CLSR + 1)
+  { "all", 3, 3, 6, 1 },
+
+#define F_NPS_GIC     (F_NPS_ALL + 1)
+  { "gic", 4, 3, 6, 1 },
+
+#define F_NPS_RSPI_GIC     (F_NPS_GIC + 1)
+  { "gic", 5, 3, 6, 1 },
 };
 
 const unsigned arc_num_flag_operands = ARRAY_SIZE (arc_flag_operands);
@@ -1472,7 +1544,7 @@ const struct arc_flag_class arc_flag_classes[] =
       F_CARRY, F_CARRYSET, F_LOWER, F_CARRYCLR,
       F_NOTCARRY, F_HIGHER, F_OVERFLOWSET, F_OVERFLOW,
       F_NOTOVERFLOW, F_OVERFLOWCLR, F_GT, F_GE, F_LT,
-      F_LE, F_HI, F_LS, F_PNZ, F_NULL } },
+      F_LE, F_HI, F_LS, F_PNZ, F_NJ, F_NM, F_NO_T, F_NULL } },
 
 #define C_AA_ADDR3  (C_CC + 1)
 #define C_AA27	    (C_CC + 1)
@@ -1536,7 +1608,13 @@ const struct arc_flag_class arc_flag_classes[] =
 #define C_NPS_NA     (C_NPS_CL + 1)
   { F_CLASS_OPTIONAL, { F_NPS_NA, F_NULL}},
 
-#define C_NPS_F     (C_NPS_NA + 1)
+#define C_NPS_SR     (C_NPS_NA + 1)
+  { F_CLASS_OPTIONAL, { F_NPS_SR, F_NULL}},
+
+#define C_NPS_M     (C_NPS_SR + 1)
+  { F_CLASS_OPTIONAL, { F_NPS_M, F_NULL}},
+
+#define C_NPS_F     (C_NPS_M + 1)
   { F_CLASS_OPTIONAL, { F_NPS_FLAG, F_NULL}},
 
 #define C_NPS_R     (C_NPS_F + 1)
@@ -1598,6 +1676,21 @@ const struct arc_flag_class arc_flag_classes[] =
 
 #define C_NPS_LDBIT_X_2    (C_NPS_LDBIT_X_1 + 1)
   { F_CLASS_OPTIONAL, { F_NPS_LDBIT_X2_2, F_NPS_LDBIT_X4_2, F_NULL }},
+
+#define C_NPS_CORE     (C_NPS_LDBIT_X_2 + 1)
+  { F_CLASS_REQUIRED, { F_NPS_CORE, F_NULL}},
+
+#define C_NPS_CLSR     (C_NPS_CORE + 1)
+  { F_CLASS_REQUIRED, { F_NPS_CLSR, F_NULL}},
+
+#define C_NPS_ALL     (C_NPS_CLSR + 1)
+  { F_CLASS_REQUIRED, { F_NPS_ALL, F_NULL}},
+
+#define C_NPS_GIC     (C_NPS_ALL + 1)
+  { F_CLASS_REQUIRED, { F_NPS_GIC, F_NULL}},
+
+  #define C_NPS_RSPI_GIC     (C_NPS_GIC + 1)
+  { F_CLASS_REQUIRED, { F_NPS_RSPI_GIC, F_NULL}},
 };
 
 const unsigned char flags_none[] = { 0 };
@@ -2196,7 +2289,10 @@ const struct arc_operand arc_operands[] =
 #define NPS_PMU_NXT_DST     (NPS_BMU_NUM + 1)
   { 4, 6, 0, ARC_OPERAND_UNSIGNED, NULL, NULL },
 
-#define NPS_PMU_NUM_JOB     (NPS_PMU_NXT_DST + 1)
+#define NPS_WHASH_SIZE     (NPS_PMU_NXT_DST + 1)
+  { 6, 6, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_size_16bit, extract_nps_size_16bit },
+
+#define NPS_PMU_NUM_JOB     (NPS_WHASH_SIZE + 1)
   { 2, 6, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_pmu_num_job, extract_nps_pmu_num_job },
 
 #define NPS_DMA_IMM_ENTRY  (NPS_PMU_NUM_JOB + 1)
@@ -2204,6 +2300,12 @@ const struct arc_operand arc_operands[] =
 
 #define NPS_DMA_IMM_OFFSET  (NPS_DMA_IMM_ENTRY + 1)
   { 4, 10, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_imm_offset, extract_nps_imm_offset },
+
+#define NPS_MISC_IMM_SIZE  (NPS_DMA_IMM_OFFSET + 1)
+  { 7, 0, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_MISC_IMM_OFFSET  (NPS_MISC_IMM_SIZE + 1)
+  { 5, 8, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_misc_imm_offset, extract_nps_misc_imm_offset },
 
 #define NPS_R_DST_3B_48	(NPS_DMA_IMM_OFFSET + 1)
   { 3, 40, 0, ARC_OPERAND_IR | ARC_OPERAND_NCHK, insert_nps_3bit_reg_at_40_dst, extract_nps_3bit_reg_at_40_dst },
@@ -2336,7 +2438,8 @@ const struct arc_flag_special arc_flag_special_cases[] =
   { "b", { F_ALWAYS, F_RA, F_EQUAL, F_ZERO, F_NOTEQUAL, F_NOTZERO, F_POZITIVE,
 	   F_PL, F_NEGATIVE, F_MINUS, F_CARRY, F_CARRYSET, F_LOWER, F_CARRYCLR,
 	   F_NOTCARRY, F_HIGHER, F_OVERFLOWSET, F_OVERFLOW, F_NOTOVERFLOW,
-	   F_OVERFLOWCLR, F_GT, F_GE, F_LT, F_LE, F_HI, F_LS, F_PNZ, F_NULL } },
+	   F_OVERFLOWCLR, F_GT, F_GE, F_LT, F_LE, F_HI, F_LS, F_PNZ, F_NJ, F_NM,
+	   F_NO_T, F_NULL } },
   { "bl", { F_ALWAYS, F_RA, F_EQUAL, F_ZERO, F_NOTEQUAL, F_NOTZERO, F_POZITIVE,
 	    F_PL, F_NEGATIVE, F_MINUS, F_CARRY, F_CARRYSET, F_LOWER, F_CARRYCLR,
 	    F_NOTCARRY, F_HIGHER, F_OVERFLOWSET, F_OVERFLOW, F_NOTOVERFLOW,

@@ -3992,7 +3992,7 @@ assemble_insn (const struct arc_opcode *opcode,
 	 just as it is.  The .T flag must be handled in relation with
 	 the relative address.  */
       if (!strcmp (flg_operand->name, "t")
-	  || !strcmp (flg_operand->name, "nt"))
+	  || (!strcmp (flg_operand->name, "nt") && ( flg_operand->code == 0 ) ) )
 	{
 	  unsigned bitYoperand = 0;
 	  /* FIXME! move selection bbit/brcc in arc-opc.c.  */
