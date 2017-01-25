@@ -1315,9 +1315,11 @@ const struct arc_flag_operand arc_flag_operands[] =
   { "nm", 23, 5, 0, 1 },
 #define F_NO_T	   (F_NM + 1)
   { "nt", 24, 5, 0, 1 },
+#define F_AT	   (F_NO_T + 1)
+  { "at", 26, 5, 0, 1 },
 
   /* FLAG.  */
-#define F_FLAG     (F_NO_T + 1)
+#define F_FLAG     (F_AT + 1)
   { "f",  1, 1, 15, 1 },
 #define F_FFAKE     (F_FLAG + 1)
   { "f",  0, 0, 0, 1 },
@@ -1492,7 +1494,13 @@ const struct arc_flag_operand arc_flag_operands[] =
 #define F_NPS_LDBIT_DI      (F_NPS_P3 + 1)
   { "di", 0, 0, 0, 1 },
 
-#define F_NPS_LDBIT_CL1      (F_NPS_LDBIT_DI + 1)
+#define F_NPS_ATOMIC_DI      (F_NPS_LDBIT_DI + 1)
+  { "di", 1, 1, 14, 1 },
+
+#define F_NPS_ATOMIC_R      (F_NPS_ATOMIC_DI + 1)
+  { "r", 0, 0, 0, 1 },
+
+#define F_NPS_LDBIT_CL1      (F_NPS_ATOMIC_R + 1)
   { "cl", 1, 1, 6, 1 },
 
 #define F_NPS_LDBIT_CL2      (F_NPS_LDBIT_CL1 + 1)
@@ -1544,7 +1552,7 @@ const struct arc_flag_class arc_flag_classes[] =
       F_CARRY, F_CARRYSET, F_LOWER, F_CARRYCLR,
       F_NOTCARRY, F_HIGHER, F_OVERFLOWSET, F_OVERFLOW,
       F_NOTOVERFLOW, F_OVERFLOWCLR, F_GT, F_GE, F_LT,
-      F_LE, F_HI, F_LS, F_PNZ, F_NJ, F_NM, F_NO_T, F_NULL } },
+      F_LE, F_HI, F_LS, F_PNZ, F_NJ, F_NM, F_NO_T, F_AT, F_NULL } },
 
 #define C_AA_ADDR3  (C_CC + 1)
 #define C_AA27	    (C_CC + 1)
@@ -1665,7 +1673,13 @@ const struct arc_flag_class arc_flag_classes[] =
 #define C_NPS_LDBIT_DI    (C_NPS_P3 + 1)
   { F_CLASS_REQUIRED, { F_NPS_LDBIT_DI, F_NULL }},
 
-#define C_NPS_LDBIT_CL1    (C_NPS_LDBIT_DI + 1)
+#define C_NPS_ATOMIC_DI    (C_NPS_LDBIT_DI + 1)
+  { F_CLASS_REQUIRED, { F_NPS_ATOMIC_DI, F_NULL }},
+
+#define C_NPS_ATOMIC_R    (C_NPS_ATOMIC_DI + 1)
+  { F_CLASS_REQUIRED, { F_NPS_ATOMIC_R, F_NULL }},
+
+#define C_NPS_LDBIT_CL1    (C_NPS_ATOMIC_R + 1)
   { F_CLASS_OPTIONAL, { F_NPS_LDBIT_CL1, F_NULL }},
 
 #define C_NPS_LDBIT_CL2    (C_NPS_LDBIT_CL1 + 1)
@@ -2439,7 +2453,7 @@ const struct arc_flag_special arc_flag_special_cases[] =
 	   F_PL, F_NEGATIVE, F_MINUS, F_CARRY, F_CARRYSET, F_LOWER, F_CARRYCLR,
 	   F_NOTCARRY, F_HIGHER, F_OVERFLOWSET, F_OVERFLOW, F_NOTOVERFLOW,
 	   F_OVERFLOWCLR, F_GT, F_GE, F_LT, F_LE, F_HI, F_LS, F_PNZ, F_NJ, F_NM,
-	   F_NO_T, F_NULL } },
+	   F_NO_T, F_AT, F_NULL } },
   { "bl", { F_ALWAYS, F_RA, F_EQUAL, F_ZERO, F_NOTEQUAL, F_NOTZERO, F_POZITIVE,
 	    F_PL, F_NEGATIVE, F_MINUS, F_CARRY, F_CARRYSET, F_LOWER, F_CARRYCLR,
 	    F_NOTCARRY, F_HIGHER, F_OVERFLOWSET, F_OVERFLOW, F_NOTOVERFLOW,

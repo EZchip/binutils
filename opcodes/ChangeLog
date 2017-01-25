@@ -1,3 +1,10 @@
+2016-11-17  Rinat Zelig  <rinat@mellanox.com>
+
+	* arc-nps400-tbl.h: Add Atomic operation instructions.
+	* arc-opc.c: Add defines F_NPS_ATOMIC_DI and F_AT.
+	(arc_flag_classes): Add F_AT.
+	(arc_flag_special_cases): Add F_AT.
+
 2016-11-09  Rinat Zelig  <rinat@mellanox.com>
 
 	* arc-nps400-tbl.h: Add Ultra Ip and Miscellaneous instructions format.

@@ -66,7 +66,8 @@ typedef enum
   XY,
   DMA,
   ULTRAIP,
-  MISC
+  MISC,
+  ATOMIC
 } insn_class_t;
 
 /* Instruction Subclass.  */
@@ -614,6 +615,42 @@ extern const unsigned char arg_32bit_limmlimm[MAX_INSN_ARGS + 1];
 extern const unsigned char arg_32bit_rc[MAX_INSN_ARGS + 1];
 extern const unsigned char arg_32bit_u6[MAX_INSN_ARGS + 1];
 extern const unsigned char arg_32bit_limm[MAX_INSN_ARGS + 1];
+
+/* Atomic operation entry size used in the NPS-400. See chapter 4.13 of the NPS-400 CTOP
+   Instruction Set Reference Manual v2.4 for a description of entry size.  */
+
+typedef enum
+{
+  /* Atomic operation entry size.  */
+
+  ARC_NPS400_ATOMIC_ENTRY_SIZE_1 = 1,
+
+  ARC_NPS400_ATOMIC_ENTRY_SIZE_2,
+
+  ARC_NPS400_ATOMIC_ENTRY_SIZE_4,
+
+  ARC_NPS400_ATOMIC_ENTRY_SIZE_8,
+
+  ARC_NPS400_ATOMIC_ENTRY_SIZE_16,
+
+} arc_nps_atomic_entry_size;
+
+/* Atomic operation size used in the NPS-400. See chapter 4.13 of the NPS-400 CTOP
+   Instruction Set Reference Manual v2.4 for a description of size.  */
+
+typedef enum
+{
+  /* Atomic operation size.  */
+
+  ARC_NPS400_ATOMIC_SIZE_4,
+
+  ARC_NPS400_ATOMIC_SIZE_1,
+
+  ARC_NPS400_ATOMIC_SIZE_2,
+
+  ARC_NPS400_ATOMIC_SIZE_8
+
+} arc_nps_atomic_size;
 
 /* Address types used in the NPS-400. See page 367 of the NPS-400 CTOP
    Instruction Set Reference Manual v2.4 for a description of address types.  */
