@@ -1,3 +1,8 @@
+2016-01-12  Rinat Zelig  <rinat@mellanox.com>
+
+	* testsuite/gas/arc/nps400-11.8: add mmnt instruction test.
+	* testsuite/gas/arc/nps400-11.8: add mmnt instruction test.
+
 2016-01-11  Rinat Zelig  <rinat@mellanox.com>
 
 	* testsuite/gas/arc/nps400-14.8: add bdalc,idxalc,jobalc jobbgt,witn no dst.

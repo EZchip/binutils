@@ -1000,8 +1000,43 @@ ASRI_LIKE (0x4, C_NPS_GIC)
 /*getrtc 0, [cm:src2]*/
 { "getrtc", 0x3e2f7025, 0xfffff03f, ARC_OPCODE_ARC700, MISC, NPS400, { ZA, BRAKET, NPS_CM, COLON, RC, BRAKETdup }, { 0 }},
 
-/* Atomic operation instructions*/
+/* mmnt 0,[src1], mnt_code */
+{ "mmnt", 0x57c007c500000008 , 0xffe007ff0fffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, NPS_RBdouble_64, BRAKETdup, NPS_MNT_CODE}, { 0 }},
 
+/* mmnt 0,[src1], src2 */
+{ "mmnt", 0x57c007c500000000 , 0xffe007ff0fffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, NPS_RB_64, BRAKETdup, NPS_RC_64}, { 0 }},
+
+/* mmnt 0,[xa: src1], mnt_code */
+{ "mmnt", 0x57c007c500000009 , 0xffe007ff0fffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, NPS_XA , COLON, NPS_RBdouble_64, BRAKETdup, NPS_MNT_CODE}, { 0 }},
+
+/* mmnt 0,[xa: src1], src2 */
+{ "mmnt", 0x57c007c500000001 , 0xffe007ff0fffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, NPS_XA , COLON, NPS_RB_64, BRAKETdup, NPS_RC_64}, { 0 }},
+
+/* mmnt 0,[sd: src1, entry_size, offset], mnt_code */
+{ "mmnt", 0x57c007c50000001b , 0xffe007ff00fe00ff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, NPS_SD, COLON, NPS_RBdouble_64, NPS_MMNT_ENTRY_SIZE, NPS_MMNT_OFFSET, BRAKETdup, NPS_MNT_CODE}, { 0 }},
+
+/* mmnt 0,[sd: src1, entry_size, offset], src2 */
+{ "mmnt", 0x57c007c500000013 , 0xffe007ff00fe00ff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, NPS_SD, COLON, NPS_RB_64, NPS_MMNT_ENTRY_SIZE, NPS_MMNT_OFFSET, BRAKETdup, NPS_RC_64}, { 0 }},
+
+/* mmnt 0,[sd: src1, src2, src2], mnt_code */
+{ "mmnt", 0x57c007c50000000b , 0xffe007ff0fffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, NPS_SD , COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_MNT_CODE}, { 0 }},
+
+/* mmnt 0,[sd: src1, src2, src2], src2 */
+{ "mmnt", 0x57c007c500000003 , 0xffe007ff0fffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, NPS_SD , COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64}, { 0 }},
+
+/* mmnt 0,[xd: src1, entry_size, offset], mnt_code */
+{ "mmnt", 0x57c007c50000001c , 0xffe007ff00fe00ff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, NPS_XD, COLON, NPS_RBdouble_64, NPS_MMNT_ENTRY_SIZE, NPS_MMNT_OFFSET, BRAKETdup, NPS_MNT_CODE}, { 0 }},
+
+/* mmnt 0,[xd: src1, entry_size, offset], src2 */
+{ "mmnt", 0x57c007c500000014 , 0xffe007ff00fe00ff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, NPS_XD, COLON, NPS_RB_64, NPS_MMNT_ENTRY_SIZE, NPS_MMNT_OFFSET, BRAKETdup, NPS_RC_64}, { 0 }},
+
+/* mmnt 0,[xd: src1, src2, src2], mnt_code */
+{ "mmnt", 0x57c007c50000000c , 0xffe007ff0fffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, NPS_XD , COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_MNT_CODE}, { 0 }},
+
+/* mmnt 0,[xd: src1, src2, src2], src2 */
+{ "mmnt", 0x57c007c500000004 , 0xffe007ff0fffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, NPS_XD , COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64}, { 0 }},
+
+/* Atomic operation instructions*/
 /* atomic_op{b,w,l}.di<.f> dst,src1,[xa/sd/xd:src2] */
 #define ATOMIC_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
   { NAME, 0x48064000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},

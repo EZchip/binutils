@@ -1182,8 +1182,6 @@ insert_nps_cp_sum_addr_offset (unsigned long long insn ATTRIBUTE_UNUSED,
                             long long int value ATTRIBUTE_UNUSED,
                             const char **errmsg ATTRIBUTE_UNUSED)
 {
-  unsigned pwr;
-
   if (value < 0 || value > 240)
     {
       *errmsg = _("value out of range 0 - 240");
@@ -1211,8 +1209,6 @@ insert_nps_cp_sum_addr_size (unsigned long long insn ATTRIBUTE_UNUSED,
                             long long int value ATTRIBUTE_UNUSED,
                             const char **errmsg ATTRIBUTE_UNUSED)
 {
-  unsigned pwr;
-
   if (value < 1 || value > 240)
     {
       *errmsg = _("value out of range 0 - 256");
@@ -1234,33 +1230,62 @@ extract_nps_cp_sum_addr_size (unsigned long long insn ATTRIBUTE_UNUSED,
 }
 
 static unsigned long long
-insert_nps_cp_offset (unsigned long long insn ATTRIBUTE_UNUSED,
+insert_nps_mmnt_offset (unsigned long long insn ATTRIBUTE_UNUSED,
+                            long long int value ATTRIBUTE_UNUSED,
+                            const char **errmsg ATTRIBUTE_UNUSED)
+{
+  if (value < 0 || value > 240)
+   {
+    *errmsg = _("value out of range 0 - 240");
+    return 0;
+   }
+
+  if (value & 0xf)
+    {
+      *errmsg = _("Illegal offset value (valid values: 0,16,32,48,64... 240)");
+      return 0;
+    }
+   return insn | ((value >> 4) << 24);
+}
+
+static long long int
+extract_nps_mmnt_offset (unsigned long long insn ATTRIBUTE_UNUSED,
+                             bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  unsigned offset = (insn >> 24) & 0xf;
+  return (0x10 * offset);
+}
+
+static unsigned long long
+insert_nps_mmnt_entry_size (unsigned long long insn ATTRIBUTE_UNUSED,
                             long long int value ATTRIBUTE_UNUSED,
                             const char **errmsg ATTRIBUTE_UNUSED)
 {
   unsigned pwr;
+  long long int entry_size = value;
+  if (value < 1 || value > 256)
+   {
+    *errmsg = _("value out of range 0 - 256");
+    return 0;
+   }
 
-  if (value < 0 || value > 240)
-    {
-      *errmsg = _("value out of range 0 - 240");
-      return 0;
-    }
+  for (pwr = 0; (value & 1) == 0; value >>= 1)
+   ++pwr;
 
-  if( value & 0xF)
-  {
-      *errmsg = _("value must be mult of 16");
-      return 0;
-  }
+  if (value != 1)
+   {
+    *errmsg = _("Illegal entry_size value (valid values: 1,2,4,8,16,32,64,128,256 (power of 2))");
+    return 0;
+   }
 
-  return insn | (pwr << 10);
+   return insn | (entry_size  << 8);
 }
 
 static long long int
-extract_nps_cp_offset (unsigned long long insn ATTRIBUTE_UNUSED,
+extract_nps_mmnt_entry_size (unsigned long long insn ATTRIBUTE_UNUSED,
                              bfd_boolean * invalid ATTRIBUTE_UNUSED)
 {
-  unsigned offset = (insn >> 10) & 0xf;
-  return 1 << offset;
+  return (insn >> 8) & 0x1ff;
 }
 
 static unsigned long long
@@ -2381,10 +2406,13 @@ const struct arc_operand arc_operands[] =
 #define NPS_CP_ENTRY_SIZE	(NPS_CALC_ENTRY_SIZE + 1)
   { 0, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_cp_entry_size, extract_nps_cp_entry_size },
 
-#define NPS_CP_OFFSET	(NPS_CP_ENTRY_SIZE + 1)
-  { 0, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_cp_offset, extract_nps_cp_offset },
+#define NPS_MMNT_OFFSET	(NPS_CP_ENTRY_SIZE + 1)
+  { 0, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_mmnt_offset, extract_nps_mmnt_offset },
 
-#define NPS_R_DST_3B_SHORT	(NPS_CP_OFFSET + 1)
+#define NPS_MMNT_ENTRY_SIZE	(NPS_MMNT_OFFSET + 1)
+  { 0, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_mmnt_entry_size, extract_nps_mmnt_entry_size },
+
+#define NPS_R_DST_3B_SHORT	(NPS_MMNT_ENTRY_SIZE + 1)
   { 3, 8, 0, ARC_OPERAND_IR | ARC_OPERAND_NCHK, insert_nps_3bit_reg_at_8_dst, extract_nps_3bit_reg_at_8_dst },
 
 #define NPS_R_SRC1_3B_SHORT	(NPS_R_DST_3B_SHORT + 1)
@@ -2655,7 +2683,10 @@ const struct arc_operand arc_operands[] =
 #define NPS_UIMM16_0_64         (NPS_RC_64 + 1)
   { 16, 0, 0, ARC_OPERAND_UNSIGNED, NULL, NULL },
 
-#define NPS_SECURITY_SIZE  (NPS_UIMM16_0_64 + 1)
+#define NPS_MNT_CODE         (NPS_UIMM16_0_64 + 1)
+  { 4, 28, 0, ARC_OPERAND_UNSIGNED, NULL, NULL },
+
+#define NPS_SECURITY_SIZE  (NPS_MNT_CODE + 1)
   { 8, 5, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
 
 #define NPS_SECURITY_INIT  (NPS_SECURITY_SIZE + 1)

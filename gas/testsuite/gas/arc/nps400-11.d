@@ -57,3 +57,15 @@ Disassembly of section .text:
   bc:	07f8 ffd5           	bnj	-8
   c0:	07f4 ffd7           	bnm	-12
   c4:	07f0 ffd8           	bnt	-16
+  c8:	57c1 0fc5 2000 0008 	mmnt	0,\[r1\],0x2
+  d0:	57c1 17c5 0000 0000 	mmnt	0,\[r1\],r2
+  d8:	57c1 0fc5 a000 0009 	mmnt	0,\[xa:r1\],0xa
+  e0:	57c1 0fc5 4000 0009 	mmnt	0,\[xa:r1\],0x4
+  e8:	57c1 0fc5 2300 101b 	mmnt	0,\[sd:r1,0x10,0x30\],0x2
+  f0:	57c1 17c5 0400 2013 	mmnt	0,\[sd:r1,0x20,0x40\],r2
+  f8:	57c1 17c5 b000 000b 	mmnt	0,\[sd:r1,r2,r2\],0xb
+ 100:	57c1 17c5 0000 0003 	mmnt	0,\[sd:r1,r2,r2\],r2
+ 108:	57c1 0fc5 8200 401c 	mmnt	0,\[xd:r1,0x40,0x20\],0x8
+ 110:	57c1 17c5 0400 1014 	mmnt	0,\[xd:r1,0x10,0x40\],r2
+ 118:	57c1 17c5 9000 000c 	mmnt	0,\[xd:r1,r2,r2\],0x9
+ 120:	57c1 17c5 0000 0004 	mmnt	0,\[xd:r1,r2,r2\],r2

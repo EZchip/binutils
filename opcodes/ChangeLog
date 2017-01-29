@@ -1,3 +1,12 @@
+2017-01-12  Rinat Zelig  <rinat@mellanox.com>
+
+	* arc-nps400-tbl.h: add mmnt instruction.
+	* arc-opc.c: Add NPS_MNT_CODE,NPS_MMNT_ENTRY_SIZE,NPS_MMNT_OFFSET.
+	(insert_nps_mmnt_offset): New function.
+	(extract_nps_mmnt_offset): New function.
+	(insert_nps_mmnt_entry_size): New function.
+	(extract_nps_mmnt_entry_size): New function.	
+
 2017-01-11  Rinat Zelig  <rinat@mellanox.com>
 
 	* arc-nps400-tbl.h: add bdalc,idxalc,jobalc,jobbgt witn no dst.

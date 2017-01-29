@@ -69,3 +69,17 @@ label:
         bnj label
         bnm label
         bnt label
+
+        ; mmnt
+        mmnt 0,[r1], 0x2
+        mmnt 0,[r1], r2
+        mmnt 0,[xa:r1],0xa
+        mmnt 0,[xa:r1],0x4
+        mmnt 0,[sd:r1,0x10,0x30],0x2
+        mmnt 0,[sd:r1,0x20,0x40],r2
+        mmnt 0,[sd:r1,r2, r2],0xb
+        mmnt 0,[sd:r1,r2, r2],r2
+        mmnt 0,[xd:r1,0x40,0x20], 0x8
+        mmnt 0,[xd:r1,0x10,0x40], r2
+        mmnt 0,[xd:r1,r2, r2], 0x9
+        mmnt 0,[xd:r1,r2, r2], r2
