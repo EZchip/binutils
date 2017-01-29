@@ -832,6 +832,24 @@ extract_nps_cmem_uimm16 (unsigned long long insn ATTRIBUTE_UNUSED,
   return (NPS_CMEM_HIGH_VALUE << 16) | (insn & 0xffff);
 }
 
+static unsigned long long
+insert_nps_cmem_offset (unsigned long long insn ATTRIBUTE_UNUSED,
+                        long long int value ATTRIBUTE_UNUSED,
+                        const char **errmsg ATTRIBUTE_UNUSED)
+{
+  int top = (value >> 16) & 0xffff;
+  if (top != 0x0 && top != NPS_CMEM_HIGH_VALUE)
+    *errmsg = _("invalid value for CMEM ld/st immediate");
+  insn |= (value & 0xffff);
+  return insn;
+}
+
+static long long int
+extract_nps_cmem_offset (unsigned long long insn ATTRIBUTE_UNUSED,
+                         bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  return (insn & 0xffff);
+}
 static unsigned
 insert_nps_imm_offset (unsigned insn ATTRIBUTE_UNUSED,
                         int value ATTRIBUTE_UNUSED,
@@ -1119,6 +1137,130 @@ extract_nps_calc_entry_size (unsigned long long insn ATTRIBUTE_UNUSED,
 {
   unsigned entry_size = (insn >> 8) & 0xf;
   return 1 << entry_size;
+}
+
+static unsigned long long
+insert_nps_cp_entry_size (unsigned long long insn ATTRIBUTE_UNUSED,
+                            long long int value ATTRIBUTE_UNUSED,
+                            const char **errmsg ATTRIBUTE_UNUSED)
+{
+  unsigned pwr;
+
+  if (value < 1 || value > 256)
+    {
+      *errmsg = _("value out of range 1 - 256");
+      return 0;
+    }
+  if (value & 0xf)
+    {
+      *errmsg = _("Illegal entry size value (valid values: 16,32,64,128,256)");
+      return 0;
+    }
+  value = value >> 4;
+  for (pwr = 0; (value & 1) == 0; value >>= 1)
+    ++pwr;
+
+  if (value != 1)
+    {
+      *errmsg = _("value must be power of 2");
+      return 0;
+    }
+
+  return insn | (pwr << 20);
+}
+
+static long long int
+extract_nps_cp_entry_size (unsigned long long insn ATTRIBUTE_UNUSED,
+                             bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  unsigned entry_size = (insn >> 20) & 0x3;
+  return 16 << entry_size;
+}
+
+static unsigned long long
+insert_nps_cp_sum_addr_offset (unsigned long long insn ATTRIBUTE_UNUSED,
+                            long long int value ATTRIBUTE_UNUSED,
+                            const char **errmsg ATTRIBUTE_UNUSED)
+{
+  unsigned pwr;
+
+  if (value < 0 || value > 240)
+    {
+      *errmsg = _("value out of range 0 - 240");
+      return 0;
+    }
+  if (value & 0xf)
+    {
+      *errmsg = _("Illegal offset value (valid values: 0,16,32,48,64... 240)");
+      return 0;
+    }
+  value = (value & 0xff) << 8;
+  return insn | value;
+}
+
+static long long int
+extract_nps_cp_sum_addr_offset (unsigned long long insn ATTRIBUTE_UNUSED,
+                             bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  unsigned offset = (insn >> 8) & 0xff;
+  return offset;
+}
+
+static unsigned long long
+insert_nps_cp_sum_addr_size (unsigned long long insn ATTRIBUTE_UNUSED,
+                            long long int value ATTRIBUTE_UNUSED,
+                            const char **errmsg ATTRIBUTE_UNUSED)
+{
+  unsigned pwr;
+
+  if (value < 1 || value > 240)
+    {
+      *errmsg = _("value out of range 0 - 256");
+      return 0;
+    }
+  if (value & 0xf)
+    {
+      *errmsg = _("Illegal offset value (valid values: 0,16,32,48,64... 240)");
+      return 0;
+    }
+  return insn | (value & 0xff);
+}
+
+static long long int
+extract_nps_cp_sum_addr_size (unsigned long long insn ATTRIBUTE_UNUSED,
+                             bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  return (insn & 0xff);
+}
+
+static unsigned long long
+insert_nps_cp_offset (unsigned long long insn ATTRIBUTE_UNUSED,
+                            long long int value ATTRIBUTE_UNUSED,
+                            const char **errmsg ATTRIBUTE_UNUSED)
+{
+  unsigned pwr;
+
+  if (value < 0 || value > 240)
+    {
+      *errmsg = _("value out of range 0 - 240");
+      return 0;
+    }
+
+  if( value & 0xF)
+  {
+      *errmsg = _("value must be mult of 16");
+      return 0;
+  }
+
+  return insn | (pwr << 10);
+}
+
+static long long int
+extract_nps_cp_offset (unsigned long long insn ATTRIBUTE_UNUSED,
+                             bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  unsigned offset = (insn >> 10) & 0xf;
+  return 1 << offset;
 }
 
 static unsigned long long
@@ -1464,13 +1606,34 @@ const struct arc_flag_operand arc_flag_operands[] =
 #define F_NPS_NA (F_NPS_CL + 1)
   { "na", 1, 1, 9, 1 },
 
-#define F_NPS_SR (F_NPS_NA + 1)
+#define F_NPS_CP_NA (F_NPS_NA + 1)
+  { "na", 1, 1, 27, 1 },
+
+#define F_NPS_CP_SD_NA (F_NPS_CP_NA + 1)
+  { "na", 1, 1, 24, 1 },
+
+#define F_NPS_X (F_NPS_CP_SD_NA + 1)
+  { "x", 1, 1, 26, 1 },
+
+#define F_NPS_CP_X (F_NPS_X + 1)
+  { "x", 1, 1, 23, 1 },
+
+#define F_NPS_SR (F_NPS_CP_X + 1)
   { "s", 1, 1, 13, 1 },
 
-#define F_NPS_M (F_NPS_SR + 1)
+#define F_NPS_E (F_NPS_SR + 1)
+  { "e", 1, 1, 26, 1 },
+
+#define F_NPS_E_2BITS (F_NPS_E + 1)
+  { "e", 3, 2, 24, 1 },
+
+#define F_NPS_M (F_NPS_E_2BITS + 1)
   { "m", 1, 1, 7, 1 },
 
-#define F_NPS_FLAG (F_NPS_M + 1)
+#define F_NPS_CP_M (F_NPS_M + 1)
+  { "m", 1, 1, 28, 1 },
+
+#define F_NPS_FLAG (F_NPS_CP_M + 1)
   { "f", 1, 1, 20, 1 },
 
 #define F_NPS_R     (F_NPS_FLAG + 1)
@@ -1673,13 +1836,34 @@ const struct arc_flag_class arc_flag_classes[] =
 #define C_NPS_NA     (C_NPS_CL + 1)
   { F_CLASS_OPTIONAL, { F_NPS_NA, F_NULL}},
 
-#define C_NPS_SR     (C_NPS_NA + 1)
+#define C_NPS_CP_NA     (C_NPS_NA + 1)
+  { F_CLASS_OPTIONAL, { F_NPS_CP_NA, F_NULL}},
+
+#define C_NPS_CP_SD_NA     (C_NPS_CP_NA + 1)
+  { F_CLASS_OPTIONAL, { F_NPS_CP_SD_NA, F_NULL}},
+
+#define C_NPS_X     (C_NPS_CP_SD_NA + 1)
+  { F_CLASS_OPTIONAL, { F_NPS_X, F_NULL}},
+
+#define C_NPS_CP_X     (C_NPS_X + 1)
+  { F_CLASS_OPTIONAL, { F_NPS_CP_X, F_NULL}},
+
+#define C_NPS_SR     (C_NPS_CP_X + 1)
   { F_CLASS_OPTIONAL, { F_NPS_SR, F_NULL}},
 
-#define C_NPS_M     (C_NPS_SR + 1)
+#define C_NPS_E     (C_NPS_SR + 1)
+  { F_CLASS_OPTIONAL, { F_NPS_E, F_NULL}},
+
+#define C_NPS_E_2BITS     (C_NPS_E + 1)
+  { F_CLASS_OPTIONAL, { F_NPS_E_2BITS, F_NULL}},
+
+#define C_NPS_M     (C_NPS_E_2BITS + 1)
   { F_CLASS_OPTIONAL, { F_NPS_M, F_NULL}},
 
-#define C_NPS_F     (C_NPS_M + 1)
+#define C_NPS_CP_M     (C_NPS_M + 1)
+  { F_CLASS_OPTIONAL, { F_NPS_CP_M, F_NULL}},
+
+#define C_NPS_F     (C_NPS_CP_M + 1)
   { F_CLASS_OPTIONAL, { F_NPS_FLAG, F_NULL}},
 
 #define C_NPS_R     (C_NPS_F + 1)
@@ -2152,7 +2336,10 @@ const struct arc_operand arc_operands[] =
 #define NPS_XLDST_UIMM16	(NPS_RFLT_UIMM6 + 1)
   { 16, 0, BFD_RELOC_ARC_NPS_CMEM16, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_cmem_uimm16, extract_nps_cmem_uimm16 },
 
-#define NPS_SRC2_POS           (NPS_XLDST_UIMM16 + 1)
+#define NPS_CP_CMEM_OFFSET	(NPS_XLDST_UIMM16 + 1)
+  { 16, 0, BFD_RELOC_ARC_NPS_CMEM16, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_cmem_offset, extract_nps_cmem_offset },
+
+#define NPS_SRC2_POS           (NPS_CP_CMEM_OFFSET + 1)
   { 0, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_src2_pos, extract_nps_src2_pos },
 
 #define NPS_SRC1_POS           (NPS_SRC2_POS + 1)
@@ -2191,7 +2378,13 @@ const struct arc_operand arc_operands[] =
 #define NPS_CALC_ENTRY_SIZE	(NPS_QCMP_M3 + 1)
   { 0, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_calc_entry_size, extract_nps_calc_entry_size },
 
-#define NPS_R_DST_3B_SHORT	(NPS_CALC_ENTRY_SIZE + 1)
+#define NPS_CP_ENTRY_SIZE	(NPS_CALC_ENTRY_SIZE + 1)
+  { 0, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_cp_entry_size, extract_nps_cp_entry_size },
+
+#define NPS_CP_OFFSET	(NPS_CP_ENTRY_SIZE + 1)
+  { 0, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_cp_offset, extract_nps_cp_offset },
+
+#define NPS_R_DST_3B_SHORT	(NPS_CP_OFFSET + 1)
   { 3, 8, 0, ARC_OPERAND_IR | ARC_OPERAND_NCHK, insert_nps_3bit_reg_at_8_dst, extract_nps_3bit_reg_at_8_dst },
 
 #define NPS_R_SRC1_3B_SHORT	(NPS_R_DST_3B_SHORT + 1)
@@ -2405,7 +2598,25 @@ const struct arc_operand arc_operands[] =
 #define NPS_MISC_ATOMIC_OPCODE  (NPS_MISC_ATOMIC_ENTRY_SIZE + 1)
   { 5, 0, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
 
-#define NPS_R_DST_3B_48	(NPS_MISC_ATOMIC_OPCODE + 1)
+#define NPS_DMA_IMM_0_16  (NPS_MISC_ATOMIC_OPCODE + 1)
+  { 16, 0, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_CP_SUM_ADDR_SIZE  (NPS_DMA_IMM_0_16 + 1)
+  { 0, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_cp_sum_addr_size, extract_nps_cp_sum_addr_size },
+
+#define NPS_CP_SUM_ADDR_OFFSET  (NPS_CP_SUM_ADDR_SIZE + 1)
+  { 0, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_cp_sum_addr_offset, extract_nps_cp_sum_addr_offset },
+
+  #define NPS_DMA_IMM_0_10  (NPS_CP_SUM_ADDR_OFFSET + 1)
+  { 10, 0, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_DMA_IMM_16_24  (NPS_DMA_IMM_0_10 + 1)
+  { 8, 16, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_DMA_IMM_12_22  (NPS_DMA_IMM_16_24 + 1)
+  { 10, 12, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_R_DST_3B_48	(NPS_DMA_IMM_12_22 + 1)
   { 3, 40, 0, ARC_OPERAND_IR | ARC_OPERAND_NCHK, insert_nps_3bit_reg_at_40_dst, extract_nps_3bit_reg_at_40_dst },
 
 #define NPS_R_SRC1_3B_48	(NPS_R_DST_3B_48 + 1)
@@ -2435,7 +2646,10 @@ const struct arc_operand arc_operands[] =
 #define NPS_RBdouble_64         (NPS_RBdup_64 + 1)
   { 10, 43, 0, ARC_OPERAND_IR | ARC_OPERAND_NCHK, insert_nps_rbdouble_64, extract_nps_rbdouble_64 },
 
-#define NPS_RC_64               (NPS_RBdouble_64 + 1)
+#define NPS_RCdouble_64         (NPS_RBdouble_64 + 1)
+  { 10, 48, 0, ARC_OPERAND_IR | ARC_OPERAND_NCHK, insert_nps_rbdouble_64, extract_nps_rbdouble_64 },
+
+#define NPS_RC_64               (NPS_RCdouble_64 + 1)
   { 5, 43, 0, ARC_OPERAND_IR, NULL, NULL },
 
 #define NPS_UIMM16_0_64         (NPS_RC_64 + 1)

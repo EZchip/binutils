@@ -979,100 +979,100 @@ ASRI_LIKE (0x4, C_NPS_GIC)
 /* Atomic operation instructions*/
 
 /* atomic_op{b,w,l}.di<.f> dst,src1,[xa/sd/xd:src2] */
-#define ATOMIC_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x48064000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x48064000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op{b,w,l}.di<.f> src1,[xa/sd/xd:src2] */
-#define ATOMIC_NO_DST_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x4806c000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
+#define ATOMIC_NO_DST_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x4806c000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
 
 /* atomic_op{b,w,l}.di<.f> src1,[xa/sd/xd:src2] */
-#define ATOMIC_NO_DST_WITH_F_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x4806c000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_NO_DST_WITH_F_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x4806c000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op{b,w,l}.di<.f> dst,src1,[src2] */
-#define ATOMIC_VIRTUAL_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE )                                          \
-  { NAME, 0x48064000 | SUB3 | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, NPS_DPI_SRC1_3B, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_VIRTUAL_LIKE(NAME, SUB3, size, entry_size )                                          \
+  { NAME, 0x48064000 | SUB3 | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, NPS_DPI_SRC1_3B, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op{b,w,l}.di<.f> src1,[src2] */
-#define ATOMIC_VIRTUAL_NO_DST_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE )                                          \
-  { NAME, 0x4806c000 | SUB3 | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_DPI_SRC1_3B, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
+#define ATOMIC_VIRTUAL_NO_DST_LIKE(NAME, SUB3, size, entry_size )                                          \
+  { NAME, 0x4806c000 | SUB3 | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_DPI_SRC1_3B, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
 
 /* atomic_op{b,w,l}.di<.f> dst,[xa/sd/xd:src2] */
-#define ATOMIC_NO_SRC1_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x48064000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_NO_SRC1_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x48064000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op{b,w,l}.r.di<.f> dst,[xa/sd/xd:src2] */
-#define ATOMIC_NO_SRC1_R_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x48064000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_R, C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_NO_SRC1_R_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x48064000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_R, C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op{b,w,l}.di dst,[xa/sd/xd:src2] */
-#define ATOMIC_NO_SRC1_NO_F_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x48064000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
+#define ATOMIC_NO_SRC1_NO_F_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x48064000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
 
 /* atomic_op{b,w,l}.di<.f> dst,[src2] */
-#define ATOMIC_VIRTUAL_NO_SRC1_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE )                                          \
-  { NAME, 0x48064000 | SUB3 | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_VIRTUAL_NO_SRC1_LIKE(NAME, SUB3, size, entry_size )                                          \
+  { NAME, 0x48064000 | SUB3 | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op{b,w,l}.r.di<.f> dst,[src2] */
-#define ATOMIC_VIRTUAL_NO_SRC1_R_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE )                                          \
-  { NAME, 0x48064000 | SUB3 | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_R, C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_VIRTUAL_NO_SRC1_R_LIKE(NAME, SUB3, size, entry_size )                                          \
+  { NAME, 0x48064000 | SUB3 | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_R, C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op{b,w,l}.di [cm:GPA1],src1,[xa/sd/xd:src2] */
-#define ATOMIC_GPA1_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_GPA1_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op{b,w,l}.di [cm:GPA1],src1,[src2] */
-#define ATOMIC_GPA1_VIRTUAL_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE )                                          \
-  { NAME, 0x48066000 | SUB3 | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, {  NPS_R_DST_3B, BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_GPA1_VIRTUAL_LIKE(NAME, SUB3, size, entry_size )                                          \
+  { NAME, 0x48066000 | SUB3 | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, {  NPS_R_DST_3B, BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op{b,w,l}.di [cm:GPA1],src1,[xa/sd/xd:src2] */
-#define ATOMIC_GPA1_NO_DST_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x4806e000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
+#define ATOMIC_GPA1_NO_DST_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x4806e000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
 
 /* atomic_op{b,w,l}.di [cm:GPA1],src1,[src2] */
-#define ATOMIC_GPA1_NO_DST_VIRTUAL_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE )                                          \
-  { NAME, 0x4806e000 | SUB3 | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, {  BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
+#define ATOMIC_GPA1_NO_DST_VIRTUAL_LIKE(NAME, SUB3, size, entry_size )                                          \
+  { NAME, 0x4806e000 | SUB3 | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, {  BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
 
 /* atomic_op{b,w,l}.di [cm:GPA1],[xa/sd/xd:src2] */
-#define ATOMIC_GPA1_NO_DST_NO_SRC1_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x4806e000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup,BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
+#define ATOMIC_GPA1_NO_DST_NO_SRC1_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x4806e000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup,BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
 
 /* atomic_op{b,w,l}.di [cm:GPA1],[src2] */
-#define ATOMIC_GPA1_NO_DST_NO_SRC1_VIRTUAL_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE )                                          \
-  { NAME, 0x4806e000 | SUB3 | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, {  BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
+#define ATOMIC_GPA1_NO_DST_NO_SRC1_VIRTUAL_LIKE(NAME, SUB3, size, entry_size )                                          \
+  { NAME, 0x4806e000 | SUB3 | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, {  BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
 
 /* atomic_op{b,w,l}.di dst,[cm:GPA1],[xa/sd/xd:src2] */
-#define ATOMIC_GPA1_NO_SRC1_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B,BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup,BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_GPA1_NO_SRC1_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B,BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup,BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op{b,w,l}.di dst,[cm:GPA1],[src2] */
-#define ATOMIC_GPA1_NO_SRC1_VIRTUAL_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE )                                          \
-  { NAME, 0x48066000 | SUB3 | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, {  NPS_R_DST_3B,BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_GPA1_NO_SRC1_VIRTUAL_LIKE(NAME, SUB3, size, entry_size )                                          \
+  { NAME, 0x48066000 | SUB3 | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, {  NPS_R_DST_3B,BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op{b,w,l}.di dst,[cm:GPA1],[xa/sd/xd:src2] */
-#define ATOMIC_GPA1_NO_SRC1_R_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B,BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup,BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_R, C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_GPA1_NO_SRC1_R_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B,BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup,BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_R, C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op{b,w,l}.di dst,[cm:GPA1],[src2] */
-#define ATOMIC_GPA1_NO_SRC1_R_VIRTUAL_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE )                                          \
-  { NAME, 0x48066000 | SUB3 | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, {  NPS_R_DST_3B,BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_R, C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_GPA1_NO_SRC1_R_VIRTUAL_LIKE(NAME, SUB3, size, entry_size )                                          \
+  { NAME, 0x48066000 | SUB3 | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, {  NPS_R_DST_3B,BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_R, C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op{b,w,l}.r.di [cm:GPA1],[xa/sd/xd:src2] */
-#define ATOMIC_GPA1_NO_DST_NO_SRC1_R_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x4806e000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup,BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_R, C_NPS_ATOMIC_DI }},
+#define ATOMIC_GPA1_NO_DST_NO_SRC1_R_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x4806e000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup,BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_R, C_NPS_ATOMIC_DI }},
 
 /* atomic_op{b,w,l}.r.di [cm:GPA1],[src2] */
-#define ATOMIC_GPA1_NO_DST_NO_SRC1_R_VIRTUAL_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE )                                          \
-  { NAME, 0x4806e000 | SUB3 | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, {  BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_R, C_NPS_ATOMIC_DI }},
+#define ATOMIC_GPA1_NO_DST_NO_SRC1_R_VIRTUAL_LIKE(NAME, SUB3, size, entry_size )                                          \
+  { NAME, 0x4806e000 | SUB3 | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, {  BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_R, C_NPS_ATOMIC_DI }},
 
 /* atomic_op{b,w,l}.di dst,[cm:GPA1],[xa/sd/xd:src2] */
-#define ATOMIC_GPA1_NO_SRC1_NO_F_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B,BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup,BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
+#define ATOMIC_GPA1_NO_SRC1_NO_F_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B,BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup,BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
 
 /* atomic_op{b,w,l}.di dst,[cm:GPA1],[src2] */
-#define ATOMIC_GPA1_NO_SRC1_NO_F_VIRTUAL_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE )                                          \
-  { NAME, 0x48066000 | SUB3 | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, {  NPS_R_DST_3B,BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
+#define ATOMIC_GPA1_NO_SRC1_NO_F_VIRTUAL_LIKE(NAME, SUB3, size, entry_size )                                          \
+  { NAME, 0x48066000 | SUB3 | (size << 8) | (entry_size << 10) , 0xf80fffff, ARC_OPCODE_ARC700, ATOMIC, NPS400, {  NPS_R_DST_3B,BRAKET, NPS_CM, COLON, NPS_GPA1, BRAKETdup, BRAKET, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
 
 /* xex */
 ATOMIC_LIKE ("xex",0x0,ARC_NPS400_ATOMIC_SIZE_4, ARC_NPS400_ATOMIC_ENTRY_SIZE_4,0x1, NPS_XA)
@@ -1370,12 +1370,12 @@ ATOMIC_NO_DST_LIKE ("xstl",0x7,ARC_NPS400_ATOMIC_SIZE_8, ARC_NPS400_ATOMIC_ENTRY
 
 /* On Demand And Shadow On Demand Statistic Counter Operations */
 /* atomic_op.di<.f> dst,[cm:GPA2],src1,[scd/cd:src2] */
-#define ATOMIC_GPA2_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_GPA2_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op.di<.f> dst,src1,[cm:GPA2],[scd/cd:src2] */
-#define ATOMIC_GPA2_SRC1_AFTER_DST_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, NPS_DPI_SRC1_3B, BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_GPA2_SRC1_AFTER_DST_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, NPS_DPI_SRC1_3B, BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
 
  /* atomic_op.di<.f> [cm:GPA2],src1,[scd/cd:src2] */
  #define ATOMIC_GPA2_NO_DST_F_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
@@ -1386,33 +1386,33 @@ ATOMIC_NO_DST_LIKE ("xstl",0x7,ARC_NPS400_ATOMIC_SIZE_8, ARC_NPS400_ATOMIC_ENTRY
   { NAME, 0x4806e000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
 
 /* atomic_op.di<.f> src1,[cm:GPA2],[scd/cd:src2] */
-#define ATOMIC_GPA2_FIRST_SRC1_NO_DST_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x4806e000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_DPI_SRC1_3B, BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
+#define ATOMIC_GPA2_FIRST_SRC1_NO_DST_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x4806e000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_DPI_SRC1_3B, BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
 
-#define ATOMIC_GPA2_RST_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_RST, C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_GPA2_RST_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_RST, C_NPS_ATOMIC_DI, C_NPS_F }},
 
 /* atomic_op.di<.f> [cm:GPA2],src1,[scd/cd:src2] */
-#define ATOMIC_GPA2_RST_NO_DST_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x4806e000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_RST, C_NPS_ATOMIC_DI }},
+#define ATOMIC_GPA2_RST_NO_DST_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x4806e000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_RST, C_NPS_ATOMIC_DI }},
 
 /* atomic_op{b,w,l}.di<.f> src1,[xa/sd/xd:src2] */
-#define ATOMIC_NO_DST_RST_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x4806c000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_RST, C_NPS_ATOMIC_DI }},
+#define ATOMIC_NO_DST_RST_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x4806c000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_RST, C_NPS_ATOMIC_DI }},
 
-#define ATOMIC_GPA2_NO_SRC1_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_GPA2_NO_SRC1_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x48066000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI, C_NPS_F }},
 
-#define ATOMIC_GPA2_NO_DST_NO_SRC1_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x4806e000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
+#define ATOMIC_GPA2_NO_DST_NO_SRC1_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x4806e000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { BRAKET, NPS_CM, COLON, NPS_GPA2, BRAKETdup, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
 
 /* atomic_op{b,w,l}.di [cd/scd:src2] */
-#define ATOMIC_NO_DST_NO_SRC1_LIKE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x4806c000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
+#define ATOMIC_NO_DST_NO_SRC1_LIKE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x4806c000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup}, { C_NPS_ATOMIC_DI }},
 
 /* atomic_op{b,w,l}.di<.f> dst,src1,[cd/scd:src2], src1 */
-#define ATOMIC_LIKE_SRC1_TWICE(NAME, SUB3, SIZE, ENTRY_SIZE, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
-  { NAME, 0x48064000 | SUB3 | (ADDR_TYPE << 5) | (SIZE << 8) | (ENTRY_SIZE << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup, NPS_DPI_SRC1_3B}, { C_NPS_ATOMIC_DI, C_NPS_F }},
+#define ATOMIC_LIKE_SRC1_TWICE(NAME, SUB3, size, entry_size, ADDR_TYPE, ADDR_TYPE_NAME )                                          \
+  { NAME, 0x48064000 | SUB3 | (ADDR_TYPE << 5) | (size << 8) | (entry_size << 10) , 0xf80fbfff, ARC_OPCODE_ARC700, ATOMIC, NPS400, { NPS_R_DST_3B, NPS_DPI_SRC1_3B, BRAKET, ADDR_TYPE_NAME, COLON, NPS_R_SRC2_3B, BRAKETdup, NPS_DPI_SRC1_3B}, { C_NPS_ATOMIC_DI, C_NPS_F }},
 
 
 /* cinit */
@@ -1658,3 +1658,2413 @@ SECURITY_COPY_RD_LIKE ("cpsctx", ARC_NPS400_SECURITY_COPY_DATA_CONTAXT)
 /* gensiv src2,[cm:src1],size,init,pad */
 { "gensiv", 0x4805800e , 0xf80f800f, ARC_OPCODE_ARC700, SECURITY, NPS400, { NPS_R_SRC2_3B, BRAKET, NPS_CM, COLON, NPS_DPI_SRC1_3B, BRAKETdup, NPS_SECURITY_SIZE, NPS_SECURITY_INIT, NPS_SECURITY_PAD}, { 0 }},
 
+/* cp instructions */
+/* cp<.m><.e> dst,[dst_addr_type:src1,src2],[src_addr_type:src1,src2],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+  { "cp", 0x500007c008800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ) , 0xf80007ffebffffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_E, C_NPS_CP_M }},
+
+/* cp<.m><.e> dst,[dst_addr_type:src1,src2,src2],[src_addr_type:src1,src2,src2],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffebffffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_E, C_NPS_CP_M }},
+
+/* cp<.m><.e> dst,[dst_addr_type:src1,src2],[src_addr_type:src_bd_cmem_off,src2],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffecff0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_E_2BITS, C_NPS_CP_M }},
+
+/* cp<.m><.e> dst,[dst_addr_type:dst_bd_cmem_off,src2],[src_addr_type:src1,src2],src2 */
+#define CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c004000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffecff0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_E_2BITS, C_NPS_CP_M }},
+
+/* cp<.m> dst,[dst_addr_type:src1,src2],[src_addr_type:src_bd_cmem_off,src2], size_8 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_16_24 }, { C_NPS_CP_M }},
+
+/* cp<.m> dst,[dst_addr_type:src_bd_cmem_off,src2],[src_addr_type:src1,src2], size_8 */
+#define CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c005000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_16_24 }, { C_NPS_CP_M }},
+
+/* cp<.m> dst,[dst_addr_type:src1,dst_off_8],[src_addr_type:src_bd_cmem_off,src2],src2 */
+#define CP_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_16_24, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_CP_M }},
+
+/* cp<.m> dst,[dst_addr_type:dst_cmem_addr,dst_off_8],[src_addr_type:src1,src2],src2 */
+#define CP_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c006000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_DMA_IMM_16_24, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_CP_M }},
+
+/* cp<.m> dst,[dst_addr_type:src1,dst_off_10],[src_addr_type:src1,src2],src2 */
+#define CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c009800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffeffffc00, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_CP_M }},
+
+/* cp<.m> dst,[dst_addr_type:src1,dst_off_10,src2],[src_addr_type:src1,src2,src2],src2 */
+#define CP_BR_ADDR_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c009000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffeffffc00, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_CP_M }},
+
+/* cp<.m> dst,[dst_addr_type:src1,dst_off_10],[src_addr_type:src1,src2],size_10 */
+#define CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c00b800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { C_NPS_CP_M }},
+
+/* cp<.m> dst,[dst_addr_type:src1,dst_off_10,src2],[src_addr_type:src1,src2,src2],size_10 */
+#define CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c00b000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { C_NPS_CP_M }},
+
+/* cp<.m><.e> dst,[dst_addr_type:src1,dst_off_10],[src_addr_type:src1,src_off_10],src2 */
+#define CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_OFF10_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c00d800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef8ffc00, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, BRAKETdup, NPS_RC_64 }, { C_NPS_E, C_NPS_CP_M }},
+
+/* cp<.m><.e> dst,[cbd:src1,dst_off_10,src2],[cbd:src1,src_off_10,src2],src2 */
+#define CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c00d000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef8ffc00, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_E, C_NPS_CP_M }},
+
+/* cp <.m><.e> dst,[dst_addr_type:src1,dst_off_10],[src_addr_type:src1,src_off_10], size_10 */
+#define CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_OFF10_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c00f800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, NPS_DMA_IMM_0_10, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, NPS_DMA_IMM_0_10, BRAKETdup, NPS_DMA_IMM_12_22 }, { C_NPS_E, C_NPS_CP_M }},
+
+/* cp <.m><.e> dst,[cbd:src1,dst_off_10, src2],[cbd:src1,src_off_10, src2], size_10 */
+#define CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c00f000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { C_NPS_E, C_NPS_CP_M}},
+
+/* cp <.m><.e> dst,[cbd:src1,src2],[cbd:src1,src2],size_10 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c00a800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffebc00fff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { C_NPS_E, C_NPS_CP_M }},
+
+/* cp <.m><.e> dst,[dst_addr_type:src1,src2,src2],[src_addr_type:src1,src2,src2],size_10 */
+#define CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffebc00fff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { C_NPS_E, C_NPS_CP_M }},
+
+/* cp<.m> dst,[dst_addr_type:src1],[src_addr_type:src1,src2],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c008800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffebffffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_CP_M }},
+
+/* cp<.m> dst,[dst_addr_type:src1,src2],[src_addr_type:src1,src2,src2],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffebffffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1],[src_addr_type:src_bd_cmem_off,src2],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefff0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:dst_xa_cmem_off],[src_addr_type:src1,src2],src2 */
+#define CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c004000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefff0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1],[src_addr_type:src_bd_cmem_off,src2],size_8 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_16_24 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:dst_xa_cmem_addr],[src_addr_type:src1,src2],size_8 */
+#define CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c005000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_16_24 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1],[src_addr_type:src1,src2],size_10 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c00a800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ) , 0xf80007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,src2],[src_addr_type:src1,src2,src2],size_10 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ) , 0xf80007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c008800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefffffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,src2,src2],[src_addr_type:src1,src2],src2  */
+#define CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefffffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,src2],[src_addr_type:src_xa_cmem_off],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefff0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+#define CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c004000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefff0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,src2],[src_addr_type:src_xa_cmem_off],size_8 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_DMA_IMM_16_24 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:dst_bd_cmem_off,src2],[src_addr_type:src1],size_8 */
+#define CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c005000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_DMA_IMM_16_24 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,dst_off_8],[src_addr_type:src_xa_cmem_off],src2 */
+#define CP_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_16_24, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:dst_bd_cmem_off,dst_off_8],[src_addr_type:src1],src2 */
+#define CP_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c006000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_DMA_IMM_16_24, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,dst_off_10],[src_addr_type:src1],src2 */
+#define CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c009800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffeffff000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,dst_off_10,src2],[src_addr_type:src1,src2],src2 */
+#define CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c009000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffeffff000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,dst_off_10],[src_addr_type:src1],size_10 */
+#define CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c00b800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, NPS_DMA_IMM_0_10, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,dst_off_10,src2],[src_addr_type:src1,src2],size_10 */
+#define CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c02b000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,src2],[src_addr_type:src1],size_10 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c00a800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,src2,src2],[src_addr_type:src1,src2],size_10 */
+#define CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefc00fff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:src1],[src_addr_type:src1,src2,src2],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefffffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:src1],[src_addr_type:src_bd_cmem_off,src_off_8],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_OFF8_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_DMA_IMM_16_24, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:dst_cmem_off],[src_addr_type:src1,src_off_8],src2*/
+#define CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_OFF8_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c006000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_16_24, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:src1],[src_addr_type:src1,src_off_10],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c009800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffeffffc00, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:src1],[src_addr_type:src1,src_off_10, src2],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c009000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffeffffc00, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:src1],[src_addr_type:src1,src_off_10],size_10 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c00b800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, NPS_DMA_IMM_0_10, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:src1],[src_addr_type:src1,src_off_10,src2],size_10 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c00b000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:src1],[src_addr_type:src1,src2,src2],size_10 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,src2,src2],[src_addr_type:src1],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,dst_off_10,src2],[src_addr_type:src1],src2 */
+#define CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c009000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffeffff000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,dst_off_10,src2],[src_addr_type:src1],size_10 */
+#define CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c00b000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp<.m> dst,[dst_addr_type:src1,src2,src2],[src_addr_type:src1],size_10 */
+#define CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:src1],[src_addr_type:src1],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c008800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:src1],[src_addr_type:src_cmem_addr],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:dst_cmem_addr],[src_addr_type:src1],src2 */
+#define CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c004000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:src1],[src_addr_type:src_cmem_addr],size_8 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffff000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_DMA_IMM_16_24 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:dst_cmem_addr],[src_addr_type:src1],size_8 */
+#define CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c005000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffff000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_DMA_IMM_16_24 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:src1],[src_addr_type:src1],size10*/
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x500007c00a800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffffc00000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp dst,[dst_addr_type:src1,dst_offset_10,src2],[src_addr_type:src1,src2,src2], src2 */
+#define CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c009000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007fffffffc00, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { 0 }},
+
+/* cp dst,[dst_addr_type:src1,dst_offset_10],[src_addr_type:src1,src2],size_10 */
+#define CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c00b800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffffc00000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { 0 }},
+
+/* cp<.m><.na><.x> dst,[dst_addr_type:src1],[src_addr_type:src1],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c000400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe77fffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> dst,[dst_addr_type:src1],[src_addr_type:src_xa_cmem_off],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+ { "cp", 0x500007c002400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> dst,[dst_addr_type:dst_xa_cmem_off],[src_addr_type:src1],src2 */
+#define CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+ { "cp", 0x500007c006400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> dst,[dst_addr_type:src1],[src_addr_type:src1],size_16 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE16_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+ { "cp", 0x500007c001400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> dst,[dst_addr_type:src1,src2],[src_addr_type:src1,src2],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe77fffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> dst,[dst_addr_type:src1,src2],[src_addr_type:src_xa_cmem_off,src2],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> dst,[dst_addr_type:dst_xa_cmem_off,src2],[src_addr_type:src1,src2],src2 */
+#define CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c006000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> dst,[dst_addr_type:src1,src2],[src_addr_type:src1,src2],size_16 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE16_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+ { "cp", 0x500007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.na><.x> dst,[dst_addr_type:src1],[src_addr_type:src1],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c000400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe740ffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> dst,[dst_addr_type:src1],[src_addr_type:src_xa_cmem_off],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+ { "cp", 0x500007c002400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe7400000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> dst,[dst_addr_type:dst_cmem_off],[src_addr_type:src1], src2 */
+#define CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+ { "cp", 0x500007c006400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> dst,[dst_addr_type:src1],[src_addr_type:src1], size_16 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE16_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+ { "cp", 0x500007c001400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> dst,[dst_addr_type:src1],[src_addr_type:src1,src2], src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe7400000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> dst,[dst_addr_type:src1],[src_addr_type:src_xa_cmem_off,src2], src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe7400000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> dst,[dst_addr_type:dst_cmem_off],[src_addr_type:src1,src2],src2 */
+#define CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c006000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe7400000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> dst,[dst_addr_type:src1],[src_addr_type:src1,src2],size_16 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SIZE16_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe7400000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG1, FLAG2 }},
+
+/* cp<.m><.na><.x> dst,[dst_addr_type:src1,src2],[src_addr_type:src1],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c0e0000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe770ffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> dst,[dst_addr_type:src1,src2],[src_addr_type:src_cmem_off],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c0e2000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> dst,[dst_addr_type:dst_xa_cmem_off,src2],[src_addr_type:src1],src2 */
+#define CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c0e6000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> dst,[dst_addr_type:src1,src2],[src_addr_type:src1],size_16 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SIZE16_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c0e1000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.e> 0,[dst_addr_type:src1,src2],[src_addr_type:src1,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+  { "cp", 0x57c007c008800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ) , 0xffe007ffebffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_E, C_NPS_CP_M }},
+
+/* cp<.m><.e> 0,[dst_addr_type:src1,src2,src2],[src_addr_type:src1,src2,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffebffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_E, C_NPS_CP_M }},
+
+/* cp<.m><.e> 0,[dst_addr_type:src1,src2],[src_addr_type:src_bd_cmem_off,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffecff0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_E_2BITS, C_NPS_CP_M }},
+
+/* cp<.m><.e> 0,[dst_addr_type:dst_bd_cmem_off,src2],[src_addr_type:src1,src2],src2 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c004000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffecff0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_E_2BITS, C_NPS_CP_M }},
+
+/* cp<.m> 0,[dst_addr_type:src1,src2],[src_addr_type:src_bd_cmem_off,src2], size_8 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_16_24 }, { C_NPS_CP_M }},
+
+/* cp<.m> 0,[dst_addr_type:src_bd_cmem_off,src2],[src_addr_type:src1,src2], size_8 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c005000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_16_24 }, { C_NPS_CP_M }},
+
+/* cp<.m> 0,[dst_addr_type:src1,dst_off_8],[src_addr_type:src_bd_cmem_off,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_16_24, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_CP_M }},
+
+/* cp<.m> 0,[dst_addr_type:dst_cmem_addr,dst_off_8],[src_addr_type:src1,src2],src2 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c006000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_DMA_IMM_16_24, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_CP_M }},
+
+/* cp<.m> 0,[dst_addr_type:src1,dst_off_10],[src_addr_type:src1,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c009800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffeffffc00, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_CP_M }},
+
+/* cp<.m> 0,[dst_addr_type:src1,dst_off_10,src2],[src_addr_type:src1,src2,src2],src2 */
+#define CP_NO_DST_BR_ADDR_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c009000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffeffffc00, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_CP_M }},
+
+/* cp<.m> 0,[dst_addr_type:src1,dst_off_10],[src_addr_type:src1,src2],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c00b800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { C_NPS_CP_M }},
+
+/* cp<.m> 0,[dst_addr_type:src1,dst_off_10,src2],[src_addr_type:src1,src2,src2],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c00b000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { C_NPS_CP_M }},
+
+/* cp<.m><.e> 0,[dst_addr_type:src1,dst_off_10],[src_addr_type:src1,src_off_10],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_OFF10_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c00d800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef8ffc00, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, BRAKETdup, NPS_RC_64 }, { C_NPS_E, C_NPS_CP_M }},
+
+/* cp<.m><.e> 0,[cbd:src1,dst_off_10,src2],[cbd:src1,src_off_10,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c00d000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef8ffc00, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_E, C_NPS_CP_M }},
+
+/* cp <.m><.e> 0,[dst_addr_type:src1,dst_off_10],[src_addr_type:src1,src_off_10], size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_OFF10_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c00f800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, NPS_DMA_IMM_0_10, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, NPS_DMA_IMM_0_10, BRAKETdup, NPS_DMA_IMM_12_22 }, { C_NPS_E, C_NPS_CP_M }},
+
+/* cp <.m><.e> 0,[cbd:src1,dst_off_10, src2],[cbd:src1,src_off_10, src2], size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c00f000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { C_NPS_E, C_NPS_CP_M}},
+
+/* cp <.m><.e> 0,[cbd:src1,src2],[cbd:src1,src2],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c00a800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffebc00fff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { C_NPS_E, C_NPS_CP_M }},
+
+/* cp <.m><.e> 0,[dst_addr_type:src1,src2,src2],[src_addr_type:src1,src2,src2],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffebc00fff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { C_NPS_E, C_NPS_CP_M }},
+
+/* cp<.m> 0,[dst_addr_type:src1],[src_addr_type:src1,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c008800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffebffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { C_NPS_CP_M }},
+
+/* cp<.m> 0,[dst_addr_type:src1,src2],[src_addr_type:src1,src2,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffebffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1],[src_addr_type:src_bd_cmem_off,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefff0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:dst_xa_cmem_off],[src_addr_type:src1,src2],src2 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c004000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefff0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1],[src_addr_type:src_bd_cmem_off,src2],size_8 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_16_24 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:dst_xa_cmem_addr],[src_addr_type:src1,src2],size_8 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c005000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_16_24 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1],[src_addr_type:src1,src2],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c00a800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ) , 0xffe007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,src2],[src_addr_type:src1,src2,src2],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ) , 0xffe007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c008800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,src2,src2],[src_addr_type:src1,src2],src2  */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,src2],[src_addr_type:src_xa_cmem_off],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefff0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c004000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefff0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,src2],[src_addr_type:src_xa_cmem_off],size_8 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_DMA_IMM_16_24 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:dst_bd_cmem_off,src2],[src_addr_type:src1],size_8 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c005000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_DMA_IMM_16_24 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,dst_off_8],[src_addr_type:src_xa_cmem_off],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_16_24, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:dst_bd_cmem_off,dst_off_8],[src_addr_type:src1],src2 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c006000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_DMA_IMM_16_24, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,dst_off_10],[src_addr_type:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c009800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffeffff000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,dst_off_10,src2],[src_addr_type:src1,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c009000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffeffff000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,dst_off_10],[src_addr_type:src1],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c00b800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, NPS_DMA_IMM_0_10, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,dst_off_10,src2],[src_addr_type:src1,src2],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c02b000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef800000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,src2],[src_addr_type:src1],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c00a800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,src2,src2],[src_addr_type:src1,src2],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefc00fff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:src1],[src_addr_type:src1,src2,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefffffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:src1],[src_addr_type:src_bd_cmem_off,src_off_8],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_OFF8_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_DMA_IMM_16_24, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:dst_cmem_off],[src_addr_type:src1,src_off_8],src2*/
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_OFF8_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c006000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffef000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_16_24, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:src1],[src_addr_type:src1,src_off_10],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c009800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffeffffc00, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:src1],[src_addr_type:src1,src_off_10, src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c009000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffeffffc00, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:src1],[src_addr_type:src1,src_off_10],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c00b800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, NPS_DMA_IMM_0_10, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:src1],[src_addr_type:src1,src_off_10,src2],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c00b000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:src1],[src_addr_type:src1,src2,src2],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,src2,src2],[src_addr_type:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,dst_off_10,src2],[src_addr_type:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c009000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffeffff000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,dst_off_10,src2],[src_addr_type:src1],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c00b000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp<.m> 0,[dst_addr_type:src1,src2,src2],[src_addr_type:src1],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:src1],[src_addr_type:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c008800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:src1],[src_addr_type:src_cmem_addr],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:dst_cmem_addr],[src_addr_type:src1],src2 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c004000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffefc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:src1],[src_addr_type:src_cmem_addr],size_8 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffff000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_DMA_IMM_16_24 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:dst_cmem_addr],[src_addr_type:src1],size_8 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c005000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffff000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_DMA_IMM_16_24 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:src1],[src_addr_type:src1],size10*/
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAGS )                                          \
+ { "cp", 0x57c007c00a800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffffc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { FLAGS }},
+
+/* cp 0,[dst_addr_type:src1,dst_offset_10,src2],[src_addr_type:src1,src2,src2], src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c009000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffffc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { 0 }},
+
+/* cp 0,[dst_addr_type:src1,dst_offset_10],[src_addr_type:src1,src2],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c00b800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffffc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_DMA_IMM_0_10, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { 0 }},
+
+/* cp<.m><.na><.x> 0,[dst_addr_type:src1],[src_addr_type:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c000400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe77fffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> 0,[dst_addr_type:src1],[src_addr_type:src_xa_cmem_off],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+ { "cp", 0x57c007c002400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> 0,[dst_addr_type:dst_xa_cmem_off],[src_addr_type:src1],src2 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+ { "cp", 0x57c007c006400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> 0,[dst_addr_type:src1],[src_addr_type:src1],size_16 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE16_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+ { "cp", 0x57c007c001400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> 0,[dst_addr_type:src1,src2],[src_addr_type:src1,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe77fffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> 0,[dst_addr_type:src1,src2],[src_addr_type:src_xa_cmem_off,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> 0,[dst_addr_type:dst_xa_cmem_off,src2],[src_addr_type:src1,src2],src2 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c006000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> 0,[dst_addr_type:src1,src2],[src_addr_type:src1,src2],size_16 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE16_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+ { "cp", 0x57c007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.na><.x> 0,[dst_addr_type:src1],[src_addr_type:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c000400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe740ffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> 0,[dst_addr_type:src1],[src_addr_type:src_xa_cmem_off],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+ { "cp", 0x57c007c002400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe7400000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> 0,[dst_addr_type:dst_cmem_off],[src_addr_type:src1], src2 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+ { "cp", 0x57c007c006400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> 0,[dst_addr_type:src1],[src_addr_type:src1], size_16 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE16_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+ { "cp", 0x57c007c001400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe77f0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> 0,[dst_addr_type:src1],[src_addr_type:src1,src2], src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe7400000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> 0,[dst_addr_type:src1],[src_addr_type:src_xa_cmem_off,src2], src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe7400000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> 0,[dst_addr_type:dst_cmem_off],[src_addr_type:src1,src2],src2 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c006000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe7400000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> 0,[dst_addr_type:src1],[src_addr_type:src1,src2],size_16 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SIZE16_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe7400000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG1, FLAG2 }},
+
+/* cp<.m><.na><.x> 0,[dst_addr_type:src1,src2],[src_addr_type:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c0e0000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe770ffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> 0,[dst_addr_type:src1,src2],[src_addr_type:src_cmem_off],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c0e2000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> 0,[dst_addr_type:dst_xa_cmem_off,src2],[src_addr_type:src1],src2 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c0e6000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.na><.x> 0,[dst_addr_type:src1,src2],[src_addr_type:src1],size_16 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SIZE16_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c0e1000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp BD to BD */
+/* cp<.m><.e> 0,[cbd:src1,src2],[cbd:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m><.e> 0,[cbd:src1,src2,src2],[cbd:src1,src2,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m><.e> 0,[cbd:src1,src2],[cbd:src_bd_cmem_off,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m><.e> 0,[cbd:dst_bd_cmem_off,src2],[cbd:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> 0,[cbd:src1,src2],[cbd:src_bd_cmem_off,src2], size_8 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> 0,[cbd:src_bd_cmem_off,src2],[cbd:src1,src2],size_8 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> 0,[cbd:src1,dst_off_8],[cbd:src_bd_cmem_off,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> 0,[cbd:dst_cmem_addr,dst_off_8],[cbd:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> 0,[cbd:src1,dst_off_10],[cbd:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> 0,[cbd:src1,dst_off_10,src2],[cbd:src1,src2,src2],src2 */
+CP_NO_DST_BR_ADDR_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> 0,[cbd:src1,dst_off_10],[cbd:src1,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> 0,[cbd:src1,dst_off_10,src2],[cbd:src1,src2,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m><.e> 0,[cbd:src1,dst_off_10],[cbd:src1,src_off_10],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_OFF10_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m><.e> 0,[cbd:src1,dst_off_10,src2],[cbd:src1,src_off_10,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp <.m><.e> 0,[cbd:src1,dst_off_10],[cbd:src1,src_off_10], size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_OFF10_BR_SIZE10_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp <.m><.e> 0,[cbd:src1,dst_off_10, src2],[cbd:src1,src_off_10, src2], size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SIZE10_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp <.m><.e> 0,[cbd:src1,src2],[cbd:src1,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp <.m><.e> 0,[cbd:src1,src2,src2],[cbd:src1,src2,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m><.e> dst,[cbd:src1,src2],[cbd:src1,src2],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m><.e> dst,[cbd:src1,src2,src2],[cbd:src1,src2,src2],src2 */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m><.e> dst,[cbd:src1,src2],[cbd:src_bd_cmem_off,src2],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m><.e> dst,[cbd:dst_bd_cmem_off,src2],[cbd:src1,src2],src2 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> dst,[cbd:src1,src2],[cbd:src_bd_cmem_off,src2], size_8 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> dst,[cbd:src_bd_cmem_off,src2],[cbd:src1,src2],size_8 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> dst,[cbd:src1,dst_off_8],[cbd:src_bd_cmem_off,src2],src2 */
+CP_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> dst,[cbd:dst_cmem_addr,dst_off_8],[cbd:src1,src2],src2 */
+CP_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> dst,[cbd:src1,dst_off_10],[cbd:src1,src2],src2 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> dst,[cbd:src1,dst_off_10,src2],[cbd:src1,src2,src2],src2 */
+CP_BR_ADDR_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> dst,[cbd:src1,dst_off_10],[cbd:src1,src2],size_10 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m> dst,[cbd:src1,dst_off_10,src2],[cbd:src1,src2,src2],size_10 */
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m><.e> dst,[cbd:src1,dst_off_10],[cbd:src1,src_off_10],src2 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_OFF10_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp<.m><.e> dst,[cbd:src1,dst_off_10,src2],[cbd:src1,src_off_10,src2],src2 */
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SRC2_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp <.m><.e> dst,[cbd:src1,dst_off_10],[cbd:src1,src_off_10], size_10 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_OFF10_BR_SIZE10_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp <.m><.e> dst,[cbd:src1,dst_off_10, src2],[cbd:src1,src_off_10, src2], size_10 */
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SIZE10_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp <.m><.e> dst,[cbd:src1,src2],[cbd:src1,src2],size_10 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp <.m><.e> dst,[cbd:src1,src2,src2],[cbd:src1,src2,src2],size_10 */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (1L, 0,NPS_CBD, NPS_CBD )
+
+/* cp BD to XA */
+/* cp<.m> 0,[cxa:src1],[cbd:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> 0,[cxa:src1,src2],[cbd:src1,src2,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> 0,[cxa:src1],[cbd:src_bd_cmem_off,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> 0,[cxa:dst_xa_cmem_off],[cbd:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> 0,[cxa:src1],[cbd:src_bd_cmem_off,src2],size_8 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> 0,[cxa:dst_xa_cmem_addr],[cbd:src1,src2],size_8 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> 0,[cxa:src1],[cbd:src1,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> 0,[cxa:src1,src2],[cbd:src1,src2,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> 0,[cbd:src1,src2],[cxa:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> 0,[cbd:src1,src2,src2],[cxa:src1,src2],src2  */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> 0,[cbd:src1,src2],[cxa:src_xa_cmem_off],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> 0,[cbd:dst_bd_cmem_off,src2],[cxa:src1],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> 0,[cbd:src1,src2],[cxa: src_xa_cmem_off], size_8 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> 0,[cbd:dst_bd_cmem_off,src2],[cxa src1],size_8 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> 0,[cbd:src1,dst_off_8],[cxa:src_xa_cmem_off],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> 0,[cbd:dst_bd_cmem_off,dst_off_8],[cxa:src1],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> 0,[cbd:src1,dst_off_10],[cxa:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> 0,[cbd:src1,dst_off_10,src2],[cxa:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> 0,[cbd:src1,dst_off_10],[cxa:src1],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> 0,[cbd:src1,dst_off_10,src2],[cxa:src1,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> 0,[cbd:src1,src2],[cxa:src1],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> 0,[cbd:src1,src2,src2],[cxa:src1,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> dst,[cxa:src1],[cbd:src1,src2],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> dst,[cxa:src1,src2],[cbd:src1,src2,src2],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> dst,[cxa:src1],[cbd:src_bd_cmem_off,src2],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> dst,[cxa:dst_xa_cmem_off],[cbd:src1,src2],src2 */
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> dst,[cxa:src1],[cbd:src_bd_cmem_off,src2],size_8 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> dst,[cxa:dst_xa_cmem_addr],[cbd:src1,src2],size_8 */
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> dst,[cxa:src1],[cbd:src1,src2],size_10 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> dst,[cxa:src1,src2],[cbd:src1,src2,src2],size_10 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (1L, 2L,NPS_CXA, NPS_CBD, C_NPS_CP_M )
+
+/* cp<.m> dst,[cbd:src1,src2],[cxa:src1],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> dst,[cbd:src1,src2,src2],[cxa:src1,src2],src2  */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> dst,[cbd:src1,src2],[cxa:src_xa_cmem_off],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> dst,[cbd:dst_bd_cmem_off,src2],[cxa:src1],src2 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> dst,[cbd:src1,src2],[cxa: src_xa_cmem_off], size_8 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> dst,[cbd:dst_bd_cmem_off,src2],[cxa src1],size_8 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> dst,[cbd:src1,dst_off_8],[cxa:src_xa_cmem_off],src2 */
+CP_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> dst,[cbd:dst_bd_cmem_off,dst_off_8],[cxa:src1],src2 */
+CP_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> dst,[cbd:src1,dst_off_10],[cxa:src1],src2 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> dst,[cbd:src1,dst_off_10,src2],[cxa:src1,src2],src2 */
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> dst,[cbd:src1,dst_off_10],[cxa:src1],size_10 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> dst,[cbd:src1,dst_off_10,src2],[cxa:src1,src2],size_10 */
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> dst,[cbd:src1,src2],[cxa:src1],size_10 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp<.m> dst,[cbd:src1,src2,src2],[cxa:src1,src2],size_10 */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (1L, 1L,NPS_CBD, NPS_CXA, C_NPS_CP_M )
+
+/* cp BD to CM */
+/* cp 0, [cm:src1],[cbd:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp 0, [cm:src1],[cbd:src1,src2,src2],src2*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, C_NPS_CP_M )
+
+/* cp 0,[cm:1], [cbd:src_bd_cmem_off,2], 2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp 0,[cm:dst_cmem_off],[cbd:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp 0,[cm:src1],[cbd:src_bd_cmem_off,src2],size_8*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp 0,[cm:dst_cmem_off],[cbd:src1,src2],size_8*/
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp 0,[cm:src1],[cbd:src_bd_cmem_off,src_off_8],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_OFF8_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp 0,[cm:dst_cmem_off],[cbd:src1,src_off_8],src2*/
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_OFF8_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp 0,[cm:src1],[cbd:src1,src_off_10],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp 0, [cm:src1], [cbd:src1,src_off_10,src2], src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp 0,[cm:src1],[cbd:src1,src_off_10],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_BR_SIZE10_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp 0,[cm:src1],[cbd:src1,src_off_10,src2],size_10*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SIZE10_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp 0,[cm:src1],[cbd:src1,src2], size_10*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp 0, [cm:src1], [cbd:src1,src2,src2], size_10*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp dst, [cm:src1],[cbd:src1,src2],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp dst, [cm:src1],[cbd:src1,src2,src2],src2*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, C_NPS_CP_M )
+
+/* cp dst,[cm:1], [cbd:src_bd_cmem_off,2], 2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp dst,[cm:dst_cmem_off],[cbd:src1,src2],src2 */
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp dst,[cm:src1],[cbd:src_bd_cmem_off,src2],size_8*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp dst,[cm:dst_cmem_off],[cbd:src1,src2],size_8*/
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp dst,[cm:src1],[cbd:src_bd_cmem_off,src_off_8],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_OFF8_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp dst,[cm:dst_cmem_off],[cbd:src1,src_off_8],src2*/
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_OFF8_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp dst,[cm:src1],[cbd:src1,src_off_10],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp dst, [cm:src1], [cbd:src1,src_off_10,src2], src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SRC2_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp dst,[cm:src1],[cbd:src1,src_off_10],size_10 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_BR_SIZE10_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp dst,[cm:src1],[cbd:src1,src_off_10,src2],size_10*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SIZE10_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp dst,[cm:src1],[cbd:src1,src2], size_10*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp dst, [cm:src1], [cbd:src1,src2,src2], size_10*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (1L, 4L,NPS_CM, NPS_CBD, 0 )
+
+/* cp CM to BD */
+/* cp<.m> 0,[cbd:src1,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> 0,[cbd:src1,src2,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> 0,[cbd:src1,src2],[cm:src_cmem_off],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> 0,[cbd:dst_bd_cmem_off,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> 0,[cbd:src1,src2],[cm:src_cmem_off],size_8 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> 0,[cbd:dst_bd_cmem_off,src2],[cm: src1],size_8 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> 0,[cbd:src1,dst_off_8],[cm:src_cmem_off],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> 0,[cbd:dst_bd_cmem_off,dst_off_8],[cm:src1], src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> 0,[cbd:src1,dst_off_10],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> 0,[cbd:src1,dst_off_10,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> 0,[cbd:src1,dst_off_10],[cm:src1],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> 0,[cbd:src1,dst_off_10,src2],[cm:src1],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> 0,[cbd:src1,src2],[cm:src1],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> 0,[cbd:src1,src2,src2],[cm:src1],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> dst,[cbd:src1,src2],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> dst,[cbd:src1,src2,src2],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> dst,[cbd:src1,src2],[cm:src_cmem_off],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> dst,[cbd:dst_bd_cmem_off,src2],[cm:src1],src2 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> dst,[cbd:src1,src2],[cm:src_cmem_off],size_8 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> dst,[cbd:dst_bd_cmem_off,src2],[cm: src1],size_8 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> dst,[cbd:src1,dst_off_8],[cm:src_cmem_off],src2 */
+CP_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> dst,[cbd:dst_bd_cmem_off,dst_off_8],[cm:src1], src2 */
+CP_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> dst,[cbd:src1,dst_off_10],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> dst,[cbd:src1,dst_off_10,src2],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> dst,[cbd:src1,dst_off_10],[cm:src1],size_10 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> dst,[cbd:src1,dst_off_10,src2],[cm:src1],size_10 */
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> dst,[cbd:src1,src2],[cm:src1],size_10 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp<.m> dst,[cbd:src1,src2,src2],[cm:src1],size_10 */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 6L,NPS_CBD, NPS_CM, C_NPS_CP_M)
+
+/* cp CJID to CM */
+/* cp 0,[cm:src1],[cjid:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 5L,NPS_CM, NPS_CJID, 0)
+
+/* cp 0,[cm:src1],[cjid:src_cmem_addr], src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (1L, 5L,NPS_CM, NPS_CJID, 0)
+
+/* cp 0,[cm:dst_cmem_addr],[cjid:src1],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 5L,NPS_CM, NPS_CJID, 0)
+
+/* cp 0,[cm:src1],[cjid:src_cmem_addr],size_8 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE (1L, 5L,NPS_CM, NPS_CJID, 0)
+
+/* cp 0,[cm:dst_cmem_addr],[cjid:src1],size_8 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE (1L, 5L,NPS_CM, NPS_CJID, 0)
+
+/* cp 0,[cm:src1],[cjid:src1],size10*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 5L,NPS_CM, NPS_CJID, 0)
+
+/* cp dst,[cm:src1],[cjid:src1],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 5L,NPS_CM, NPS_CJID, 0)
+
+/* cp dst,[cm:src1],[cjid:src_cmem_addr], src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (1L, 5L,NPS_CM, NPS_CJID, 0)
+
+/* cp dst,[cm:dst_cmem_addr],[cjid:src1],src2 */
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 5L,NPS_CM, NPS_CJID, 0)
+
+/* cp dst,[cm:src1],[cjid:src_cmem_addr],size_8 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE (1L, 5L,NPS_CM, NPS_CJID, 0)
+
+/* cp dst,[cm:dst_cmem_addr],[cjid:src1],size_8 */
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE (1L, 5L,NPS_CM, NPS_CJID, 0)
+
+/* cp dst,[cm:src1],[cjid:src1],size10*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 5L,NPS_CM, NPS_CJID, 0)
+
+/* cp CM to CJID */
+/* cp 0,[cjid:src1],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 7L, NPS_CJID, NPS_CM, 0)
+
+/* cp 0,[cjid: src1],[cm:src_cmem_addr],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (1L, 7L, NPS_CJID, NPS_CM, 0)
+
+/* cp 0,[cjid:dst_cmem_addr],[cm: src1],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 7L, NPS_CJID, NPS_CM, 0)
+
+/* cp 0,[cjid:src1],[cm:src_cmem_addr ],size_8 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE (1L, 7L, NPS_CJID, NPS_CM, 0)
+
+/* cp 0,[cjid:dst_cmem_addr],[cm:src1],size_8 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE (1L, 7L, NPS_CJID, NPS_CM, 0)
+
+/* cp 0,[cjid:src1],[cm:src1],size10 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 7L, NPS_CJID, NPS_CM, 0)
+
+/* cp dst,[cjid:src1],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 7L, NPS_CJID, NPS_CM, 0)
+
+/* cp dst,[cjid: src1],[cm:src_cmem_addr],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (1L, 7L, NPS_CJID, NPS_CM, 0)
+
+/* cp dst,[cjid:dst_cmem_addr],[cm: src1],src2 */
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (1L, 7L, NPS_CJID, NPS_CM, 0)
+
+/* cp dst,[cjid:src1],[cm:src_cmem_addr ],size_8 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE (1L, 7L, NPS_CJID, NPS_CM, 0)
+
+/* cp dst,[cjid:dst_cmem_addr],[cm:src1],size_8 */
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE (1L, 7L, NPS_CJID, NPS_CM, 0)
+
+/* cp dst,[cjid:src1],[cm:src1],size10 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (1L, 7L, NPS_CJID, NPS_CM, 0)
+
+/* cp BD to NULL */
+/* cp dst,[cbd:src1,src2],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c008800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffffcfffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { 0 }},
+
+/* cp dst,[cbd:src1,src2,src2],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE(SUB1,SUB2, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffffcfffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { 0 }},
+
+/* cp dst,[cbd:src_bd_cmem_off,src2], src2 */
+#define CP_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE(SUB1,SUB2, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffffcf0000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RCdouble_64, BRAKETdup, NPS_RCdouble_64 }, { 0 }},
+
+/* cp dst,[cbd:src_bd_cmem_off,src2],size_8 */
+#define CP_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE(SUB1,SUB2, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffff000000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RCdouble_64, BRAKETdup, NPS_DMA_IMM_16_24 }, { 0 }},
+
+/* cp dst,[cbd:src1,src2],size_10 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE(SUB1,SUB2, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c00a800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffffc00000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { 0 }},
+
+/* cp dst,[cbd:src1,src2,src2],size_10 */
+#define CP_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE(SUB1,SUB2, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x500007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffffc00000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { 0 }},
+
+/* cp 0,[cbd:src1,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE(SUB1,SUB2, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c008800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffffcfffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { 0 }},
+
+/* cp 0,[cbd:src1,src2,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE(SUB1,SUB2, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffffcfffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { 0 }},
+
+/* cp 0,[cbd:src_bd_cmem_off,src2], src2 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE(SUB1,SUB2, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffffcf0000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RCdouble_64, BRAKETdup, NPS_RCdouble_64 }, { 0 }},
+
+/* cp 0,[cbd:src_bd_cmem_off,src2],size_8 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE(SUB1,SUB2, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffff000000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, SRC_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RCdouble_64, BRAKETdup, NPS_DMA_IMM_16_24 }, { 0 }},
+
+/* cp 0,[cbd:src1,src2],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE(SUB1,SUB2, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c00a800000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffffc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { 0 }},
+
+/* cp 0,[cbd:src1,src2,src2],size_10 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE(SUB1,SUB2, SRC_ADDR_TYPE )                                          \
+ { "cp", 0x57c007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffffc00000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_12_22 }, { 0 }},
+
+/* cp 0,[cbd:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 3L, NPS_CBD)
+
+/* cp 0,[cbd:src1,src2,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (1L, 3L, NPS_CBD)
+
+/* cp 0,[cbd:src_bd_cmem_off,src2], src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (1L, 3L, NPS_CBD)
+
+/* cp 0,[cbd:src_bd_cmem_off,src2],size_8 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE (1L, 3L, NPS_CBD)
+
+/* cp 0,[cbd:src1,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (1L, 3L, NPS_CBD)
+
+/* cp 0,[cbd:src1,src2,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (1L, 3L, NPS_CBD)
+
+/* cp dst,[cbd:src1,src2],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (1L, 3L, NPS_CBD)
+
+/* cp dst,[cbd:src1,src2,src2],src2 */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (1L, 3L, NPS_CBD)
+
+/* cp dst,[cbd:src_bd_cmem_off,src2], src2 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (1L, 3L, NPS_CBD)
+
+/* cp dst,[cbd:src_bd_cmem_off,src2],size_8 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE (1L, 3L, NPS_CBD)
+
+/* cp dst,[cbd:src1,src2],size_10 */
+CP_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (1L, 3L, NPS_CBD)
+
+/* cp dst,[cbd:src1,src2,src2],size_10 */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (1L, 3L, NPS_CBD)
+
+/* cp LBD to LBD */
+/* cp<.e> 0,[clbd:src1,src2],[clbd: src1, src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp<.e> 0,[clbd:src1,src2,src2],[clbd:src1,src2,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp<.e> 0,[clbd:src1,src2],[clbd:src_clbd_cmem_off,src2], src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp<.e> 0,[clbd:dst_clbd_cmem_off,src2],[clbd:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp 0,[clbd:src1,src2],[clbd:src_clbd_cmem_off,src2],size_8 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp 0,[clbd:dst_clbd_cmem_off,src2],[clbd:src1,src2],size_8 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp 0,[clbd:src1,dst_offset_8],[clbd:src_clbd_cmem_off,src2], src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp 0,[clbd:dst_clbd_cmem_off, dst_offset_8],[clbd:src1,src2], src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp 0,[clbd:src1,dst_offset_10], [clbd:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp 0,[clbd:src1,dst_offset_10,src2],[clbd:src1,src2,src2], src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp 0,[clbd:src1,dst_offset_10],[clbd:src1,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp 0,[clbd:src1,dst_offset_10,src2], [clbd:src1,src2,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp.e 0,[clbd:src1,dst_offset_10],[clbd:src1,src_offset_10],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_OFF10_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp.e 0,[clbd:src1,dst_offset_10,src2],[clbd:src1,src_offset_10,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp.e 0,[clbd:src1,dst_offset_10],[clbd:src1,src_offset_10],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_OFF10_BR_SIZE10_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp.e 0,[clbd:src1,dst_offset_10,src2],[clbd:src1,src_offset_10,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SIZE10_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp<.e> 0,[clbd:src1,src2],[clbd:src1,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp<.e> 0,[clbd:src1,src2,src2],[clbd:src1,src2,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp<.e> dst,[clbd:src1,src2],[clbd: src1, src2],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp<.e> dst,[clbd:src1,src2,src2],[clbd:src1,src2,src2],src2 */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp<.e> dst,[clbd:src1,src2],[clbd:src_clbd_cmem_off,src2], src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp<.e> dst,[clbd:dst_clbd_cmem_off,src2],[clbd:src1,src2],src2 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp dst,[clbd:src1,src2],[clbd:src_clbd_cmem_off,src2],size_8 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp dst,[clbd:dst_clbd_cmem_off,src2],[clbd:src1,src2],size_8 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp dst,[clbd:src1,dst_offset_8],[clbd:src_clbd_cmem_off,src2], src2 */
+CP_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp dst,[clbd:dst_clbd_cmem_off, dst_offset_8],[clbd:src1,src2], src2 */
+CP_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp dst,[clbd:src1,dst_offset_10], [clbd:src1,src2],src2 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp dst,[clbd:src1,dst_offset_10,src2],[clbd:src1,src2,src2], src2 */
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp dst,[clbd:src1,dst_offset_10],[clbd:src1,src2],size_10 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp dst,[clbd:src1,dst_offset_10,src2], [clbd:src1,src2,src2],size_10 */
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp.e dst,[clbd:src1,dst_offset_10],[clbd:src1,src_offset_10],src2 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_OFF10_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp.e dst,[clbd:src1,dst_offset_10,src2],[clbd:src1,src_offset_10,src2],src2 */
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SRC2_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp.e dst,[clbd:src1,dst_offset_10],[clbd:src1,src_offset_10],size_10 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_OFF10_BR_SIZE10_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp.e dst,[clbd:src1,dst_offset_10,src2],[clbd:src1,src_offset_10,src2],size_10 */
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SIZE10_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp<.e> dst,[clbd:src1,src2],[clbd:src1,src2],size_10 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp<.e> dst,[clbd:src1,src2,src2],[clbd:src1,src2,src2],size_10 */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (2L, 0L, NPS_CLBD, NPS_CLBD)
+
+/* cp LBD to XA */
+/* cp 0,[cxa:src1],[clbd:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp 0,[cxa:src1,src2],[clbd:src1,src2,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp 0,[cxa:src1],[clbd:src_clbd_cmem_off,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp 0,[cxa:dst_xa_cmem_off], [clbd:src1,src2], src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp 0,[cxa:src1],[clbd:src_clbd_cmem_off,src2],size_8 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp 0,[cxa:dst_xa_cmem_off],[clbd:src1, src2],size_8 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp 0,[cxa:src1],[clbd:src1,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp 0,[cxa:src1,src2],[clbd:src1,src2,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp dst,[cxa:src1],[clbd:src1,src2],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp dst,[cxa:src1,src2],[clbd:src1,src2,src2],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp dst,[cxa:src1],[clbd:src_clbd_cmem_off,src2],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp dst,[cxa:dst_xa_cmem_off], [clbd:src1,src2], src2 */
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp dst,[cxa:src1],[clbd:src_clbd_cmem_off,src2],size_8 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp dst,[cxa:dst_xa_cmem_off],[clbd:src1, src2],size_8 */
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp dst,[cxa:src1],[clbd:src1,src2],size_10 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp dst,[cxa:src1,src2],[clbd:src1,src2,src2],size_10 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (2L,2L,NPS_CXA,NPS_CLBD, 0)
+
+/* cp XA to LBD */
+/* cp 0,[clbd:src1,src2],[cxa:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp 0,[clbd:src1,src2,src2],[cxa:src1,src2], src2*/
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp 0,[clbd:src1,src2],[cxa:src_xa_cmem_off], src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp 0,[clbd:dst_clbd_cmem_off,src2],[cxa:src1],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp 0,[clbd:src1,src2],[cxa:src_xa_cmem_off],size_8*/
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp 0,[clbd:dst_clbd_cmem_off, src2],[cxa:src1],size_8 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp 0,[clbd:src1,dst_off_8],[cxa:src_xa_cmem_off],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp 0,[clbd:dst_clbd_cmem_off,dst_off_8],[cxa:src1],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp 0,[clbd:src1,dst_off_10],[cxa:src1],src2*/
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp 0,[clbd:src1,dst_off_10,src2],[cxa:src1,src2],src2*/
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp 0,[clbd:src1,dst_off_10],[cxa:src1],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp 0,[clbd:src1,dst_off_10,src2],[cxa:src1,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp 0,[clbd:src1,src2],[cxa:src1],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp 0,[clbd:src1,src2,src2],[cxa:src1,src2],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp dst,[clbd:src1,src2],[cxa:src1],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp dst,[clbd:src1,src2,src2],[cxa:src1,src2], src2*/
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp dst,[clbd:src1,src2],[cxa:src_xa_cmem_off], src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp dst,[clbd:dst_clbd_cmem_off,src2],[cxa:src1],src2 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp dst,[clbd:src1,src2],[cxa:src_xa_cmem_off],size_8*/
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp dst,[clbd:dst_clbd_cmem_off, src2],[cxa:src1],size_8 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp dst,[clbd:src1,dst_off_8],[cxa:src_xa_cmem_off],src2 */
+CP_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp dst,[clbd:dst_clbd_cmem_off,dst_off_8],[cxa:src1],src2 */
+CP_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp dst,[clbd:src1,dst_off_10],[cxa:src1],src2*/
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp dst,[clbd:src1,dst_off_10,src2],[cxa:src1,src2],src2*/
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp dst,[clbd:src1,dst_off_10],[cxa:src1],size_10 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp dst,[clbd:src1,dst_off_10,src2],[cxa:src1,src2],size_10 */
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp dst,[clbd:src1,src2],[cxa:src1],size_10 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp dst,[clbd:src1,src2,src2],[cxa:src1,src2],size_10 */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (2L,1L,NPS_CLBD,NPS_CXA, 0)
+
+/* cp LBD to CM */
+/* cp 0,[cm: src1],[clbd:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp 0,[cm:src1],[clbd:src1,src2,src2],src2*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp 0,[cm:src1],[clbd:SRC_LBD_CMEM_OFF,src2],src2*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp 0,[cm:dst_cmem_off],[clbd:src1,src2],src2*/
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp 0,[cm:src1],[clbd:SRC_LBD_CMEM_OFF,src2],size_8*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp 0,[cm:DST_CMEM_ADDR],[clbd:src1,src2],size_8*/
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp 0,[cm:src1],[clbd:SRC_LBD_CMEM_OFF,src_off_8],src2*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_OFF8_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp 0,[cm:dst_cmem_off],[clbd:src1,src_off_8],src2*/
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_OFF8_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp 0,[cm:src1],[clbd:src1, src_off_10],src2*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp 0,[cm:src1],[clbd:src1,src_off_10,src2],src2*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp 0,[cm:src1],[clbd:src1,src_off_10],size_10*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_BR_SIZE10_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp 0,[cm:src1],[clbd:src1,src_off_10,src2],size_10*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SIZE10_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp 0,[cm:src1],[clbd:src1,src2],size_10*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp 0,[cm:src1],[clbd:src1,src2,src2],size_10*/
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp dst,[cm: src1],[clbd:src1,src2],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp dst,[cm:src1],[clbd:src1,src2,src2],src2*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp dst,[cm:src1],[clbd:SRC_LBD_CMEM_OFF,src2],src2*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp dst,[cm:dst_cmem_off],[clbd:src1,src2],src2*/
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp dst,[cm:src1],[clbd:SRC_LBD_CMEM_OFF,src2],size_8*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SIZE8_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp dst,[cm:DST_CMEM_ADDR],[clbd:src1,src2],size_8*/
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SIZE8_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp dst,[cm:src1],[clbd:SRC_LBD_CMEM_OFF,src_off_8],src2*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_OFF8_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp dst,[cm:dst_cmem_off],[clbd:src1,src_off_8],src2*/
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_OFF8_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp dst,[cm:src1],[clbd:src1, src_off_10],src2*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp dst,[cm:src1],[clbd:src1,src_off_10,src2],src2*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SRC2_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp dst,[cm:src1],[clbd:src1,src_off_10],size_10*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_BR_SIZE10_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp dst,[cm:src1],[clbd:src1,src_off_10,src2],size_10*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_OFF10_SRC2_BR_SIZE10_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp dst,[cm:src1],[clbd:src1,src2],size_10*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SIZE10_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp dst,[cm:src1],[clbd:src1,src2,src2],size_10*/
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE10_LIKE (2L,4L,NPS_CM,NPS_CLBD, 0)
+
+/* cp CM to LBD */
+/* cp 0,[clbd:src1,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp 0,[clbd:src1,src2,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp 0,[clbd:src1,src2],[cm:src_cmem_off],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp 0,[clbd:dst_lbd_cmem_off, src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp 0,[clbd:src1,src2],[cm:src_cmem_off],size_8 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp 0,[clbd:dst_lbd_cmem_off,src2],[cm:src1],size_8 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp 0,[clbd:src1,dst_off_8],[cm:src_cmem_off],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp 0,[clbd: dst_lbd_cmem_off, dst_off_8],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp 0,[clbd:src1,dst_off_10],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp 0,[clbd:src1,dst_off_10,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp 0,[clbd:src1,dst_off_10],[cm:src1],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp 0,[clbd:src1,dst_off_10,src2],[cm:src1],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp 0,[clbd:src1,src2],[cm:src1],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp 0,[clbd:src1,src2,src2],[cm:src1],size_10 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp dst,[clbd:src1,src2],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp dst,[clbd:src1,src2,src2],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp dst,[clbd:src1,src2],[cm:src_cmem_off],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp dst,[clbd:dst_lbd_cmem_off, src2],[cm:src1],src2 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp dst,[clbd:src1,src2],[cm:src_cmem_off],size_8 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SIZE8_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp dst,[clbd:dst_lbd_cmem_off,src2],[cm:src1],size_8 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SIZE8_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp dst,[clbd:src1,dst_off_8],[cm:src_cmem_off],src2 */
+CP_BR_ADDR_SRC1_OFF8_BR_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp dst,[clbd: dst_lbd_cmem_off, dst_off_8],[cm:src1],src2 */
+CP_BR_ADDR_CMEM_OFF_OFF8_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp dst,[clbd:src1,dst_off_10],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp dst,[clbd:src1,dst_off_10,src2],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp dst,[clbd:src1,dst_off_10],[cm:src1],size_10 */
+CP_BR_ADDR_SRC1_OFF10_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp dst,[clbd:src1,dst_off_10,src2],[cm:src1],size_10 */
+CP_BR_ADDR_SRC1_OFF10_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp dst,[clbd:src1,src2],[cm:src1],size_10 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp dst,[clbd:src1,src2,src2],[cm:src1],size_10 */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE10_LIKE (2L,6L,NPS_CLBD,NPS_CM, 0)
+
+/* cp XA to XA */
+/* cp<.m><.na><.x> 0,[cxa:src1],[cxa:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> 0,[cxa:src1],[cxa:src_xa_cmem_off],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> 0,[cxa:dst_xa_cmem_off],[cxa:src1],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> 0,[cxa:src1],[cxa:src1],size_16 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE16_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> 0,[cxa:src1,src2],[cxa:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> 0,[cxa:src1,src2],[cxa:src_xa_cmem_off,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> 0,[cxa:dst_xa_cmem_off,src2],[cxa:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> 0,[cxa:src1,src2],[cxa:src1,src2],size_16 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE16_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:src1],[cxa:src1],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:src1],[cxa:src_xa_cmem_off],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:dst_xa_cmem_off],[cxa:src1],src2 */
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:src1],[cxa:src1],size_16 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE16_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:src1,src2],[cxa:src1,src2],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:src1,src2],[cxa:src_xa_cmem_off,src2],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:dst_xa_cmem_off,src2],[cxa:src1,src2],src2 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:src1,src2],[cxa:src1,src2],size_16 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_SRC2_BR_SIZE16_3_FLAGS_LIKE (3L,3L,NPS_CXA, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp XA to CM */
+/* cp<.na><.x> 0,[cm:src1],[cxa:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> 0,[cm:src1],[cxa:src_xa_cmem_off],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> 0,[cm:dst_cmem_off],[cxa:src1], src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> 0,[:src1],[cxa:src1], size_16 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE16_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> 0,[cm:src1],[cxa:src1,src2], src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> 0,[cm:src1],[cxa:src_xa_cmem_off,src2], src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> 0,[cm:dst_cmem_off],[cxa:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> 0,[cm:src1],[cxa:src1,src2],size_16 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SIZE16_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> dst,[cm:src1],[cxa:src1],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> dst,[cm:src1],[cxa:src_xa_cmem_off],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> dst,[cm:dst_cmem_off],[cxa:src1], src2 */
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> dst,[:src1],[cxa:src1], size_16 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE16_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> dst,[cm:src1],[cxa:src1,src2], src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> dst,[cm:src1],[cxa:src_xa_cmem_off,src2], src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> dst,[cm:dst_cmem_off],[cxa:src1,src2],src2 */
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_SRC2_BR_SRC2_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> dst,[cm:src1],[cxa:src1,src2],size_16 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_BR_SIZE16_2_FLAGS_LIKE (3L,5L,NPS_CM, NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp CM to CX */
+/* cp<.m><.na><.x> 0,[cxa:src1],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> 0,[cxa:src1],[cm:src_cmem_off],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> 0,[cxa:dst_xa_cmem_off],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> 0,[cxa:src1],[cm:src1],size_16 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE16_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> 0,[cxa:src1,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> 0,[cxa:src1,src2],[cm:src_cmem_off],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SRC2_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> 0,[cxa:dst_xa_cmem_off,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> 0,[cxa:src1,src2],[cm:src1],size_16 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SIZE16_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:src1],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:src1],[cm:src_cmem_off],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_CMEM_OFF_BR_SRC2_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:dst_xa_cmem_off],[cm:src1],src2 */
+CP_BR_ADDR_CMEM_OFF_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:src1],[cm:src1],size_16 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_BR_SIZE16_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:src1,src2],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:src1,src2],[cm:src_cmem_off],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_CMEM_OFF_BR_SRC2_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:dst_xa_cmem_off,src2],[cm:src1],src2 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.na><.x> dst,[cxa:src1,src2],[cm:src1],size_16 */
+CP_BR_ADDR_SRC1_SRC2_BR_BR_ADDR_SRC1_BR_SIZE16_3_FLAGS_LIKE (3L,7L,NPS_CXA, NPS_CM, C_NPS_CP_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp XA to NULL */
+/* cp<.na><.x> 0,[cxa:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c000400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe77fffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> 0,[cxa:src_xa_cmem_off],src2 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c002400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RCdouble_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> 0,[cxa:src1],size_16 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_SIZE16_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c001400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> 0,[cxa:src1,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+ { "cp", 0x57c007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe00fffe77fffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> 0,[cxa:src_xa_cmem_off,src2],src2 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+ { "cp", 0x57c007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_RCdouble_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> 0,[cxa:src1,src2],size_16 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_SIZE16_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+ { "cp", 0x57c007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_CP_CMEM_OFFSET }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> dst,[cxa:src1],src2 */
+#define CP_BR_ADDR_SRC1_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c000400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe77fffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> dst,[cxa:src_xa_cmem_off],src2 */
+#define CP_BR_ADDR_CMEM_OFF_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c002400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RCdouble_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> dst,[cxa:src1],size_16 */
+#define CP_BR_ADDR_SRC1_BR_SIZE16_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c001400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> dst,[cxa:src1,src2],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+ { "cp", 0x500007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe77fffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> dst,[cxa:src_xa_cmem_off,src2],src2 */
+#define CP_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+ { "cp", 0x500007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, NPS_RC_64, BRAKETdup, NPS_RCdouble_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> dst,[cxa:src1,src2],size_16 */
+#define CP_BR_ADDR_SRC1_SRC2_BR_SIZE16_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+ { "cp", 0x500007c001000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG1, FLAG2 }},
+
+/* cp<.na><.x> 0,[cxa:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_SRC2_2_FLAGS_LIKE (3L,1L,NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> 0,[cxa:src_xa_cmem_off],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_SRC2_2_FLAGS_LIKE (3L,1L,NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> 0,[cxa:src1],size_16 */
+CP_NO_DST_BR_ADDR_SRC1_BR_SIZE16_2_FLAGS_LIKE (3L,1L,NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> 0,[cxa:src1,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_SRC2_2_FLAGS_LIKE (3L,1L,NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> 0,[cxa:src_xa_cmem_off,src2],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_2_FLAGS_LIKE (3L,1L,NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> 0,[cxa:src1,src2],size_16 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_BR_SIZE16_2_FLAGS_LIKE (3L,1L,NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> dst,[cxa:src1],src2 */
+CP_BR_ADDR_SRC1_BR_SRC2_2_FLAGS_LIKE (3L,1L,NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> dst,[cxa:src_xa_cmem_off],src2 */
+CP_BR_ADDR_CMEM_OFF_BR_SRC2_2_FLAGS_LIKE (3L,1L,NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> dst,[cxa:src1],size_16 */
+CP_BR_ADDR_SRC1_BR_SIZE16_2_FLAGS_LIKE (3L,1L,NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> dst,[cxa:src1,src2],src2 */
+CP_BR_ADDR_SRC1_SRC2_BR_SRC2_2_FLAGS_LIKE (3L,1L,NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> dst,[cxa:src_xa_cmem_off,src2],src2 */
+CP_BR_ADDR_CMEM_OFF_SRC2_BR_SRC2_2_FLAGS_LIKE (3L,1L,NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp<.na><.x> dst,[cxa:src1,src2],size_16 */
+CP_BR_ADDR_SRC1_SRC2_BR_SIZE16_2_FLAGS_LIKE (3L,1L,NPS_CXA, C_NPS_CP_NA, C_NPS_CP_X)
+
+/* cp CM to NULL */
+/* cp<.na> 0,[cm:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG )                                          \
+{ "cp", 0x57c007c000400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe77fffff, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG }},
+
+/* cp<.na> 0,[cm:src_cm_cmem_off],src2 */
+#define CP_NO_DST_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG )                                          \
+{ "cp", 0x57c007c002400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RCdouble_64 }, { FLAG }},
+
+/* cp<.na> 0,[cm:src1],size_16 */
+#define CP_NO_DST_BR_SRC1_OFF_BR_SIZE16_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG )                                          \
+{ "cp", 0x57c007c001400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG }},
+
+/* cp<.na> dst,[cm:src1],src2 */
+#define CP_BR_ADDR_SRC1_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG )                                          \
+{ "cp", 0x500007c000400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe77fffff, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG }},
+
+/* cp<.na> dst,[cm:src_cm_cmem_off],src2 */
+#define CP_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG )                                          \
+{ "cp", 0x500007c002400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_CP_CMEM_OFFSET, BRAKETdup, NPS_RCdouble_64 }, { FLAG }},
+
+/* cp<.na> dst,[cm:src1],size_16 */
+#define CP_BR_SRC1_OFF_BR_SIZE16_LIKE(SUB1,SUB2,DST_ADDR_TYPE, FLAG )                                          \
+{ "cp", 0x500007c001400000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffe7700000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_DMA_IMM_0_16 }, { FLAG }},
+
+/* cp<.na> 0,[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_SRC2_LIKE (3L,6L,NPS_CM, C_NPS_CP_NA)
+
+/* cp<.na> 0,[cm:src_cm_cmem_off],src2 */
+CP_NO_DST_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (3L,6L,NPS_CM, C_NPS_CP_NA)
+
+/* cp<.na> 0,[cm:src1],size_16 */
+CP_NO_DST_BR_SRC1_OFF_BR_SIZE16_LIKE (3L,6L,NPS_CM, C_NPS_CP_NA)
+
+/* cp<.na> dst,[cm:src1],src2 */
+CP_BR_ADDR_SRC1_BR_SRC2_LIKE (3L,6L,NPS_CM, C_NPS_CP_NA)
+
+/* cp<.na> dst,[cm:src_cm_cmem_off],src2 */
+CP_BR_ADDR_CMEM_OFF_BR_SRC2_LIKE (3L,6L,NPS_CM, C_NPS_CP_NA)
+
+/* cp<.na> dst,[cm:src1],size_16 */
+CP_BR_SRC1_OFF_BR_SIZE16_LIKE (3L,6L,NPS_CM, C_NPS_CP_NA)
+
+/* cp CM to SD/XD and cp SD/XD to CM */
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,offset],[cm:src1],size */
+#define CP_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c00e080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,offset,src2],[cm:src1],size */
+#define CP_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c00e000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,src2],[cm:src1],size */
+#define CP_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c00c080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,src2,src2],[cm:src1],size */
+#define CP_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c00c000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,offset],[cm:src1],src2 */
+#define CP_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c006080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,offset,src2],[cm:src1],src2 */
+#define CP_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c006000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,offset],[cm:src1],size */
+#define CP_BR_ADDR_SRC1_SRC2_OFFSET_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c00a080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,offset,src2],[cm:src1],size */
+#define CP_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,src2],[cm:src1],size */
+#define CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c008080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,src2,src2],[cm:src1],size */
+#define CP_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,src2],[cm:src1],src2 */
+#define CP_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c004080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,src2,src2],[cm:src1],src2 */
+#define CP_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c004000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,offset],[cm:src1],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_OFFSET_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c002080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,offset,src2],[cm:src1],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,src2],[cm:src1],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c000080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,src2,src2],[cm:src1],src2 */
+#define CP_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x500007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,offset],size */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c00e080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,offset,src2],size */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c00e000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,src2],size */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c00c080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,src2,src2],size */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c00c000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,offset],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c006080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,offset,src2],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c006000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,offset],size */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c00a080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,offset,src2],size */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,src2],size */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c008080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,src2,src2],size */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,src2],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c004080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,src2,src2],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c004000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,offset],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c002080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,offset,src2],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,src2],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c000080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,src2,src2],src2 */
+#define CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x500007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xf80007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { NPS_RA_64,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,offset],[cm:src1],size */
+#define CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c00e080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,offset,src2],[cm:src1],size */
+#define CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c00e000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,src2],[cm:src1],size */
+#define CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c00c080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,src2,src2],[cm:src1],size */
+#define CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c00c000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,offset],[cm:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c006080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,offset,src2],[cm:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c006000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,offset],[cm:src1],size */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_OFFSET_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c00a080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,offset,src2],[cm:src1],size */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,src2],[cm:src1],size */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c008080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,src2,src2],[cm:src1],size */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,src2],[cm:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c004080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,src2,src2],[cm:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c004000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,offset],[cm:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_OFFSET_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c002080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,offset,src2],[cm:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,src2],[cm:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c000080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,src2,src2],[cm:src1],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2, FLAG3 )                                          \
+{ "cp", 0x57c007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA, BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, NPS_RC_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2, FLAG3 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,offset],size */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c00e080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RBdouble_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RBdouble_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,offset,src2],size */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c00e000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,src2],size */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c00c080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,src2,src2],size */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c00c000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,offset],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c006080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,offset,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c006000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,offset],size */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c00a080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,offset,src2],size */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c00a000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,src2],size */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c008080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,src2,src2],size */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c008000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_CP_SUM_ADDR_SIZE }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c004080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,src2,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c004000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_CP_ENTRY_SIZE, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,offset],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c002080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,offset,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c002000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_CP_SUM_ADDR_OFFSET, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c000080000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,src2,src2],src2 */
+#define CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE(SUB1,SUB2,DST_ADDR_TYPE, SRC_ADDR_TYPE, FLAG1, FLAG2 )                                          \
+{ "cp", 0x57c007c000000000 | ( SUB1 << 32 ) | ( SUB2 << 29 ), 0xffe007ffee080000, ARC_OPCODE_ARC700, DMA, NPS400, { ZA,  BRAKET, DST_ADDR_TYPE, COLON, NPS_RB_64, BRAKETdup, BRAKET, SRC_ADDR_TYPE, COLON, NPS_RB_64, NPS_RC_64, NPS_RC_64, NPS_RC_64, BRAKETdup, NPS_RC_64 }, { FLAG1, FLAG2 }},
+
+/* cp CM to SD/XD */
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,offset],[cm:src1],size */
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,offset,src2],[cm:src1],size */
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,src2],[cm:src1],size */
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,src2,src2],[cm:src1],size */
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,offset],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,offset,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,offset],[cm:src1],size */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_OFFSET_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_SRC2_OFFSET_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,offset,src2],[cm:src1],size */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,src2],[cm:src1],size */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,src2,src2],[cm:src1],size */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,entry_size,src2,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,offset],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_OFFSET_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_SRC2_OFFSET_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,offset,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[csd/cxd:src1,src2,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> 0,[cxd:src1,src2,src2,src2],[cm:src1],src2 */
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_NO_DST_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,offset],[cm:src1],size */
+CP_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,offset,src2],[cm:src1],size */
+CP_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,src2],[cm:src1],size */
+CP_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,src2,src2],[cm:src1],size */
+CP_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,offset],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,offset,src2],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,offset],[cm:src1],size */
+CP_BR_ADDR_SRC1_SRC2_OFFSET_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_SRC2_OFFSET_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,offset,src2],[cm:src1],size */
+CP_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,src2],[cm:src1],size */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,src2,src2],[cm:src1],size */
+CP_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SIZE_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,src2],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,entry_size,src2,src2],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,offset],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_SRC2_OFFSET_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_SRC2_OFFSET_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,offset,src2],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[csd/cxd:src1,src2,src2],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp<.m><.x><.na> dst,[cxd:src1,src2,src2,src2],[cm:src1],src2 */
+CP_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,6L,NPS_CSD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+CP_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_BR_ADDR_SRC1_BR_SRC2_3_FLAGS_LIKE (4L,7L,NPS_CXD, NPS_CM, C_NPS_CP_SD_NA, C_NPS_CP_X, C_NPS_CP_M)
+
+/* cp SD/XD to CM */
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,offset],size */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,offset,src2],size */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,src2],size */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,src2,src2],size */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,offset],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,offset,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,offset],size */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,offset,src2],size */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,src2],size */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,src2,src2],size */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,entry_size,src2,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,offset],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,offset,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> 0,[cm:src1],[csd/cxd:src1,src2,src2,src2],src2 */
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_NO_DST_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,offset],size */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,offset,src2],size */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,src2],size */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,src2,src2],size */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,offset],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,offset,src2],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_OFFSET_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,offset],size */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,offset,src2],size */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,src2],size */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,src2,src2],size */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_SIZE_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,src2],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,entry_size,src2,src2],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_ENTRY_SIZE_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,offset],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,offset,src2],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_OFFSET_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,src2],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+
+/* cp<.x><.na> dst,[cm:src1],[csd/cxd:src1,src2,src2,src2],src2 */
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,4L,NPS_CM, NPS_CSD, C_NPS_CP_SD_NA, C_NPS_CP_X)
+CP_BR_ADDR_SRC1_BR_BR_ADDR_SRC1_SRC2_SRC2_SRC2_BR_SRC2_2_FLAGS_LIKE (4L,5L,NPS_CM, NPS_CXD, C_NPS_CP_SD_NA, C_NPS_CP_X)
