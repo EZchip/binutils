@@ -49,7 +49,14 @@ insert_rb (unsigned long long insn,
 {
   return insn | ((value & 0x07) << 24) | (((value >> 3) & 0x07) << 12);
 }
-
+/* Insert RB register into a 64-bit opcode.  */
+static unsigned long long
+insert_rb_64 (unsigned long long insn,
+	   long long int value,
+	   const char **errmsg ATTRIBUTE_UNUSED)
+{
+  return insn | ((value & 0x07) << 56) | (((value >> 3) & 0x07) << 44);
+}
 /* Insert RB register with checks.  */
 static unsigned long long
 insert_rb_chk (unsigned long long insn,
@@ -75,6 +82,13 @@ extract_rb (unsigned long long insn ATTRIBUTE_UNUSED,
   return value;
 }
 
+static long long int
+extract_rb_64 (unsigned long long insn ATTRIBUTE_UNUSED,
+	    bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  int value = (((insn >> 44) & 0x07L) << 3) | ((insn >> 56) & 0x07L);
+  return value;
+}
 static unsigned long long
 insert_rad (unsigned long long insn,
 	    long long int value,
@@ -1059,8 +1073,8 @@ extract_nps_##NAME (unsigned long long insn ATTRIBUTE_UNUSED,                   
 
 MAKE_BIAS_INSERT_EXTRACT_FUNCS (addb_size,2,32,5,1,5)
 MAKE_BIAS_INSERT_EXTRACT_FUNCS (andb_size,1,32,5,1,5)
-MAKE_BIAS_INSERT_EXTRACT_FUNCS (fxorb_size,8,32,5,8,5)
-MAKE_BIAS_INSERT_EXTRACT_FUNCS (wxorb_size,16,32,5,16,5)
+MAKE_BIAS_INSERT_EXTRACT_FUNCS (fxorb_size,8,32,5,1,5)
+MAKE_BIAS_INSERT_EXTRACT_FUNCS (wxorb_size,16,32,5,1,5)
 MAKE_BIAS_INSERT_EXTRACT_FUNCS (bitop_size,1,32,5,1,10)
 MAKE_BIAS_INSERT_EXTRACT_FUNCS (qcmp_size,1,8,3,1,9)
 MAKE_BIAS_INSERT_EXTRACT_FUNCS (bitop1_size,1,32,5,1,20)
@@ -1454,6 +1468,91 @@ extract_nps_rbdouble_64 (unsigned long long insn ATTRIBUTE_UNUSED,
   return value1;
 }
 
+static unsigned long long
+insert_nps_key_size (unsigned long long insn ATTRIBUTE_UNUSED,
+                        long long int value ATTRIBUTE_UNUSED,
+                        const char **errmsg ATTRIBUTE_UNUSED)
+{
+  switch(value)
+  {
+   case 10:
+   case 20:
+   case 30:
+   case 40:
+   case 50:
+   case 60:
+   case 70:
+   case 80:
+     break;
+   default:
+    *errmsg = _("Invalid value for key size");
+  }
+  return insn | value;
+}
+
+static long long int
+extract_nps_key_size (unsigned long long insn ATTRIBUTE_UNUSED,
+                         bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  return insn & 0x7f;
+}
+
+static unsigned long long
+insert_nps_etcam_key_size (unsigned long long insn ATTRIBUTE_UNUSED,
+                        long long int value ATTRIBUTE_UNUSED,
+                        const char **errmsg ATTRIBUTE_UNUSED)
+{
+  switch(value)
+  {
+   case 8:
+   case 10:
+   case 16:
+   case 20:
+   case 24:
+   case 30:
+   case 32:
+   case 40:
+   case 80:
+     break;
+   default:
+    *errmsg = _("Invalid value for key size");
+  }
+  return insn | value;
+}
+
+static long long int
+extract_nps_etcam_key_size (unsigned long long insn ATTRIBUTE_UNUSED,
+                         bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  return insn & 0x7f;
+}
+
+#define MAKE_SIZE_LIMIT_INSERT_EXTRACT_FUNCS(NAME,LIMIT)         \
+static unsigned long long                                               \
+insert_nps_##NAME##_size (unsigned long long insn ATTRIBUTE_UNUSED,      \
+                        long long int value ATTRIBUTE_UNUSED,           \
+                        const char **errmsg ATTRIBUTE_UNUSED) \
+{                                                             \
+   if (value < 1 || value > LIMIT)                            \
+   {                                                          \
+    *errmsg = _("value out of range");                        \
+    return 0;                                                 \
+    }                                                         \
+   return insn | (value  << 16);                              \
+}                                                             \
+                                                              \
+static long long int                                                    \
+extract_nps_##NAME##_size (unsigned long long insn ATTRIBUTE_UNUSED,     \
+                          bfd_boolean * invalid ATTRIBUTE_UNUSED)     \
+{                                                                     \
+	return (insn >> 16) & 0x3f;                                 \
+}
+
+MAKE_SIZE_LIMIT_INSERT_EXTRACT_FUNCS(1_24,24)
+MAKE_SIZE_LIMIT_INSERT_EXTRACT_FUNCS(1_40,40)
+MAKE_SIZE_LIMIT_INSERT_EXTRACT_FUNCS(1_32,32)
+MAKE_SIZE_LIMIT_INSERT_EXTRACT_FUNCS(1_8,8)
+
 /* Include the generic extract/insert functions.  Order is important
    as some of the functions present in the .h may be disabled via
    defines.  */
@@ -1521,7 +1620,11 @@ const struct arc_flag_operand arc_flag_operands[] =
   { "ls", 14, 5, 0, 1 },
 #define F_PNZ	   (F_LS + 1)
   { "pnz", 15, 5, 0, 1 },
-#define F_NJ	   (F_PNZ + 1)
+#define F_LB	   (F_PNZ + 1)
+  { "lb", 18, 5, 0, 1 },
+#define F_LB2	   (F_LB + 1)
+  { "lb2", 19, 5, 0, 1 },
+#define F_NJ	   (F_LB2 + 1)
   { "nj", 21, 5, 0, 1 },
 #define F_NM	   (F_NJ + 1)
   { "nm", 23, 5, 0, 1 },
@@ -1683,10 +1786,10 @@ const struct arc_flag_operand arc_flag_operands[] =
   { "ie12", 3, 2, 8, 1 },
 
 #define F_NPS_SYNC_RD     (F_NPS_IE12 + 1)
-  { "rd", 0, 1, 6, 1 },
+  { "rd", 0, 1, 24, 1 },
 
 #define F_NPS_SYNC_WR     (F_NPS_SYNC_RD + 1)
-  { "wr", 1, 1, 6, 1 },
+  { "wr", 1, 1, 24, 1 },
 
 #define F_NPS_HWS_OFF     (F_NPS_SYNC_WR + 1)
   { "off", 0, 0, 0, 1 },
@@ -1797,7 +1900,7 @@ const struct arc_flag_class arc_flag_classes[] =
       F_CARRY, F_CARRYSET, F_LOWER, F_CARRYCLR,
       F_NOTCARRY, F_HIGHER, F_OVERFLOWSET, F_OVERFLOW,
       F_NOTOVERFLOW, F_OVERFLOWCLR, F_GT, F_GE, F_LT,
-      F_LE, F_HI, F_LS, F_PNZ, F_NJ, F_NM, F_NO_T, F_AT, F_NULL } },
+      F_LE, F_HI, F_LS, F_PNZ, F_NJ, F_NM, F_NO_T, F_AT, F_LB2, F_LB, F_NULL } },
 
 #define C_AA_ADDR3  (C_CC + 1)
 #define C_AA27	    (C_CC + 1)
@@ -1891,7 +1994,10 @@ const struct arc_flag_class arc_flag_classes[] =
 #define C_NPS_F     (C_NPS_CP_M + 1)
   { F_CLASS_OPTIONAL, { F_NPS_FLAG, F_NULL}},
 
-#define C_NPS_R     (C_NPS_F + 1)
+#define C_NPS_REQUIRED_F     (C_NPS_F + 1)
+  { F_CLASS_REQUIRED, { F_NPS_FLAG, F_NULL}},
+
+#define C_NPS_R     (C_NPS_REQUIRED_F + 1)
   { F_CLASS_OPTIONAL, { F_NPS_R, F_NULL}},
 
 #define C_NPS_SCHD_RW     (C_NPS_R + 1)
@@ -2665,10 +2771,16 @@ const struct arc_operand arc_operands[] =
 #define NPS_RA_64               (NPS_R_SRC2_3B_64 + 1)
   { 6, 53, 0, ARC_OPERAND_IR, NULL, NULL },
 
-#define NPS_RB_64               (NPS_RA_64 + 1)
+#define NPS_RA_0_6_64	(NPS_RA_64 + 1)
+  { 6, 32, 0, ARC_OPERAND_IR, NULL, NULL },
+
+#define NPS_RB_64               (NPS_RA_0_6_64 + 1)
   { 5, 48, 0, ARC_OPERAND_IR, NULL, NULL },
 
-#define NPS_RBdup_64            (NPS_RB_64 + 1)
+#define NPS_RB_SPLIT_64		(NPS_RB_64 + 1)
+  { 6, 44, 0, ARC_OPERAND_IR, insert_rb_64, extract_rb_64 },
+
+#define NPS_RBdup_64            (NPS_RB_SPLIT_64 + 1)
   { 5, 43, 0, ARC_OPERAND_IR | ARC_OPERAND_DUPLICATE, NULL, NULL },
 
 #define NPS_RBdouble_64         (NPS_RBdup_64 + 1)
@@ -2695,9 +2807,53 @@ const struct arc_operand arc_operands[] =
 #define NPS_SECURITY_PAD  (NPS_SECURITY_INIT + 1)
   { 1, 4, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
 
-#define NPS_PROTO_SIZE         (NPS_SECURITY_PAD + 1)
-  { 6, 16, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_proto_size, extract_nps_proto_size }
+#define NPS_SIZE_1_24         (NPS_SECURITY_PAD + 1)
+  { 6, 16, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_1_24_size, extract_nps_1_24_size },
+
+#define NPS_SIZE_1_40         (NPS_SIZE_1_24 + 1)
+  { 6, 16, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_1_40_size, extract_nps_1_40_size },
+
+#define NPS_SIZE_1_32         (NPS_SIZE_1_40 + 1)
+  { 6, 16, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_1_32_size, extract_nps_1_32_size },
+
+#define NPS_SIZE_1_8         (NPS_SIZE_1_32 + 1)
+  { 6, 16, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_1_8_size, extract_nps_1_8_size },
+
+#define NPS_UIMM_0_7  (NPS_SIZE_1_8 + 1)
+  { 8, 0, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_UIMM_8_15  (NPS_UIMM_0_7 + 1)
+  { 8, 8, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_UIMM_16_23  (NPS_UIMM_8_15 + 1)
+  { 8, 16, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_UIMM_24_31  (NPS_UIMM_16_23 + 1)
+  { 8, 24, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_UIMM_0_15  (NPS_UIMM_24_31 + 1)
+  { 16, 0, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_UIMM_16_31  (NPS_UIMM_0_15 + 1)
+  { 16, 16, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_UIMM_8_14  (NPS_UIMM_16_31 + 1)
+  { 7, 8, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_UIMM_19_28  (NPS_UIMM_8_14 + 1)
+  { 10, 19, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_UIMM_22_23  (NPS_UIMM_19_28 + 1)
+  { 2, 22, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_KEY_SIZE         (NPS_UIMM_22_23 + 1)
+  { 7, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_key_size, extract_nps_key_size },
+
+#define NPS_ETCAM_KEY_SIZE         (NPS_KEY_SIZE + 1)
+  { 7, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_etcam_key_size, extract_nps_etcam_key_size },
+
 };
+
 const unsigned arc_num_operands = ARRAY_SIZE (arc_operands);
 
 const unsigned arc_Toperand = FKT_T;
@@ -2791,7 +2947,7 @@ const struct arc_flag_special arc_flag_special_cases[] =
 	   F_PL, F_NEGATIVE, F_MINUS, F_CARRY, F_CARRYSET, F_LOWER, F_CARRYCLR,
 	   F_NOTCARRY, F_HIGHER, F_OVERFLOWSET, F_OVERFLOW, F_NOTOVERFLOW,
 	   F_OVERFLOWCLR, F_GT, F_GE, F_LT, F_LE, F_HI, F_LS, F_PNZ, F_NJ, F_NM,
-	   F_NO_T, F_AT, F_NULL } },
+	   F_NO_T, F_AT, F_LB2, F_LB, F_NULL } },
   { "bl", { F_ALWAYS, F_RA, F_EQUAL, F_ZERO, F_NOTEQUAL, F_NOTZERO, F_POZITIVE,
 	    F_PL, F_NEGATIVE, F_MINUS, F_CARRY, F_CARRYSET, F_LOWER, F_CARRYCLR,
 	    F_NOTCARRY, F_HIGHER, F_OVERFLOWSET, F_OVERFLOW, F_NOTOVERFLOW,

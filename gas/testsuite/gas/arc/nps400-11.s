@@ -83,3 +83,18 @@ label:
         mmnt 0,[xd:r1,0x10,0x40], r2
         mmnt 0,[xd:r1,r2, r2], 0x9
         mmnt 0,[xd:r1,r2, r2], r2
+
+        ;lkpitcm
+        lkpitcm r3,[cm:r1],[cm:r1],r2
+        lkpitcm 0,[cm:r1],[cm:r1],r2
+        lkpitcm r3,[cm:r1],[cm:r1],0x4,0x7,0x1e
+        lkpitcm r3,[cm:r1],[cm:r1],0x12,0x77,0xa
+        lkpitcm r3,[cm:r1],[cm:r1],0x6,0x3ff,0x50
+        lkpitcm 0,[cm:r1],[cm:r1],0x6,0x3ff,0x50
+
+        blb2 label
+        lkpetcm r3,[cm:r1],[cm:r1],r2
+        lkpetcm 0,[cm:r1],[cm:r1],r2
+        lkpetcm r3,[cm:r1],[cm:r1],0x12,0x2,0x20,0x10
+        lkpetcm 0,[cm:r1],[cm:r1],0x12,0x2,0x50,0x10
+        blb label

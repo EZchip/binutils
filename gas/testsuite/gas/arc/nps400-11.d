@@ -69,3 +69,15 @@ Disassembly of section .text:
  110:	57c1 17c5 0400 1014 	mmnt	0,\[xd:r1,0x10,0x40\],r2
  118:	57c1 17c5 9000 000c 	mmnt	0,\[xd:r1,r2,r2\],0x9
  120:	57c1 17c5 0000 0004 	mmnt	0,\[xd:r1,r2,r2\],r2
+ 128:	390e 0083           	lkpitcm	r3,\[cm:r1\],\[cm:r1\],r2
+ 12c:	390e 00be           	lkpitcm	0,\[cm:r1\],\[cm:r1\],r2
+ 130:	390e 0f83 0038 041e 	lkpitcm	r3,\[cm:r1\],\[cm:r1\],0x4,0x7,0x1e
+ 138:	390e 0f83 03b8 120a 	lkpitcm	r3,\[cm:r1\],\[cm:r1\],0x12,0x77,0xa
+ 140:	390e 0f83 1ff8 0650 	lkpitcm	r3,\[cm:r1\],\[cm:r1\],0x6,0x3ff,0x50
+ 148:	390e 0fbe 1ff8 0650 	lkpitcm	0,\[cm:r1\],\[cm:r1\],0x6,0x3ff,0x50
+ 150:	0764 ffd3           	blb2	-156
+ 154:	390f 0083           	lkpetcm	r3,\[cm:r1\],\[cm:r1\],r2
+ 158:	390f 00be           	lkpetcm	0,\[cm:r1\],\[cm:r1\],r2
+ 15c:	390f 0f83 1080 1220 	lkpetcm	r3,\[cm:r1\],\[cm:r1\],0x12,0x2,0x20,0x10
+ 164:	390f 0fbe 1080 1250 	lkpetcm	0,\[cm:r1\],\[cm:r1\],0x12,0x2,0x50,0x10
+ 16c:	0748 ffd2           	blb	-184

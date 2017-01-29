@@ -22,10 +22,10 @@
         .endm
 
         .macro  qcmp_test mnem
-        \mnem           r2,r2,r0,8,8,0,1,3
-        \mnem           r2,r2,r0,8,8,1,1
-        \mnem           r2,r2,r0,8,8,1
-        \mnem           r2,r2,r0,8,8
+        \mnem\().f      r2,r2,r0,8,8,0,1,3
+        \mnem\().f      r2,r2,r0,8,8,1,1
+        \mnem\().f      r2,r2,r0,8,8,1
+        \mnem\().f      r2,r2,r0,8,8
         .endm
 
         .macro  calcsxd_test mnem

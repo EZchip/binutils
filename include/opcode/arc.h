@@ -391,7 +391,7 @@ struct arc_flag_special
   const char *name;
 
   /* List of flags applicable for special case instruction.  */
-  unsigned flags[32];
+  unsigned flags[64];
 };
 
 extern const struct arc_flag_special arc_flag_special_cases[];

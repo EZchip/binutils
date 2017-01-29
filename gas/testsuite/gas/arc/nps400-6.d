@@ -28,10 +28,10 @@ Disassembly of section .text:
   4c:	4830 182b           	shlb.f	r0,r0,r1,0x10,0x8,0x2
   50:	4820 102c           	shrb	r0,r0,r1,0,0x8,0x2
   54:	4830 182c           	shrb.f	r0,r0,r1,0x10,0x8,0x2
-  58:	4820 1007           	fxorb	r0,r0,r1,0,0x8,0x8
-  5c:	4830 1807           	fxorb.f	r0,r0,r1,0x10,0x8,0x8
-  60:	4820 1008           	wxorb	r0,r0,r1,0,0x8,0x10
-  64:	4830 1808           	wxorb.f	r0,r0,r1,0x10,0x8,0x10
+  58:	4820 10e7           	fxorb	r0,r0,r1,0,0x8,0x8
+  5c:	4830 18e7           	fxorb.f	r0,r0,r1,0x10,0x8,0x8
+  60:	4820 11e8           	wxorb	r0,r0,r1,0,0x8,0x10
+  64:	4830 19e8           	wxorb.f	r0,r0,r1,0x10,0x8,0x10
   68:	4820 00e9           	notb	r0,r1,0,0x8
   6c:	4830 21e9           	notb.f	r0,r1,0x10,0x10
   70:	4820 00ea           	cntbb	r0,r1,0,0x8
@@ -42,14 +42,14 @@ Disassembly of section .text:
   84:	4810 87ed           	mod.f	r0,r0,0xf,0x8
   88:	4840 140d           	divm	r0,r0,r2,0x8,0x8
   8c:	4810 07ed           	divm.f	r0,r0,0xf,0x8
-  90:	4a10 9e6e           	qcmp.ar	r2,r2,r0,0x8,0x8,0,0x1,0x3
-  94:	4a10 dfee           	qcmp.ar	r2,r2,r0,0x8,0x8,0x1,0x1
-  98:	4a10 5fee           	qcmp.ar	r2,r2,r0,0x8,0x8,0x1
-  9c:	4a10 1fee           	qcmp.ar	r2,r2,r0,0x8,0x8
-  a0:	4a10 9e6f           	qcmp.al	r2,r2,r0,0x8,0x8,0,0x1,0x3
-  a4:	4a10 dfef           	qcmp.al	r2,r2,r0,0x8,0x8,0x1,0x1
-  a8:	4a10 5fef           	qcmp.al	r2,r2,r0,0x8,0x8,0x1
-  ac:	4a10 1fef           	qcmp.al	r2,r2,r0,0x8,0x8
+  90:	4a10 9e6e           	qcmp.ar.f	r2,r2,r0,0x8,0x8,0,0x1,0x3
+  94:	4a10 dfee           	qcmp.ar.f	r2,r2,r0,0x8,0x8,0x1,0x1
+  98:	4a10 5fee           	qcmp.ar.f	r2,r2,r0,0x8,0x8,0x1
+  9c:	4a10 1fee           	qcmp.ar.f	r2,r2,r0,0x8,0x8
+  a0:	4a10 9e6f           	qcmp.al.f	r2,r2,r0,0x8,0x8,0,0x1,0x3
+  a4:	4a10 dfef           	qcmp.al.f	r2,r2,r0,0x8,0x8,0x1,0x1
+  a8:	4a10 5fef           	qcmp.al.f	r2,r2,r0,0x8,0x8,0x1
+  ac:	4a10 1fef           	qcmp.al.f	r2,r2,r0,0x8,0x8
   b0:	4800 0010           	calcsd	r0,r0,r0,0x1
   b4:	4910 0110           	calcsd.f	r1,r1,r0,0x2
   b8:	4a60 0210           	calcsd	r2,r2,r3,0x4

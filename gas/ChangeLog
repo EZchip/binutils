@@ -1,12 +1,26 @@
+2016-01-25  Rinat Zelig  <rinat@mellanox.com>
+
+	* testsuite/gas/arc/nps400-11.s: add ldpitcam,lkpetcm,blb,blb2 tests.
+	* testsuite/gas/arc/nps400-11.d: add ldpitcam,lkpetcm,blb,blb2 tests.
+	* testsuite/gas/arc/nps400-4.s: add dcip, dcet more formats.
+	* testsuite/gas/arc/nps400-4.d: add dcip, dcet more formats.
+	* testsuite/gas/arc/nps400-5.s: add dcal, dcet more formats.
+	* testsuite/gas/arc/nps400-5.d: add dcal, dcet more formats.
+	* testsuite/gas/arc/nps400-6.s: add .f to qcmp test.
+	* testsuite/gas/arc/nps400-6.d: add .f to qcmp test.
+	* testsuite/gas/arc/nps400-9.s: add more protocol decode instructions.
+	* testsuite/gas/arc/nps400-9.d: add more protocol decode instructions.
+	* config/tc-arc.c (md_begin): declare register LP_COUNT in addition to lp_count.
+
 2016-01-12  Rinat Zelig  <rinat@mellanox.com>
 
-	* testsuite/gas/arc/nps400-11.8: add mmnt instruction test.
-	* testsuite/gas/arc/nps400-11.8: add mmnt instruction test.
+	* testsuite/gas/arc/nps400-11.s: add mmnt instruction test.
+	* testsuite/gas/arc/nps400-11.d: add mmnt instruction test.
 
 2016-01-11  Rinat Zelig  <rinat@mellanox.com>
 
-	* testsuite/gas/arc/nps400-14.8: add bdalc,idxalc,jobalc jobbgt,witn no dst.
-	* testsuite/gas/arc/nps400-14.8: add bdalc,idxalc,jobalc jobbgt,witn no dst.
+	* testsuite/gas/arc/nps400-14.s: add bdalc,idxalc,jobalc jobbgt,witn no dst.
+	* testsuite/gas/arc/nps400-14.d: add bdalc,idxalc,jobalc jobbgt,witn no dst.
 
 2016-12-21  Rinat Zelig  <rinat@mellanox.com>
 

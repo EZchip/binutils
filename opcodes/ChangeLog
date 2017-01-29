@@ -1,3 +1,15 @@
+2017-01-25  Rinat Zelig  <rinat@mellanox.com>
+
+	* arc-nps400-tbl.h: patch to add more nps400 missing formats.
+	* arc-opc.c: Add MAKE_SIZE_LIMIT_INSERT_EXTRACT_FUNCS, F_LB, F_LB2,
+	C_NPS_REQUIRED_F, NPS_RA_0_6_64, NPS_RB_SPLIT_64, NPS_SIZE_1_24 etc..
+	(insert_rb_64): New function.
+	(extract_rb_64): New function.
+	(insert_nps_key_size): New function.
+	(extract_nps_key_size): New function.	
+	(insert_nps_etcam_key_size): New function.
+	(extract_nps_etcam_key_size): New function.
+
 2017-01-12  Rinat Zelig  <rinat@mellanox.com>
 
 	* arc-nps400-tbl.h: add mmnt instruction.

@@ -1,3 +1,7 @@
+2016-01-25  Rinat Zelig  <rinat@mellanox.com>
+
+	* opcode/arc.h (arc_flag_special): increase flags buffer size.	
+
 2016-12-08  Rinat Zelig  <rinat@mellanox.com>
 
 	* opcode/arc.h (insn_class_t): Add SECURITY.	

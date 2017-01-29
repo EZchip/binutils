@@ -7,7 +7,7 @@ Disassembly of section .text:
 
 [0-9a-f]+ <.*>:
    0:	5000 07c0 2400 0000 	dcmac	r0,\[cm:r0\],\[cm:r0\],r0
-   8:	5044 3fc0 2400 0000 	dcmac	r2,\[cm:r4\],\[cm:r7\],r7
+   8:	5044 3fc0 2400 0000 	dcmac	r2,\[cm:r4\],\[cm:r4\],r7
   10:	53ff ffc0 2400 0000 	dcmac	blink,\[cm:blink\],\[cm:blink\],blink
   18:	5000 07c0 2600 0000 	dcmac	r0,\[cm:r0\],\[cm:0\],r0
   20:	5044 3fc0 2600 1234 	dcmac	r2,\[cm:r4\],\[cm:0x1234\],r7
@@ -16,7 +16,7 @@ Disassembly of section .text:
   38:	5044 3fc0 2700 4321 	dcmac	r2,\[cm:0x4321\],\[cm:r4\],r7
   40:	53ff ffc0 2700 ffff 	dcmac	blink,\[cm:0xffff\],\[cm:blink\],blink
   48:	57c0 07c0 2400 0000 	dcmac	0,\[cm:r0\],\[cm:r0\],r0
-  50:	57c4 3fc0 2400 0000 	dcmac	0,\[cm:r4\],\[cm:r7\],r7
+  50:	57c4 3fc0 2400 0000 	dcmac	0,\[cm:r4\],\[cm:r4\],r7
   58:	57df ffc0 2400 0000 	dcmac	0,\[cm:blink\],\[cm:blink\],blink
   60:	57c0 07c0 2600 0000 	dcmac	0,\[cm:r0\],\[cm:0\],r0
   68:	57c4 3fc0 2600 1234 	dcmac	0,\[cm:r4\],\[cm:0x1234\],r7
@@ -26,19 +26,87 @@ Disassembly of section .text:
   88:	57df ffc0 2700 ffff 	dcmac	0,\[cm:0xffff\],\[cm:blink\],blink
   90:	5000 07c0 2001 0000 	dcmac	r0,\[cm:r0\],\[cm:r0\],0x1
   98:	5044 27c0 200f 0000 	dcmac	r2,\[cm:r4\],\[cm:r4\],0xf
-  a0:	53ff ffc0 203f 0000 	dcmac	blink,\[cm:blink\],\[cm:blink\],0x3f
+  a0:	53ff ffc0 201f 0000 	dcmac	blink,\[cm:blink\],\[cm:blink\],0x1f
   a8:	5000 07c0 2201 0000 	dcmac	r0,\[cm:r0\],\[cm:0\],0x1
   b0:	5044 27c0 220f 1234 	dcmac	r2,\[cm:r4\],\[cm:0x1234\],0xf
-  b8:	53ff ffc0 223f ffff 	dcmac	blink,\[cm:blink\],\[cm:0xffff\],0x3f
+  b8:	53ff ffc0 221e ffff 	dcmac	blink,\[cm:blink\],\[cm:0xffff\],0x1e
   c0:	5000 07c0 2301 0000 	dcmac	r0,\[cm:0\],\[cm:r0\],0x1
   c8:	5044 27c0 230f 4321 	dcmac	r2,\[cm:0x4321\],\[cm:r4\],0xf
-  d0:	53ff ffc0 233f ffff 	dcmac	blink,\[cm:0xffff\],\[cm:blink\],0x3f
+  d0:	53ff ffc0 231e ffff 	dcmac	blink,\[cm:0xffff\],\[cm:blink\],0x1e
   d8:	57c0 07c0 2001 0000 	dcmac	0,\[cm:r0\],\[cm:r0\],0x1
   e0:	57c4 27c0 200f 0000 	dcmac	0,\[cm:r4\],\[cm:r4\],0xf
-  e8:	57df ffc0 2000 0000 	dcmac	0,\[cm:blink\],\[cm:blink\],0x40
+  e8:	57df ffc0 201e 0000 	dcmac	0,\[cm:blink\],\[cm:blink\],0x1e
   f0:	57c0 07c0 2201 0000 	dcmac	0,\[cm:r0\],\[cm:0\],0x1
   f8:	57c4 27c0 220f 1234 	dcmac	0,\[cm:r4\],\[cm:0x1234\],0xf
- 100:	57df ffc0 2200 ffff 	dcmac	0,\[cm:blink\],\[cm:0xffff\],0x40
+ 100:	57df ffc0 2220 ffff 	dcmac	0,\[cm:blink\],\[cm:0xffff\],0x20
  108:	57c0 07c0 2301 0000 	dcmac	0,\[cm:0\],\[cm:r0\],0x1
  110:	57c4 27c0 230f 4321 	dcmac	0,\[cm:0x4321\],\[cm:r4\],0xf
- 118:	57df ffc0 2300 ffff 	dcmac	0,\[cm:0xffff\],\[cm:blink\],0x40
+ 118:	57df ffc0 2320 ffff 	dcmac	0,\[cm:0xffff\],\[cm:blink\],0x20
+ 120:	5044 3fc0 0400 0000 	dcipv4	r2,\[cm:r4\],\[cm:r4\],r7
+ 128:	5044 3fc0 0600 1234 	dcipv4	r2,\[cm:r4\],\[cm:0x1234\],r7
+ 130:	5044 3fc0 0700 8765 	dcipv4	r2,\[cm:0x8765\],\[cm:r4\],r7
+ 138:	5044 3fc0 0014 0000 	dcipv4	r2,\[cm:r4\],\[cm:r4\],r7,0x14
+ 140:	5044 3fc0 0214 1234 	dcipv4	r2,\[cm:r4\],\[cm:0x1234\],r7,0x14
+ 148:	5044 3fc0 0314 8765 	dcipv4	r2,\[cm:0x8765\],\[cm:r4\],r7,0x14
+ 150:	57c4 3fc0 0400 0000 	dcipv4	0,\[cm:r4\],\[cm:r4\],r7
+ 158:	57c4 3fc0 0600 1234 	dcipv4	0,\[cm:r4\],\[cm:0x1234\],r7
+ 160:	57c4 3fc0 0700 8765 	dcipv4	0,\[cm:0x8765\],\[cm:r4\],r7
+ 168:	57c4 3fc0 0014 0000 	dcipv4	0,\[cm:r4\],\[cm:r4\],r7,0x14
+ 170:	57c4 3fc0 0214 1234 	dcipv4	0,\[cm:r4\],\[cm:0x1234\],r7,0x14
+ 178:	57c4 3fc0 0314 8765 	dcipv4	0,\[cm:0x8765\],\[cm:r4\],r7,0x14
+ 180:	5044 3fc0 0c00 0000 	dcipv6	r2,\[cm:r4\],\[cm:r4\],r7
+ 188:	5044 3fc0 0e00 1234 	dcipv6	r2,\[cm:r4\],\[cm:0x1234\],r7
+ 190:	5044 3fc0 0f00 8765 	dcipv6	r2,\[cm:0x8765\],\[cm:r4\],r7
+ 198:	5044 3fc0 0814 0000 	dcipv6	r2,\[cm:r4\],\[cm:r4\],r7,0x14
+ 1a0:	5044 3fc0 0a14 1234 	dcipv6	r2,\[cm:r4\],\[cm:0x1234\],r7,0x14
+ 1a8:	5044 3fc0 0b14 8765 	dcipv6	r2,\[cm:0x8765\],\[cm:r4\],r7,0x14
+ 1b0:	57c4 3fc0 0c00 0000 	dcipv6	0,\[cm:r4\],\[cm:r4\],r7
+ 1b8:	57c4 3fc0 0e00 1234 	dcipv6	0,\[cm:r4\],\[cm:0x1234\],r7
+ 1c0:	57c4 3fc0 0f00 8765 	dcipv6	0,\[cm:0x8765\],\[cm:r4\],r7
+ 1c8:	57c4 3fc0 0814 0000 	dcipv6	0,\[cm:r4\],\[cm:r4\],r7,0x14
+ 1d0:	57c4 3fc0 0a14 1234 	dcipv6	0,\[cm:r4\],\[cm:0x1234\],r7,0x14
+ 1d8:	57c4 3fc0 0b14 8765 	dcipv6	0,\[cm:0x8765\],\[cm:r4\],r7,0x14
+ 1e0:	5044 3fc0 2c00 0000 	dcmpls	r2,\[cm:r4\],\[cm:r4\],r7
+ 1e8:	5044 3fc0 2e00 1234 	dcmpls	r2,\[cm:r4\],\[cm:0x1234\],r7
+ 1f0:	5044 3fc0 2f00 8765 	dcmpls	r2,\[cm:0x8765\],\[cm:r4\],r7
+ 1f8:	5044 27c0 2814 0000 	dcmpls	r2,\[cm:r4\],\[cm:r4\],0x14
+ 200:	5044 27c0 2a14 1234 	dcmpls	r2,\[cm:r4\],\[cm:0x1234\],0x14
+ 208:	5044 27c0 2b14 8765 	dcmpls	r2,\[cm:0x8765\],\[cm:r4\],0x14
+ 210:	57c4 3fc0 2c00 0000 	dcmpls	0,\[cm:r4\],\[cm:r4\],r7
+ 218:	57c4 3fc0 2e00 1234 	dcmpls	0,\[cm:r4\],\[cm:0x1234\],r7
+ 220:	57c4 3fc0 2f00 8765 	dcmpls	0,\[cm:0x8765\],\[cm:r4\],r7
+ 228:	57c4 27c0 2814 0000 	dcmpls	0,\[cm:r4\],\[cm:r4\],0x14
+ 230:	57c4 27c0 2a14 1234 	dcmpls	0,\[cm:r4\],\[cm:0x1234\],0x14
+ 238:	57c4 27c0 2b14 8765 	dcmpls	0,\[cm:0x8765\],\[cm:r4\],0x14
+ 240:	5044 3fc0 4400 0000 	dcsmpls	r2,\[cm:r4\],\[cm:r4\],r7
+ 248:	5044 3fc0 4600 1234 	dcsmpls	r2,\[cm:r4\],\[cm:0x1234\],r7
+ 250:	5044 3fc0 4700 8765 	dcsmpls	r2,\[cm:0x8765\],\[cm:r4\],r7
+ 258:	5044 27c0 4008 0000 	dcsmpls	r2,\[cm:r4\],\[cm:r4\],0x8
+ 260:	5044 27c0 4208 1234 	dcsmpls	r2,\[cm:r4\],\[cm:0x1234\],0x8
+ 268:	5044 27c0 4308 8765 	dcsmpls	r2,\[cm:0x8765\],\[cm:r4\],0x8
+ 270:	57c4 3fc0 4400 0000 	dcsmpls	0,\[cm:r4\],\[cm:r4\],r7
+ 278:	57c4 3fc0 4600 1234 	dcsmpls	0,\[cm:r4\],\[cm:0x1234\],r7
+ 280:	57c4 3fc0 4700 8765 	dcsmpls	0,\[cm:0x8765\],\[cm:r4\],r7
+ 288:	57c4 27c0 4008 0000 	dcsmpls	0,\[cm:r4\],\[cm:r4\],0x8
+ 290:	57c4 27c0 4208 1234 	dcsmpls	0,\[cm:r4\],\[cm:0x1234\],0x8
+ 298:	57c4 27c0 4308 8765 	dcsmpls	0,\[cm:0x8765\],\[cm:r4\],0x8
+ 2a0:	5044 3fc0 2600 0024 	dcmac	r2,\[cm:r4\],\[cm:0x24\],r7
+ 2a8:	5044 3fc0 2700 000c 	dcmac	r2,\[cm:0xc\],\[cm:r4\],r7
+ 2b0:	5044 27c0 2214 0024 	dcmac	r2,\[cm:r4\],\[cm:0x24\],0x14
+ 2b8:	5044 27c0 2314 000c 	dcmac	r2,\[cm:0xc\],\[cm:r4\],0x14
+ 2c0:	5044 3fc0 0600 0024 	dcipv4	r2,\[cm:r4\],\[cm:0x24\],r7
+ 2c8:	5044 3fc0 0700 000c 	dcipv4	r2,\[cm:0xc\],\[cm:r4\],r7
+ 2d0:	5044 3fc0 0214 0024 	dcipv4	r2,\[cm:r4\],\[cm:0x24\],r7,0x14
+ 2d8:	5044 3fc0 0314 000c 	dcipv4	r2,\[cm:0xc\],\[cm:r4\],r7,0x14
+ 2e0:	5044 3fc0 0e00 0024 	dcipv6	r2,\[cm:r4\],\[cm:0x24\],r7
+ 2e8:	5044 3fc0 0f00 000c 	dcipv6	r2,\[cm:0xc\],\[cm:r4\],r7
+ 2f0:	5044 3fc0 0a14 0024 	dcipv6	r2,\[cm:r4\],\[cm:0x24\],r7,0x14
+ 2f8:	5044 3fc0 0b14 000c 	dcipv6	r2,\[cm:0xc\],\[cm:r4\],r7,0x14
+ 300:	5044 3fc0 2e00 0024 	dcmpls	r2,\[cm:r4\],\[cm:0x24\],r7
+ 308:	5044 3fc0 2f00 000c 	dcmpls	r2,\[cm:0xc\],\[cm:r4\],r7
+ 310:	5044 27c0 2a14 0024 	dcmpls	r2,\[cm:r4\],\[cm:0x24\],0x14
+ 318:	5044 27c0 2b14 000c 	dcmpls	r2,\[cm:0xc\],\[cm:r4\],0x14
+ 320:	5044 3fc0 4600 0024 	dcsmpls	r2,\[cm:r4\],\[cm:0x24\],r7
+ 328:	5044 3fc0 4700 000c 	dcsmpls	r2,\[cm:0xc\],\[cm:r4\],r7
+ 330:	5044 27c0 4208 0024 	dcsmpls	r2,\[cm:r4\],\[cm:0x24\],0x8
+ 338:	5044 27c0 4308 000c 	dcsmpls	r2,\[cm:0xc\],\[cm:r4\],0x8

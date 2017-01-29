@@ -2577,7 +2577,9 @@ md_begin (void)
   declare_register ("acc1", 56);
   declare_register ("acc2", 57);
 
+  declare_register ("LP_COUNT", 60);
   declare_register ("lp_count", 60);
+
   declare_register ("pcl", 63);
 
   /* Initialize the last instructions.  */

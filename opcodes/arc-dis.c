@@ -91,7 +91,6 @@ typedef struct skipclass
 static linkclass decodelist = NULL;
 
 /* Macros section.  */
-
 #ifdef DEBUG
 # define pr_debug(fmt, args...) fprintf (stderr, fmt, ##args)
 #else
@@ -786,6 +785,7 @@ print_insn_arc (bfd_vma memaddr,
 
   if (info->disassembler_options)
     {
+	  pr_debug("parse option\n");
       parse_disassembler_options (info->disassembler_options);
 
       /* Avoid repeated parsing of the options.  */
@@ -916,6 +916,50 @@ print_insn_arc (bfd_vma memaddr,
 	    return -1;
 	  }
 	insn = (unsigned long long) ARRANGE_ENDIAN (info, buffer);
+	/* check special cases that same opcode can be for 4/8 length */
+	if( ( buffer[highbyte] >> 3 ) == 0x7)
+	{
+		if( buffer[lowbyte] == 0xe)
+		{
+			if( ((insn >> 6) & 0x3f ) == 0x3e )	// no src2
+			{
+				insn_len = 8;
+			}
+		}
+		if( buffer[lowbyte] == 0xf)
+		{
+			if( ((insn >> 6) & 0x3f ) == 0x3e )	// no src2
+			{
+				insn_len = 8;
+			}
+		}
+		if( buffer[lowbyte] == 0x29)
+		{
+			if( ((insn >> 6) & 0x3f ) == 0x3e )	// no src2
+			{
+				insn_len = 8;
+			}
+		}
+		if( buffer[lowbyte] == 0x20)
+		{
+			if( ((insn >> 6) & 0x3f ) == 0x3e )	// no src2
+			{
+				insn_len = 8;
+			}
+		}
+		if( insn_len == 8)
+		{
+			status = (*info->read_memory_func) (memaddr + 4, &buffer[4], 4, info);
+			if (status != 0)
+			  {
+				(*info->memory_error_func) (status, memaddr + 2, info);
+				return -1;
+			  }
+			insn =
+			  ((((unsigned long long) ARRANGE_ENDIAN (info, buffer)) << 32)
+			   | ((unsigned long long) ARRANGE_ENDIAN (info, &buffer[4])));
+		}
+	}
       }
       break;
 
