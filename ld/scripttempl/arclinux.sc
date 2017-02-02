@@ -668,6 +668,8 @@ EOF
 
 . $srcdir/scripttempl/DWARF.sc
 
+. $srcdir/scripttempl/arcnps.sc
+
 cat <<EOF
 
   ${TINY_DATA_SECTION}
