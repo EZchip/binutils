@@ -63,7 +63,8 @@ typedef enum
   PROTOCOL_DECODE,
   PMU,
   STORE,
-  XY
+  XY,
+  DMA
 } insn_class_t;
 
 /* Instruction Subclass.  */

@@ -1,3 +1,8 @@
+2016-10-10  Rinat Zelig  <rinat@mellanox.com>
+
+	* testsuite/gas/arc/nps400-10.s: New file.
+	* testsuite/gas/arc/nps400-10.d: New file.
+
 2017-02-14  Alan Modra  <amodra@gmail.com>
 
 	* testsuite/gas/ppc/cell.s: Correct invalid registers.

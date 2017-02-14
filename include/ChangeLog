@@ -1,3 +1,7 @@
+2016-10-10  Rinat Zelig  <rinat@mellanox.com>
+
+	* opcode/arc.h (insn_class_t): Add DMA class.
+
 2017-01-02  Alan Modra  <amodra@gmail.com>
 
 	Update year range in copyright notice of all files.
