@@ -712,8 +712,8 @@ XLDST_LIKE("xst", 0xe)
 /* cnljob 0 */
 { "cnljob", 0x3e6f70ff, 0xffffffff, ARC_OPCODE_ARC700, PMU, NPS400 | NPS600, { ZA }, { 0 }},
 
-/* qseq dst, [src1] */
-{ "qseq", 0x386f0028, 0xf8ff803f, ARC_OPCODE_ARC700, PMU, NPS400 | NPS600, { RB, BRAKET, RC, BRAKETdup }, { 0 }},
+/* qseq dst,src1 */
+{ "qseq", 0x386f0028, 0xf8ff803f, ARC_OPCODE_ARC700, PMU, NPS400 | NPS600, { RB, RC }, { 0 }},
 
 /* Protocol Decode Instructions.  */
 

@@ -94,6 +94,6 @@
         cnljob 0
 
         ;; qseq
-        qseq r0,[r0]
-        qseq r2,[r4]
+        qseq r0,r0
+        qseq r2,r4
 

@@ -75,5 +75,5 @@ Disassembly of section .text:
  128:	3d1a 0182           	jobbgt	r2,r5,r6
  12c:	381a 007e           	jobbgt	0,r0,r1
  130:	3e6f 70ff           	cnljob	0
- 134:	386f 0028           	qseq	r0,\[r0\]
- 138:	3a6f 0128           	qseq	r2,\[r4\]
+ 134:	386f 0028           	qseq	r0,r0
+ 138:	3a6f 0128           	qseq	r2,r4

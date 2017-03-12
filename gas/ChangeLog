@@ -1,3 +1,8 @@
+2016-03-12  Rinat Zelig  <rinat@mellanox.com>
+
+	* testsuite/gas/arc/nps400-8.s: Change qseq instruction syntex.
+	* testsuite/gas/arc/nps400-8.d: Change qseq instruction syntex.
+	
 2016-03-05  Rinat Zelig  <rinat@mellanox.com>
 
 	* testsuite/gas/arc/nps600-1.s: New file.

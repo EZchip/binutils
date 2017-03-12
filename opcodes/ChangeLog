@@ -1,5 +1,9 @@
 2017-03-05  Rinat Zelig  <rinat@mellanox.com>
 
+	* arc-nps400-tbl.h: Change qseq instruction syntex.
+
+2017-03-05  Rinat Zelig  <rinat@mellanox.com>
+
 	* arc-nps600-tbl.h: New file.
 	* arc-nps400-tbl.h: set NPS600 flag for al nps400 instruction supported on nps600.
 	* arc-opc.c: Add MAKE_SIZE_LIMIT_INSERT_EXTRACT_FUNCS, F_NL, F_NPS_FB,
