@@ -80,16 +80,16 @@
         dcmpls r2,[cm:r4],[cm:r4],r7
         dcmpls r2,[cm:r4],[cm:0x1234],r7
         dcmpls r2,[cm:0x8765],[cm:r4],r7
-        dcmpls r2,[cm:r4],[cm:r4], 0x14
-        dcmpls r2,[cm:r4],[cm:0x1234], 0x14
-        dcmpls r2,[cm:0x8765],[cm:r4], 0x14
+        dcmpls r2,[cm:r4],[cm:r4], 0x10
+        dcmpls r2,[cm:r4],[cm:0x1234], 0x10
+        dcmpls r2,[cm:0x8765],[cm:r4], 0x10
 
         dcmpls 0,[cm:r4],[cm:r4],r7
         dcmpls 0,[cm:r4],[cm:0x1234],r7
         dcmpls 0,[cm:0x8765],[cm:r4],r7
-        dcmpls 0,[cm:r4],[cm:r4], 0x14
-        dcmpls 0,[cm:r4],[cm:0x1234], 0x14
-        dcmpls 0,[cm:0x8765],[cm:r4], 0x14
+        dcmpls 0,[cm:r4],[cm:r4], 0x10
+        dcmpls 0,[cm:r4],[cm:0x1234], 0x10
+        dcmpls 0,[cm:0x8765],[cm:r4], 0x10
 
         dcsmpls r2,[cm:r4],[cm:r4],r7
         dcsmpls r2,[cm:r4],[cm:0x1234],r7
@@ -123,8 +123,8 @@
 
         dcmpls r2,[cm:r4],[cm:0x57f00024],r7
         dcmpls r2,[cm:0x57f0000c],[cm:r4],r7
-        dcmpls r2,[cm:r4],[cm:0x57f00024],0x14
-        dcmpls r2,[cm:0x57f0000c],[cm:r4],0x14
+        dcmpls r2,[cm:r4],[cm:0x57f00024],0x10
+        dcmpls r2,[cm:0x57f0000c],[cm:r4],0x10
 
         dcsmpls r2,[cm:r4],[cm:0x57f00024],r7
         dcsmpls r2,[cm:0x57f0000c],[cm:r4],r7

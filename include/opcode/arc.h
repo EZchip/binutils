@@ -90,6 +90,7 @@ typedef enum
   MPY8E,
   MPY9E,
   NPS400,
+  NPS600,
   QUARKSE,
   SHFT1,
   SHFT2,
@@ -186,6 +187,7 @@ extern int arc_opcode_len (const struct arc_opcode *opcode);
 #define ARC_MPY      0x0004
 #define ARC_MULT     0x0004
 #define ARC_NPS400   0x0008
+#define ARC_NPS600   0x0400
 
 /* Floating point support.  */
 #define ARC_DPFP     0x0010
@@ -335,6 +337,9 @@ extern const unsigned arc_NToperand;
 
 /* Mark the colon position.  */
 #define ARC_OPERAND_COLON       0x4000
+
+/* Mark the colon position.  */
+#define ARC_OPERAND_PCREL_16BIT_RESOLUTION       0x8000
 
 /* Mask for selecting the type for typecheck purposes.  */
 #define ARC_OPERAND_TYPECHECK_MASK		 \

@@ -1,3 +1,15 @@
+2016-03-05  Rinat Zelig  <rinat@mellanox.com>
+
+	* testsuite/gas/arc/nps600-1.s: New file.
+	* testsuite/gas/arc/nps600-1.d: New file.
+	* testsuite/gas/arc/nps600-2.s: New file.
+	* testsuite/gas/arc/nps600-2.d: New file.
+	* testsuite/gas/arc/nps600-3.s: New file.
+	* testsuite/gas/arc/nps600-3.d: New file.
+	* testsuite/gas/arc/nps600-4.s: New file.
+	* testsuite/gas/arc/nps600-4.d: New file.
+	* config/tc-arc.c: Add nps600 flags and defines.
+	
 2016-01-25  Rinat Zelig  <rinat@mellanox.com>
 
 	* testsuite/gas/arc/nps400-11.s: add ldpitcam,lkpetcm,blb,blb2 tests.

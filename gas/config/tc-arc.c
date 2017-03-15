@@ -106,6 +106,7 @@ enum arc_rlx_types
 				  || (op)->insn_class == JUMP))
 #define is_kernel_insn_p(op)    (((op)->insn_class == KERNEL))
 #define is_nps400_p(op)         (((sc) == NPS400))
+#define is_nps600_p(op)         (((sc) == NPS600))
 
 /* Generic assembler global variables which must be defined by all
    targets.  */
@@ -186,6 +187,7 @@ enum options
   OPTION_CD,
   OPTION_RELAX,
   OPTION_NPS400,
+  OPTION_NPS600,
 
   OPTION_SPFP,
   OPTION_DPFP,
@@ -230,6 +232,7 @@ struct option md_longopts[] =
   { "mcode-density",	no_argument,	   NULL, OPTION_CD },
   { "mrelax",           no_argument,       NULL, OPTION_RELAX },
   { "mnps400",          no_argument,       NULL, OPTION_NPS400 },
+  { "mnps600",          no_argument,       NULL, OPTION_NPS600 },
 
   /* Floating point options */
   { "mspfp", no_argument, NULL, OPTION_SPFP},
@@ -452,6 +455,7 @@ static const struct cpu_type
 {
   ARC_CPU_TYPE_A7xx (arc700, 0x00),
   ARC_CPU_TYPE_A7xx (nps400, ARC_NPS400),
+  ARC_CPU_TYPE_A7xx (nps600, ARC_NPS600),
 
   ARC_CPU_TYPE_AV2EM (arcem,	  0x00),
   ARC_CPU_TYPE_AV2EM (em,	  0x00),
@@ -492,6 +496,7 @@ static const struct feature_type
 {
   { ARC_CD, ARC_OPCODE_ARCV2, "code-density" },
   { ARC_NPS400, ARC_OPCODE_ARC700, "nps400" },
+  { ARC_NPS600, ARC_OPCODE_ARC700, "nps600" },
   { ARC_SPFP, ARC_OPCODE_ARCFPX, "single-precision FPX" },
   { ARC_DPFP, ARC_OPCODE_ARCFPX, "double-precision FPX" },
   { ARC_FPUDA, ARC_OPCODE_ARCv2EM, "double assist FP" }
@@ -1023,6 +1028,8 @@ arc_option (int ignore ATTRIBUTE_UNUSED)
     cpu_name = "archs";
   else if (!strcmp ("NPS400", cpu))
     cpu_name = "nps400";
+  else if (!strcmp ("NPS600", cpu))
+    cpu_name = "nps600";
 
   arc_select_cpu (cpu_name, MACH_SELECTION_FROM_CPU_DIRECTIVE);
 
@@ -1639,6 +1646,9 @@ check_cpu_feature (insn_subclass_t sc)
     return FALSE;
 
   if (is_nps400_p (sc) && !(selected_cpu.features & ARC_NPS400))
+    return FALSE;
+
+  if (is_nps600_p (sc) && !(selected_cpu.features & ARC_NPS600))
     return FALSE;
 
   return TRUE;
@@ -3348,7 +3358,7 @@ arc_parse_name (const char *name,
    -mrelax                       Enable relaxation
 
    The following CPU names are recognized:
-   arc600, arc700, arcem, archs, nps400.  */
+   arc600, arc700, arcem, archs, nps400, nps600.  */
 
 int
 md_parse_option (int c, const char *arg ATTRIBUTE_UNUSED)
@@ -3397,6 +3407,12 @@ md_parse_option (int c, const char *arg ATTRIBUTE_UNUSED)
     case OPTION_NPS400:
       selected_cpu.features |= ARC_NPS400;
       cl_features |= ARC_NPS400;
+      arc_check_feature ();
+      break;
+
+    case OPTION_NPS600:
+      selected_cpu.features |= ARC_NPS600;
+      cl_features |= ARC_NPS600;
       arc_check_feature ();
       break;
 
@@ -3491,6 +3507,7 @@ md_show_usage (FILE *stream)
   fprintf (stream, "  -mHS\t\t\t  same as -mcpu=archs\n");
 
   fprintf (stream, "  -mnps400\t\t  enable NPS-400 extended instructions\n");
+  fprintf (stream, "  -mnps600\t\t  enable NPS-600 extended instructions\n");
   fprintf (stream, "  -mspfp\t\t  enable single-precision floating point"
 	   " instructions\n");
   fprintf (stream, "  -mdpfp\t\t  enable double-precision floating point"
@@ -4013,6 +4030,21 @@ assemble_insn (const struct arc_opcode *opcode,
 	      bitYoperand = arc_Toperand;
 	    else
 	      bitYoperand = arc_NToperand;
+
+
+	  if (!strcmp (flg_operand->name, "t"))
+	    if (!strcmp (opcode->name, "bbitf0")
+		|| !strcmp (opcode->name, "bbitf1"))
+	      bitYoperand = arc_NToperand;
+	    else
+	      bitYoperand = arc_Toperand;
+	  else
+	    if (!strcmp (opcode->name, "bbitf0")
+		|| !strcmp (opcode->name, "bbitf1"))
+	      bitYoperand = arc_Toperand;
+	    else
+	      bitYoperand = arc_NToperand;
+
 
 	  gas_assert (reloc_exp != NULL);
 	  if (reloc_exp->X_op == O_constant)

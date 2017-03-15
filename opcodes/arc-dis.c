@@ -947,6 +947,13 @@ print_insn_arc (bfd_vma memaddr,
 				insn_len = 8;
 			}
 		}
+		if( buffer[lowbyte] == 0x26)
+		{
+			if( ((insn >> 6) & 0x3f ) == 0x3e )	// no src2
+			{
+				insn_len = 8;
+			}
+		}
 		if( insn_len == 8)
 		{
 			status = (*info->read_memory_func) (memaddr + 4, &buffer[4], 4, info);
@@ -1137,9 +1144,19 @@ print_insn_arc (bfd_vma memaddr,
 	   /* PCL relative.  */
 	  if (info->flags & INSN_HAS_RELOC)
 	    memaddr = 0;
-	  (*info->print_address_func) ((memaddr & ~3) + value, info);
 
-	  info->target = (bfd_vma) (memaddr & ~3) + value;
+	  if( operand->flags & ARC_OPERAND_PCREL_16BIT_RESOLUTION )
+	  {
+		(*info->print_address_func) ((memaddr & ~0xf) + value , info);
+
+		info->target = (bfd_vma) (memaddr & ~0xf) + value;
+	  }
+	  else
+	  {
+	    (*info->print_address_func) ((memaddr & ~3) + value, info);
+
+	    info->target = (bfd_vma) (memaddr & ~3) + value;
+	  }
 	}
       else if (operand->flags & ARC_OPERAND_SIGNED)
 	{

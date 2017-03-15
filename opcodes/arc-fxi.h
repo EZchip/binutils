@@ -386,6 +386,35 @@ insert_simm9_a16_8 (unsigned long long insn ATTRIBUTE_UNUSED,
 
   return insn;
 }
+/* mask = 00000000111111102000000000000000
+   insn = 00001bbbsssssss1SBBBCCCCCCN00110.  */
+static unsigned long long
+insert_simm11_a16_8 (unsigned long long insn ATTRIBUTE_UNUSED,
+		    long long int value ATTRIBUTE_UNUSED,
+		    const char **errmsg ATTRIBUTE_UNUSED)
+{
+  if( value < 0 )
+  {
+    value = -value;
+    if(value & 0xf)
+    {
+      value = (value/16 + 1);
+    }
+    value = -value;
+  }
+  else
+  {
+    if(value & 0xf)
+    {
+      value = (value/16 + 1) * 16;
+    }
+  }
+  value = value >> 3;
+  insn |= ((value >> 1) & 0x007f) << 17;
+  insn |= ((value >> 8) & 0x0001) << 15;
+
+  return insn;
+}
 #endif /* INSERT_SIMM9_A16_8 */
 
 #ifndef EXTRACT_SIMM9_A16_8
@@ -403,6 +432,24 @@ extract_simm9_a16_8 (unsigned long long insn ATTRIBUTE_UNUSED,
   /* Extend the sign.  */
   int signbit = 1 << (9 - 1);
   value = (value ^ signbit) - signbit;
+
+  return value;
+}
+
+static long long int
+extract_simm11_a16_8 (unsigned long long insn ATTRIBUTE_UNUSED,
+		     bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  int value = 0;
+
+  value |= ((insn >> 17) & 0x007f) << 1;
+  value |= ((insn >> 15) & 0x0001) << 8;
+
+  /* Extend the sign.  */
+  int signbit = 1 << (9 - 1);
+  value = (value ^ signbit) - signbit;
+
+  value = value << 3;
 
   return value;
 }

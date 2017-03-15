@@ -1,3 +1,20 @@
+2017-03-05  Rinat Zelig  <rinat@mellanox.com>
+
+	* arc-nps600-tbl.h: New file.
+	* arc-nps400-tbl.h: set NPS600 flag for al nps400 instruction supported on nps600.
+	* arc-opc.c: Add MAKE_SIZE_LIMIT_INSERT_EXTRACT_FUNCS, F_NL, F_NPS_FB,
+	F_NPS_NL, F_NPS_CP_NL, C_NPS_FB,C_NPS_ALWAYS_NL,C_NPS_CP_NL,
+	SIMM11_A16_8, etc ...
+	(insert_nps_csub_req_data_size): New function.
+	(exctract_nps_csub_req_data_size): New function.
+	(insert_nps_csub_result_data_size): New function.
+	(exctract_nps_csub_result_data_size): New function.
+	(insert_nps_max_size): New function.
+	(exctract_nps_max_size): New function.
+	* arc-dis.c (print_insn_arc): handle ARC_OPERAND_PCREL_16BIT_RESOLUTION
+	* arc-fxi.c (insert_simm11_a16_8 ): New function.
+	(extract_simm11_a16_8 ):New function.
+
 2017-01-25  Rinat Zelig  <rinat@mellanox.com>
 
 	* arc-nps400-tbl.h: patch to add more nps400 missing formats.

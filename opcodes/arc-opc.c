@@ -924,7 +924,7 @@ static int
 extract_nps_imm_entry (unsigned insn ATTRIBUTE_UNUSED,
                          bfd_boolean * invalid ATTRIBUTE_UNUSED)
 {
-  int imm_entry = ((insn >> 2) & 0x7);
+  int imm_entry = ((insn >> 2) & 0x3);
   return (1 << (imm_entry+4));
 }
 
@@ -948,6 +948,61 @@ extract_nps_misc_imm_offset (unsigned insn ATTRIBUTE_UNUSED,
                          bfd_boolean * invalid ATTRIBUTE_UNUSED)
 {
   return ((insn >> 8) & 0x1f) * 4;
+}
+
+static unsigned long long
+insert_nps_csub_req_data_size (unsigned long long insn ATTRIBUTE_UNUSED,
+		                long long int value ATTRIBUTE_UNUSED,
+                        const char **errmsg ATTRIBUTE_UNUSED)
+{
+  switch (value)
+    {
+    case 16:
+    case 32:
+    case 48:
+    case 64:
+      break;
+    default:
+      *errmsg = _("Invalid csub sequest data size, should be 16, 32, 48 or 64.");
+      value = 0;
+    }
+  insn |= value;
+  return insn;
+}
+
+static long long int
+extract_nps_csub_req_data_size (unsigned long long insn ATTRIBUTE_UNUSED,
+                         bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  return insn & 0x7f;
+}
+
+static unsigned long long
+insert_nps_csub_result_data_size (unsigned long long insn ATTRIBUTE_UNUSED,
+		                long long int value ATTRIBUTE_UNUSED,
+                        const char **errmsg ATTRIBUTE_UNUSED)
+{
+  switch (value)
+    {
+    case 0:
+    case 16:
+    case 32:
+    case 48:
+    case 64:
+      break;
+    default:
+      *errmsg = _("Invalid csub result data size, should be 0, 16, 32, 48 or 64.");
+      value = 0;
+    }
+  insn |= (value << 24);
+  return insn;
+}
+
+static long long int
+extract_nps_csub_result_data_size (unsigned long long insn ATTRIBUTE_UNUSED,
+                         bfd_boolean * invalid ATTRIBUTE_UNUSED)
+{
+  return ((insn >> 24) & 0x7f );
 }
 
 static unsigned
@@ -1548,6 +1603,7 @@ extract_nps_##NAME##_size (unsigned long long insn ATTRIBUTE_UNUSED,     \
 	return (insn >> 16) & 0x3f;                                 \
 }
 
+MAKE_SIZE_LIMIT_INSERT_EXTRACT_FUNCS(1_16,16)
 MAKE_SIZE_LIMIT_INSERT_EXTRACT_FUNCS(1_24,24)
 MAKE_SIZE_LIMIT_INSERT_EXTRACT_FUNCS(1_40,40)
 MAKE_SIZE_LIMIT_INSERT_EXTRACT_FUNCS(1_32,32)
@@ -1630,7 +1686,9 @@ const struct arc_flag_operand arc_flag_operands[] =
   { "nm", 23, 5, 0, 1 },
 #define F_NO_T	   (F_NM + 1)
   { "nt", 24, 5, 0, 1 },
-#define F_AT	   (F_NO_T + 1)
+#define F_NL	   (F_NO_T + 1)
+  { "nl", 25, 5, 0, 1 },
+#define F_AT	   (F_NL + 1)
   { "at", 26, 5, 0, 1 },
 
   /* FLAG.  */
@@ -1880,6 +1938,15 @@ const struct arc_flag_operand arc_flag_operands[] =
 
 #define F_NPS_FIN     (F_NPS_OPAD + 1)
   { "fin", 0, 0, 0, 1 },
+
+#define F_NPS_FB     (F_NPS_FIN + 1)
+  { "fb", 0, 0, 0, 1 },
+
+#define F_NPS_NL     (F_NPS_FB + 1)
+  { "nl", 0, 0, 0, 1 },
+
+#define F_NPS_CP_NL     (F_NPS_NL + 1)
+  { "nl", 1, 1, 4, 1 },
 };
 
 const unsigned arc_num_flag_operands = ARRAY_SIZE (arc_flag_operands);
@@ -1900,7 +1967,8 @@ const struct arc_flag_class arc_flag_classes[] =
       F_CARRY, F_CARRYSET, F_LOWER, F_CARRYCLR,
       F_NOTCARRY, F_HIGHER, F_OVERFLOWSET, F_OVERFLOW,
       F_NOTOVERFLOW, F_OVERFLOWCLR, F_GT, F_GE, F_LT,
-      F_LE, F_HI, F_LS, F_PNZ, F_NJ, F_NM, F_NO_T, F_AT, F_LB2, F_LB, F_NULL } },
+      F_LE, F_HI, F_LS, F_PNZ, F_NJ, F_NM, F_NO_T, F_AT, F_LB2, F_LB,
+	  F_NL, F_NULL } },
 
 #define C_AA_ADDR3  (C_CC + 1)
 #define C_AA27	    (C_CC + 1)
@@ -2063,7 +2131,16 @@ const struct arc_flag_class arc_flag_classes[] =
 #define C_NPS_FIN    (C_NPS_OPAD + 1)
   { F_CLASS_REQUIRED, { F_NPS_FIN, F_NULL }},
 
-#define C_NPS_LDBIT_CL1    (C_NPS_FIN + 1)
+#define C_NPS_FB    (C_NPS_FIN + 1)
+  { F_CLASS_REQUIRED, { F_NPS_FB, F_NULL }},
+
+#define C_NPS_ALWAYS_NL    (C_NPS_FB + 1)
+  { F_CLASS_REQUIRED, { F_NPS_NL, F_NULL }},
+
+#define C_NPS_CP_NL    (C_NPS_ALWAYS_NL + 1)
+  { F_CLASS_OPTIONAL, { F_NPS_CP_NL, F_NULL }},
+
+#define C_NPS_LDBIT_CL1    (C_NPS_CP_NL + 1)
   { F_CLASS_OPTIONAL, { F_NPS_LDBIT_CL1, F_NULL }},
 
 #define C_NPS_LDBIT_CL2    (C_NPS_LDBIT_CL1 + 1)
@@ -2283,8 +2360,15 @@ const struct arc_operand arc_operands[] =
    | ARC_OPERAND_PCREL | ARC_OPERAND_TRUNCATE, insert_simm9_a16_8,
    extract_simm9_a16_8},
 
+   /* SIMM9_A16_8 mask = 00000000111111102000000000000000.  */
+ #define SIMM11_A16_8	  (SIMM9_A16_8 + 1)
+   {12, 0, -SIMM11_A16_8, ARC_OPERAND_SIGNED | ARC_OPERAND_ALIGNED16
+    | ARC_OPERAND_PCREL | ARC_OPERAND_PCREL_16BIT_RESOLUTION
+	| ARC_OPERAND_TRUNCATE, insert_simm11_a16_8,
+    extract_simm11_a16_8},
+
   /* UIMM6_8 mask = 00000000000000000000111111000000.	 */
-#define UIMM6_8	      (SIMM9_A16_8 + 1)
+#define UIMM6_8	      (SIMM11_A16_8 + 1)
   {6, 0, 0, ARC_OPERAND_UNSIGNED, insert_uimm6_8, extract_uimm6_8},
 
   /* SIMM21_A16_5 mask = 00000111111111102222222222000000.  */
@@ -2506,7 +2590,28 @@ const struct arc_operand arc_operands[] =
 #define NPS_QCMP_M3         (NPS_QCMP_M2 + 1)
   { 4, 5, 0, ARC_OPERAND_UNSIGNED, NULL, extract_nps_qcmp_m3 },
 
-#define NPS_CALC_ENTRY_SIZE	(NPS_QCMP_M3 + 1)
+#define NPS_MAX_SIZE	(NPS_QCMP_M3 + 1)
+  { 2, 5, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_HOF_MODE	(NPS_MAX_SIZE + 1)
+  { 1, 7, 0, ARC_OPERAND_UNSIGNED, NULL, NULL },
+
+#define NPS_IMM_BIT_5       (NPS_HOF_MODE + 1)
+  { 1, 5, 0, ARC_OPERAND_UNSIGNED, NULL, NULL },
+
+#define NPS_TRANS_INFO_IN_JD       (NPS_IMM_BIT_5 + 1)
+  { 1, 6, 0, ARC_OPERAND_UNSIGNED, NULL, NULL },
+
+#define NPS_PMU_SIDE       (NPS_TRANS_INFO_IN_JD + 1)
+  { 1, 7, 0, ARC_OPERAND_UNSIGNED, NULL, NULL },
+
+#define NPS_IMM_BIT_8       (NPS_PMU_SIDE + 1)
+  { 1, 8, 0, ARC_OPERAND_UNSIGNED, NULL, NULL },
+
+#define NPS_BUFF_TYPE       (NPS_IMM_BIT_8 + 1)
+  { 2, 6, 0, ARC_OPERAND_UNSIGNED, NULL, NULL },
+
+#define NPS_CALC_ENTRY_SIZE	(NPS_BUFF_TYPE + 1)
   { 0, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_calc_entry_size, extract_nps_calc_entry_size },
 
 #define NPS_CP_ENTRY_SIZE	(NPS_CALC_ENTRY_SIZE + 1)
@@ -2715,7 +2820,7 @@ const struct arc_operand arc_operands[] =
   { 2, 6, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_pmu_num_job, extract_nps_pmu_num_job },
 
 #define NPS_DMA_IMM_ENTRY  (NPS_PMU_NUM_JOB + 1)
-  { 3, 2, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_imm_entry, extract_nps_imm_entry },
+  { 2, 2, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_imm_entry, extract_nps_imm_entry },
 
 #define NPS_DMA_IMM_OFFSET  (NPS_DMA_IMM_ENTRY + 1)
   { 4, 10, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_imm_offset, extract_nps_imm_offset },
@@ -2810,7 +2915,10 @@ const struct arc_operand arc_operands[] =
 #define NPS_SIZE_1_24         (NPS_SECURITY_PAD + 1)
   { 6, 16, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_1_24_size, extract_nps_1_24_size },
 
-#define NPS_SIZE_1_40         (NPS_SIZE_1_24 + 1)
+#define NPS_SIZE_1_16         (NPS_SIZE_1_24 + 1)
+  { 6, 16, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_1_16_size, extract_nps_1_16_size },
+
+#define NPS_SIZE_1_40         (NPS_SIZE_1_16 + 1)
   { 6, 16, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_1_40_size, extract_nps_1_40_size },
 
 #define NPS_SIZE_1_32         (NPS_SIZE_1_40 + 1)
@@ -2852,6 +2960,17 @@ const struct arc_operand arc_operands[] =
 #define NPS_ETCAM_KEY_SIZE         (NPS_KEY_SIZE + 1)
   { 7, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_etcam_key_size, extract_nps_etcam_key_size },
 
+#define NPS_CSUB_REQ_DATA_SIZE  (NPS_ETCAM_KEY_SIZE + 1)
+  { 7, 0, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_csub_req_data_size, extract_nps_csub_req_data_size },
+
+#define NPS_CSUB_NUM  (NPS_CSUB_REQ_DATA_SIZE + 1)
+  { 7, 8, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_CSUB_SIDE  (NPS_CSUB_NUM + 1)
+  { 1, 16, 0, ARC_OPERAND_UNSIGNED , NULL, NULL },
+
+#define NPS_CSUB_RES_DATA_SIZE  (NPS_CSUB_SIDE + 1)
+  { 7, 24, 0, ARC_OPERAND_UNSIGNED | ARC_OPERAND_NCHK, insert_nps_csub_result_data_size, extract_nps_csub_result_data_size },
 };
 
 const unsigned arc_num_operands = ARRAY_SIZE (arc_operands);
@@ -2935,6 +3054,7 @@ const struct arc_opcode arc_opcodes[] =
 {
 #include "arc-tbl.h"
 #include "arc-nps400-tbl.h"
+#include "arc-nps600-tbl.h"
 #include "arc-ext-tbl.h"
 
   { NULL, 0, 0, 0, 0, 0, { 0 }, { 0 } }
@@ -2947,7 +3067,7 @@ const struct arc_flag_special arc_flag_special_cases[] =
 	   F_PL, F_NEGATIVE, F_MINUS, F_CARRY, F_CARRYSET, F_LOWER, F_CARRYCLR,
 	   F_NOTCARRY, F_HIGHER, F_OVERFLOWSET, F_OVERFLOW, F_NOTOVERFLOW,
 	   F_OVERFLOWCLR, F_GT, F_GE, F_LT, F_LE, F_HI, F_LS, F_PNZ, F_NJ, F_NM,
-	   F_NO_T, F_AT, F_LB2, F_LB, F_NULL } },
+	   F_NO_T, F_AT, F_LB2, F_LB, F_NL, F_NULL } },
   { "bl", { F_ALWAYS, F_RA, F_EQUAL, F_ZERO, F_NOTEQUAL, F_NOTZERO, F_POZITIVE,
 	    F_PL, F_NEGATIVE, F_MINUS, F_CARRY, F_CARRYSET, F_LOWER, F_CARRYCLR,
 	    F_NOTCARRY, F_HIGHER, F_OVERFLOWSET, F_OVERFLOW, F_NOTOVERFLOW,

@@ -69,15 +69,15 @@ Disassembly of section .text:
  1e0:	5044 3fc0 2c00 0000 	dcmpls	r2,\[cm:r4\],\[cm:r4\],r7
  1e8:	5044 3fc0 2e00 1234 	dcmpls	r2,\[cm:r4\],\[cm:0x1234\],r7
  1f0:	5044 3fc0 2f00 8765 	dcmpls	r2,\[cm:0x8765\],\[cm:r4\],r7
- 1f8:	5044 27c0 2814 0000 	dcmpls	r2,\[cm:r4\],\[cm:r4\],0x14
- 200:	5044 27c0 2a14 1234 	dcmpls	r2,\[cm:r4\],\[cm:0x1234\],0x14
- 208:	5044 27c0 2b14 8765 	dcmpls	r2,\[cm:0x8765\],\[cm:r4\],0x14
+ 1f8:	5044 27c0 2810 0000 	dcmpls	r2,\[cm:r4\],\[cm:r4\],0x10
+ 200:	5044 27c0 2a10 1234 	dcmpls	r2,\[cm:r4\],\[cm:0x1234\],0x10
+ 208:	5044 27c0 2b10 8765 	dcmpls	r2,\[cm:0x8765\],\[cm:r4\],0x10
  210:	57c4 3fc0 2c00 0000 	dcmpls	0,\[cm:r4\],\[cm:r4\],r7
  218:	57c4 3fc0 2e00 1234 	dcmpls	0,\[cm:r4\],\[cm:0x1234\],r7
  220:	57c4 3fc0 2f00 8765 	dcmpls	0,\[cm:0x8765\],\[cm:r4\],r7
- 228:	57c4 27c0 2814 0000 	dcmpls	0,\[cm:r4\],\[cm:r4\],0x14
- 230:	57c4 27c0 2a14 1234 	dcmpls	0,\[cm:r4\],\[cm:0x1234\],0x14
- 238:	57c4 27c0 2b14 8765 	dcmpls	0,\[cm:0x8765\],\[cm:r4\],0x14
+ 228:	57c4 27c0 2810 0000 	dcmpls	0,\[cm:r4\],\[cm:r4\],0x10
+ 230:	57c4 27c0 2a10 1234 	dcmpls	0,\[cm:r4\],\[cm:0x1234\],0x10
+ 238:	57c4 27c0 2b10 8765 	dcmpls	0,\[cm:0x8765\],\[cm:r4\],0x10
  240:	5044 3fc0 4400 0000 	dcsmpls	r2,\[cm:r4\],\[cm:r4\],r7
  248:	5044 3fc0 4600 1234 	dcsmpls	r2,\[cm:r4\],\[cm:0x1234\],r7
  250:	5044 3fc0 4700 8765 	dcsmpls	r2,\[cm:0x8765\],\[cm:r4\],r7
@@ -104,8 +104,8 @@ Disassembly of section .text:
  2f8:	5044 3fc0 0b14 000c 	dcipv6	r2,\[cm:0xc\],\[cm:r4\],r7,0x14
  300:	5044 3fc0 2e00 0024 	dcmpls	r2,\[cm:r4\],\[cm:0x24\],r7
  308:	5044 3fc0 2f00 000c 	dcmpls	r2,\[cm:0xc\],\[cm:r4\],r7
- 310:	5044 27c0 2a14 0024 	dcmpls	r2,\[cm:r4\],\[cm:0x24\],0x14
- 318:	5044 27c0 2b14 000c 	dcmpls	r2,\[cm:0xc\],\[cm:r4\],0x14
+ 310:	5044 27c0 2a10 0024 	dcmpls	r2,\[cm:r4\],\[cm:0x24\],0x10
+ 318:	5044 27c0 2b10 000c 	dcmpls	r2,\[cm:0xc\],\[cm:r4\],0x10
  320:	5044 3fc0 4600 0024 	dcsmpls	r2,\[cm:r4\],\[cm:0x24\],r7
  328:	5044 3fc0 4700 000c 	dcsmpls	r2,\[cm:0xc\],\[cm:r4\],r7
  330:	5044 27c0 4208 0024 	dcsmpls	r2,\[cm:r4\],\[cm:0x24\],0x8
