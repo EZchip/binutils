@@ -1142,10 +1142,10 @@ ASRI_LIKE (0x4, C_NPS_GIC)
 { "rspi", 0x3856017e, 0xf8ff8fff, ARC_OPCODE_ARC700, MISC, NPS400 | NPS600, { ZA, RB }, { C_NPS_RSPI_GIC }},
 
 /* wkup.cl*/
-{ "wkup", 0x385b013e, 0xf8ff8fff, ARC_OPCODE_ARC700, MISC, NPS400 | NPS600, { 0 }, { C_NPS_CL }},
+{ "wkup", 0x385b013e, 0xffffffff, ARC_OPCODE_ARC700, MISC, NPS400 | NPS600, { 0 }, { C_NPS_CL }},
 
-/* wkup 0, src2*/
-{ "wkup", 0x385b003e, 0xf8ff8fff, ARC_OPCODE_ARC700, MISC, NPS400 | NPS600, { ZA, RC }, { 0 }},
+/* wkup 0, src1*/
+{ "wkup", 0x385b003e, 0xf8ff8fff, ARC_OPCODE_ARC700, MISC, NPS400 | NPS600, { ZA, RB }, { 0 }},
 
 /*getsti dst,[cm:src2]*/
 { "getsti", 0x382f0024, 0xf8ff803f, ARC_OPCODE_ARC700, MISC, NPS400 | NPS600, { RB, BRAKET, NPS_CM, COLON, RC, BRAKETdup }, { 0 }},
